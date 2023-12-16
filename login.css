@@ -38,6 +38,7 @@ section {
 }
 
 .box{
+  margin-top: 120px;
     height: 70vh;
     width: 70vw;
     background-color: white;
