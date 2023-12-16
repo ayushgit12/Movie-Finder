@@ -172,3 +172,7 @@ footer{
       border-radius: 50%;
     }
 }
+
+.box img{
+  margin-left: 100px;
+}
