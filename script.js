@@ -16,3 +16,4 @@ var typed = new Typed(".auto-text",{
   loop:true
 })
 
+
