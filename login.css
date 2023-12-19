@@ -16,7 +16,7 @@ section {
   align-items: center;
   
 }
-.entry input{
+#add input{
     margin: 5px;
 }
 .navbar-brand p{
@@ -47,7 +47,7 @@ section {
     justify-content: center;
     align-items: center;
 }
-.entry{
+#add{
     display: flex;
     justify-content: center;
     align-items: center;

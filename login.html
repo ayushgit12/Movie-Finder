@@ -5,10 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login or Signup to Enjoy the best Movies Site</title>
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="login.css">
-    <link rel="icon" href=
-"images/logo.jpeg"
-          type="image/x-icon">
 </head>
 
 <body>
@@ -28,15 +26,15 @@
     <!-- --------------------------------------------------------- -->
 
     <nav class="navbar bg-body-tertiary" style="position: fixed; width: 100% ">
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <span><img src="images/logo.png" alt="Logo" width="50" height="50"
                         class="d-inline-block align-text-top"></span>
-                <span>
-                    <p><b>Movie Finder</b></p>
-                </span>
+                        <span>
+                            <p><b>Movie Finder</b></p>
+                        </span>
+                    </a>
 
-            </a>
         </div>
     </nav>
     <section>
@@ -44,41 +42,91 @@
             <img src="images/login2.png" height="100% ">
             <div class="info" style="z-index: 100;">
                 <h3>Welcome Back User!</h3>
-                <h2 >Sign In</h2>
-          
-                <div class="entry">
-                    <input type="text"
+                <h2>Sign In</h2>
+
+                <form id="add">
+                    <input type="email" id="emailid "
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216); border: none; padding: 7px;"
-                        placeholder="Email Address">
-                    <input type="text"
+                        placeholder="Email Address" required>
+                    <input type="password" id="password"
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px;"
-                        placeholder="Password">
-                    </div>
-                    <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox" style="margin: 5px;">Remember Me</span> 
-                    <button type="button" class="btn btn-dark" style = "margin-top: 40px;">Login</button>
-                    <div class="create" style="padding-top: 10px;">
-                        Don't have an account? 
-                        <div><button style="border: none; padding: 7px; margin-left: 30px;"><a href="signup.html" style="text-decoration: none; color: black;">Sign up Now!</a></button></div>
-                    </div>
+                        placeholder="Password" required>
+                </form>
+                <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox" class="chck"
+                        style="margin: 5px;">Remember Me</span>
+                <button type="submit" class="btn btn-dark" style="margin-top: 40px;">Login</button>
+                <div class="create" style="padding-top: 10px;">
+                    Don't have an account?
+                    <div><a href="signup.html" style="height: none; color: black;"><button type="button"
+                                style="border: none; padding: 7px; margin-left: 30px;">Sign up Now!</button></a></div>
                 </div>
             </div>
-            <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+        </div>
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </section>
 
     <footer>
         <p>Movie Finder &copy Copyright 2023</p>
     </footer>
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, set, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDDk08AeWmX9bD-M2TolwaxsCFXJ8iAz_o",
+            authDomain: "onestop-9cf30.firebaseapp.com",
+            projectId: "onestop-9cf30",
+            storageBucket: "onestop-9cf30.appspot.com",
+            messagingSenderId: "122554524092",
+            appId: "1:122554524092:web:51d369e706c59815510bb9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+        const dbRef = ref(db)
+
+
+        let EmailInp = document.getElementById('emailid')
+        let PassInp = document.getElementById('password')
+        let mainForm = document.getElementById('add')
+
+
+        // console.log(NameInp,EmailInp,PassInp)
+
+        let signInUser = evt => {
+            evt.preventDefault();
+            signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+                .then((credentials) => {
+                    console.log(credentials)
+                })
+                .catch((error) => {
+                    alert("Some error : ", error.message)
+                })
+        }
+
+        mainForm.addEventListener('submit', signInUser)
+    </script>
+
+
 
 </body>
 

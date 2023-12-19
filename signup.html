@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Now</title>
-    <link rel="icon" href=
-"images/logo.jpeg"
-          type="image/x-icon">
-          <link rel="stylesheet" href="login.css">
-    
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="login.css">
+
 </head>
 
 <style>
-    .navbar-brand p{
-    padding: 13px 0 0 2px;
-}
-.navbar-brand{
-    display: flex;
-}
+    .navbar-brand p {
+        padding: 13px 0 0 2px;
+    }
+
+    .navbar-brand {
+        display: flex;
+    }
 </style>
+
 <body>
     <!-- //BOOTSTRAP DATA -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -36,7 +37,7 @@
     <!-- --------------------------------------------------------- -->
 
     <nav class="navbar bg-body-tertiary" style="position: fixed; width: 100% ">
-        <div class="container-fluid" >
+        <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <span><img src="images/logo.png" alt="Logo" width="50" height="50"
                         class="d-inline-block align-text-top"></span>
@@ -52,47 +53,119 @@
         <div class="box">
             <img src="images/login2.png" height="100% ">
             <div class="info" style="z-index: 100;">
+                <div class="alert alert-success success" role="alert" style="display: none;">
+                    Account Successfully created! Return to <a href="login.html">login page</a> to continue
+                  </div>
+                <div class="alert alert-danger err1" role="alert" style="display: none;">
+                    Either account already exists or password incorrect! Either return to <a href="login.html">login page</a> or use another email ID
+                  </div>
+                <div class="alert alert-danger err3" role="alert" style="display: none;">
+                    Password should be atleast 6 characters!
+                  </div>
+                <div class="alert alert-danger err2" role="alert" style="display: none;">
+                    Invalid email ID. Try again!
+                  </div>
                 <h2>Sign Up Now!</h2>
                 <h6 style="text-align: center;">To Enjoy the Benefits You are Missing out!</h6>
-                <div class="entry">
-                    <input type="text"
-                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216); border: none; padding: 7px;"
-                        placeholder="Email Address">
-                    <input type="text"
-                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px;"
-                        placeholder="Enter Password">
-                    <input type="text"
-                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px;"
-                        placeholder="Confirm Password">
-                    </div>
-                    <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox" style="margin: 5px;">Remember Me</span> 
-                    <button type="button" class="btn btn-dark" style = "margin-top: 20px;">Create account</button>
-                    <div class="create" style="padding-top: 10px;">
-                        Or sign-up using:  
-                        <div class="imgs">
-                            <img src="images/ggl.png" height="33px" width="33px" alt="">
-                            <img src="images/fb.png" height="30px" width="30px" alt="">
-                        </div>
+                <form id="add" style="display: flex; flex-direction: column; justify-content: center;">
+                    <input type="text" id="name"
+                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
+                        placeholder="Enter your full name" required>
+                    <input type="email" id="emailid"
+                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216); border: none; padding: 7px; margin: 5px"
+                        placeholder="Email Address" required>
+                    <input type="password" id="password"
+                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px"
+                        placeholder="Enter Password" required>
+                    <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox"
+                            style="margin: 5px;">Remember Me</span>
+                    <button type="submit" class="btn btn-dark" style="margin-top: 20px;">Create account</button>
+                </form>
+                <div class="create" style="padding-top: 10px;">
+                    Or sign-up using:
+                    <div class="imgs">
+                        <img src="images/ggl.png" height="33px" width="33px" alt="">
+                        <img src="images/fb.png" height="30px" width="30px" alt="">
                     </div>
                 </div>
+                
             </div>
-            <ul class="circles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            
+        </div>
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </section>
 
     <footer>
         <p>Movie Finder &copy Copyright 2023</p>
     </footer>
 
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDDk08AeWmX9bD-M2TolwaxsCFXJ8iAz_o",
+            authDomain: "onestop-9cf30.firebaseapp.com",
+            projectId: "onestop-9cf30",
+            storageBucket: "onestop-9cf30.appspot.com",
+            messagingSenderId: "122554524092",
+            appId: "1:122554524092:web:51d369e706c59815510bb9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+
+        let NameInp = document.getElementById('name')
+        let EmailInp = document.getElementById('emailid')
+        let PassInp = document.getElementById('password')
+        let mainForm = document.getElementById('add')
+
+
+        console.log(NameInp.value,EmailInp.value,PassInp.value)
+
+        let registerUser = evt => {
+            evt.preventDefault();
+            createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
+                .then((credentials) => {
+                    document.querySelector(".success").style.display="block";
+                })
+                .catch((error) => {
+                    console.log(error)
+                    var err = error.message
+                    if(err="Firebase: Error (auth/email-already-in-use).")
+                        {document.querySelector(".err1").style.display="block";}
+                    else if(error.message="Firebase: Error (auth/invalid-email).")
+                        {document.querySelector(".err2").style.display="block";}
+                    else if(error.message="Firebase: Password should be at least 6 characters (auth/weak-password).")
+                        {document.querySelector(".err3").style.display="block";}
+                })
+        }
+
+        mainForm.addEventListener('submit', registerUser);
+    </script>
+
+
+
+
 </body>
+
 </html>
