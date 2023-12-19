@@ -18,6 +18,15 @@
     .navbar-brand {
         display: flex;
     }
+
+    @media only screen and (max-width:1000px) {
+        .box{
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+        }
+        
+    }
 </style>
 
 <body>
@@ -51,7 +60,7 @@
 
     <section>
         <div class="box">
-            <img src="images/login2.png" height="100% ">
+            <img src="images/login2.png" style="width: 25vw;">
             <div class="info" style="z-index: 100;">
                 <div class="alert alert-success success" role="alert" style="display: none;">
                     Account Successfully created! Return to <a href="login.html">login page</a> to continue
@@ -79,7 +88,7 @@
                         placeholder="Enter Password" required>
                     <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox"
                             style="margin: 5px;">Remember Me</span>
-                    <button type="submit" class="btn btn-dark" style="margin-top: 20px;">Create account</button>
+                    <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Create account</button>
                 </form>
                 <div class="create" style="padding-top: 10px;">
                     Or sign-up using:
@@ -147,15 +156,18 @@
             createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
                     document.querySelector(".success").style.display="block";
+
                 })
                 .catch((error) => {
                     console.log(error)
+
+                    // FINALLY IF NO SOLUTION FOUND, Change innerHTML of querySelector to error.message
                     var err = error.message
                     if(err="Firebase: Error (auth/email-already-in-use).")
                         {document.querySelector(".err1").style.display="block";}
-                    else if(error.message="Firebase: Error (auth/invalid-email).")
+                    else if(err="Firebase: Error (auth/invalid-email).")
                         {document.querySelector(".err2").style.display="block";}
-                    else if(error.message="Firebase: Password should be at least 6 characters (auth/weak-password).")
+                    else if(err="Firebase: Password should be at least 6 characters (auth/weak-password).")
                         {document.querySelector(".err3").style.display="block";}
                 })
         }
