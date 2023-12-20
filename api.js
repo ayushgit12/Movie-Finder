@@ -15,6 +15,7 @@ getMovies(API_URL)
 function getMovies(url) {
     fetch(url).then(res => res.json()).then(data => {
         //  console.log(data.results);
+
         showMovies(data.results);
     })
 }
@@ -56,7 +57,7 @@ function showTV(data) {
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL+poster_path}" alt="" class="movie-list-item-img">
+        <img src="${IMAGE_URL+poster_path}" alt="https://t4.ftcdn.net/jpg/00/89/55/15/240_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg" class="movie-list-item-img">
                             <span class="movie-list-item-title">${name} <span class="${getColor(vote_average)}">${vote_average}</span></span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
@@ -115,7 +116,7 @@ function showTV2(data) {
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL+poster_path}" alt="" class="movie-list-item-img">
+        <img src="${IMAGE_URL+poster_path}" alt="images/nopic.jpeg" class="movie-list-item-img">
                             <span class="movie-list-item-title">${name} <span class="${getColor(vote_average)}">${vote_average}</span></span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
@@ -146,9 +147,19 @@ function getColor(vote){
 form.addEventListener('submit',(e)=>{
     e.preventDefault()
 
+    document.querySelector('.toph').style.display = 'none'
+    document.querySelector('.top-slide').style.display = 'none'
     const searchTerm = search.value
 
+    // document.querySelector('.main-container').style.transform = "translateY(-112vh)";
+    // document.querySelector('.title-top')='';
+    // console.log(document.querySelector('.titletop'))
+    document.querySelector('.titletop').innerHTML = 'Search Results for "'+searchTerm+'"';
+   
     if(searchTerm){
         getMovies(searchURL+'&query='+searchTerm)
     }
+    
 })
+
+
