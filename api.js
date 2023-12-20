@@ -151,15 +151,13 @@ form.addEventListener('submit',(e)=>{
     document.querySelector('.top-slide').style.display = 'none'
     const searchTerm = search.value
 
-    // document.querySelector('.main-container').style.transform = "translateY(-112vh)";
-    // document.querySelector('.title-top')='';
-    // console.log(document.querySelector('.titletop'))
+    
     document.querySelector('.titletop').innerHTML = 'Search Results for "'+searchTerm+'"';
    
     if(searchTerm){
         getMovies(searchURL+'&query='+searchTerm)
     }
-    
+    document.querySelector('.title2').innerHTML = 'Some other related Results:';
 })
 
 

@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Sen:wght@400;500;700;800&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+
+
 *{
     margin: 0;
     padding: 0; 
+    
+    
 }
 
 .navbar-brand p{
@@ -290,4 +296,8 @@ footer{
 
 .arr{
     transition: all 0.2s ease-in-out;
+}
+.mf{
+    background: linear-gradient(225deg, #016603 0%, #73e329 50%, #133000 100%);
+    cursor: default;
 }
