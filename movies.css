@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&family=Sen:wght@400;500;700;800&display=swap');
+
 *{
     margin: 0;
     padding: 0; 
@@ -234,12 +236,12 @@ footer{
   .dropdown:hover .dropbtn {background-color: yellowgreen;}
 
 
-  @media only screen and (max-width:1190px) {
+  /* @media only screen and (max-width:1190px) {
 
     .srch{
         display: none;
     }
-  }
+  } */
 
 .green{
     background-color: green;
@@ -278,3 +280,14 @@ footer{
     outline: none;
 }
 
+footer{
+    font-family: 'Roboto', sans-serif;
+}
+
+.dropdown:hover .arr{
+    transform: rotate(180deg);
+}
+
+.arr{
+    transition: all 0.2s ease-in-out;
+}

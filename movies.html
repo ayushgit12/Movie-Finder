@@ -31,6 +31,8 @@
     <!-- --------------------------------------------------------- -->
 
 
+    <!--  -->
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; z-index: 999; width: 100%;" ;>
         <div class="container-fluid">
             <a class="navbar-brand" href="movies.html">
@@ -75,6 +77,7 @@
                         <a class="nav-link" href="#" style="width: 90px;">WatchList</a>
                     </li>
                 </ul>
+
                 <form id="form">
                     <i class="fa-solid fa-magnifying-glass" style="padding: 0 5px 10px 0;"></i><input type="text"
                         class="srch" style="height: 38px; width: 230px; padding-left: 8px;"
@@ -86,7 +89,7 @@
                         style="border-radius: 50%; margin-top: 5px;">
                     <p style="padding: 6px 0 0 6px;">
                     <div class="dropdown">
-                        <button class="dropbtn">Username <i class="fa-solid fa-caret-down"
+                        <button class="dropbtn">Username <i class="fa-solid fa-caret-down arr"
                                 style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
                         <div class="dropdown-content" style="padding-right: 20px;">
                             <a href="#">Account Settings</a>
@@ -102,42 +105,43 @@
         </div>
     </nav>
     <div class="main-container">
+        
         <h2 class='toph' style="padding: 25px;">COMING SOON ON <span
-                style="background: linear-gradient(225deg, #016603 0%, #73e329 50%, #1a5500 100%);">MOVIE
+                style="background: linear-gradient(225deg, #016603 0%, #73e329 50%, #133000 100%);">MOVIE
                 FINDER</span>... </h2>
-                <div class="container1">
-                    <div id="carouselExampleAutoplaying" class="carousel slide top-slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class=" carousel-item active promo-top">
-                                <img src="images/promo.jpeg" height="100%" class="d-block" width="80%" alt="..."
-                                    style="margin: auto;">
-                                <a href="https://www.youtube.com/watch?v=973Ct2AC3EA" target='_blank'><button>Watch
-                                        Trailer</button></a>
-                            </div>
-                            <div class="carousel-item promo-top">
-                                <img src="images/promo2.jpeg" height="100%" class="d-block" width="80%" alt="..."
-                                    style="margin: auto;">
-                                <a href="https://youtu.be/_inKs4eeHiI?feature=shared" target='_blank'><button>Watch
-                                        Trailer</button></a>
-                            </div>
-                            <div class="carousel-item promo-top">
-                                <img src="images/promo3.png" height="100%" class="d-block" width="80%" alt="..."
-                                    style="margin: auto;">
-                                <a href="https://youtu.be/faKoYc2qHEQ?feature=shared" target='_blank'><button>Watch
-                                        Trailer</button></a>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+        <div class="container1">
+            <div id="carouselExampleAutoplaying" class="carousel slide top-slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class=" carousel-item active promo-top">
+                        <img src="images/promo.jpeg" height="100%" class="d-block" width="80%" alt="..."
+                            style="margin: auto;">
+                        <a href="https://www.youtube.com/watch?v=973Ct2AC3EA" target='_blank'><button>Watch
+                                Trailer</button></a>
                     </div>
+                    <div class="carousel-item promo-top">
+                        <img src="images/promo2.jpeg" height="100%" class="d-block" width="80%" alt="..."
+                            style="margin: auto;">
+                        <a href="https://youtu.be/_inKs4eeHiI?feature=shared" target='_blank'><button>Watch
+                                Trailer</button></a>
+                    </div>
+                    <div class="carousel-item promo-top">
+                        <img src="images/promo3.png" height="100%" class="d-block" width="80%" alt="..."
+                            style="margin: auto;">
+                        <a href="https://youtu.be/faKoYc2qHEQ?feature=shared" target='_blank'><button>Watch
+                                Trailer</button></a>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
             <div class="movie-list-container" style="padding-top: 20px;">
                 <h2 class="movie-list-title titletop"><b>NEW RELEASES </b></h2>
                 <div class="movie-list-wrapper">
@@ -463,20 +467,22 @@
                 </div>
             </div>
             <div style="display: flex; justify-content: center;">
-            <button class="btn btn-success" type="button" disabled style="margin-top: 18.50px; margin-bottom: 50px;">
-                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                <span role="status">Loading More Content...</span>
-              </button>
+                <button class="btn btn-success" type="button" disabled
+                    style="margin-top: 18.50px; margin-bottom: 50px;">
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    <span role="status">Loading More Content...</span>
+                </button>
             </div>
             <div style="display: flex; justify-content: center;">
-                <button class="btn-top" type="button" style="margin-top: 18.50px; margin-bottom: 50px; border-radius: 8px; padding: 4px 6px;">
+                <button class="btn-top" type="button"
+                    style="margin-top: 18.50px; margin-bottom: 50px; border-radius: 8px; padding: 4px 6px;">
                     <i class="fa-solid fa-chevron-up"></i>
                     <span role="status">Go to Top</span>
-                  </button>
-                
+                </button>
+
             </div>
 
-    </div>
+        </div>
 
         <link rel="stylesheet" href="movies.css">
         <script src="movies.js"></script>
