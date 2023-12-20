@@ -8,7 +8,7 @@ arrows.forEach((arrow,i)=>{
     let click=0;
     arrow.addEventListener("click",()=>{
         click++;
-        if(itemNumber-(6+click)>=0){
+        if(itemNumber-(4+click)>=0){
         
         movieLs[i].style.transform = `translateX(${movieLs[i].computedStyleMap().get("transform")[0].x.value -300}px)`;
     }
