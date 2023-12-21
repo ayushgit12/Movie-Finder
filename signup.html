@@ -20,12 +20,20 @@
     }
 
     @media only screen and (max-width:1000px) {
-        .box{
+        .box {
             display: flex;
             flex-direction: column;
             height: 90vh;
         }
-        
+
+    }
+
+    .mflogo {
+        transition: all 0.5s ease-in-out;
+    }
+
+    .mflogo:hover {
+        transform: rotate(360deg);
     }
 </style>
 
@@ -45,16 +53,49 @@
 
     <!-- --------------------------------------------------------- -->
 
-    <nav class="navbar bg-body-tertiary" style="position: fixed; width: 100% ">
+    <!-- <nav class="navbar bg-body-tertiary" style="position: fixed; width: 100% ">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <span><img src="images/logo.png" alt="Logo" width="50" height="50"
-                        class="d-inline-block align-text-top"></span>
+                        class="d-inline-block align-text-top mflogo"></span>
                 <span>
                     <p><b>Movie Finder</b></p>
                 </span>
 
             </a>
+        </div>
+    </nav> -->
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; z-index: 999; width: 100%;" ;>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+                <span><img src="images/logo.png" alt="Logo" width="50" height="50"
+                        class="d-inline-block align-text-top mflogo"></span>
+                <span>
+                    <p><b>Movie Finder</b></p>
+                </span>
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true"">Pricing</a>
+                  </li>
+                  <li class=" nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Watch History</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -64,16 +105,17 @@
             <div class="info" style="z-index: 100;">
                 <div class="alert alert-success success" role="alert" style="display: none;">
                     Account Successfully created! Return to <a href="login.html">login page</a> to continue
-                  </div>
+                </div>
                 <div class="alert alert-danger err1" role="alert" style="display: none;">
-                    Either account already exists or password incorrect! Either return to <a href="login.html">login page</a> or use another email ID
-                  </div>
+                    Either account already exists or password incorrect! Either return to <a href="login.html">login
+                        page</a> or use another email ID
+                </div>
                 <div class="alert alert-danger err3" role="alert" style="display: none;">
                     Password should be atleast 6 characters!
-                  </div>
+                </div>
                 <div class="alert alert-danger err2" role="alert" style="display: none;">
                     Invalid email ID. Try again!
-                  </div>
+                </div>
                 <h2>Sign Up Now!</h2>
                 <h6 style="text-align: center;">To Enjoy the Benefits You are Missing out!</h6>
                 <form id="add" style="display: flex; flex-direction: column; justify-content: center;">
@@ -97,9 +139,9 @@
                         <img src="images/fb.png" height="30px" width="30px" alt="">
                     </div>
                 </div>
-                
+
             </div>
-            
+
         </div>
         <ul class="circles">
             <li></li>
@@ -149,26 +191,24 @@
         let mainForm = document.getElementById('add')
 
 
-        console.log(NameInp.value,EmailInp.value,PassInp.value)
+        console.log(NameInp.value, EmailInp.value, PassInp.value)
 
         let registerUser = evt => {
             evt.preventDefault();
             createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
-                    document.querySelector(".success").style.display="block";
+                    document.querySelector(".success").style.display = "block";
 
                 })
                 .catch((error) => {
                     console.log(error)
 
                     // FINALLY IF NO SOLUTION FOUND, Change innerHTML of querySelector to error.message
-                    var err = error.message
-                    if(err="Firebase: Error (auth/email-already-in-use).")
-                        {document.querySelector(".err1").style.display="block";}
-                    else if(err="Firebase: Error (auth/invalid-email).")
-                        {document.querySelector(".err2").style.display="block";}
-                    else if(err="Firebase: Password should be at least 6 characters (auth/weak-password).")
-                        {document.querySelector(".err3").style.display="block";}
+                    // var err = error.message
+                    // if (err = "Firebase: Error (auth/email-already-in-use).") { document.querySelector(".err1").style.display = "block"; }
+                    // else if (err = "Firebase: Error (auth/invalid-email).") { document.querySelector(".err2").style.display = "block"; }
+                    // else if (err = "Firebase: Password should be at least 6 characters (auth/weak-password).") { document.querySelector(".err3").style.display = "block"; }
+                    alert(error.message)
                 })
         }
 

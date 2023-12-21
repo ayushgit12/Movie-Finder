@@ -5,11 +5,63 @@ const searchURL = BASE_URL+'/search/movie?'+API_KEY;
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 const TV_Series_URL = BASE_URL+'/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&'+API_KEY;
 // https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=aff98581fbcc8eff4609f1ab795c9a8f
+// https://api.themoviedb.org/3/genre/movie/list?api_key=aff98581fbcc8eff4609f1ab795c9a8f
+
+
+const genres =  [{"id":10402,
+"name":"Music"
+},
+{
+"id":9648,
+"name":"Mystery"
+},
+{
+"id":10749,
+"name":"Romance"
+},
+{
+"id":878,
+"name":"Science Fiction"
+},
+{
+"id":10770,
+"name":"TV Movie"
+},
+{
+"id":53,
+"name":"Thriller"
+},
+{
+"id":10752,
+"name":"War"
+},
+{
+"id":37,
+"name":"Western"
+}
+]
 
 const main =document.querySelectorAll(".movie-list")
 
 const form=document.getElementById('form')
 const search = document.querySelector('.srch')
+const tagsEl = document.querySelector('.tags')
+console.log
+setGenre()
+function setGenre(){
+    tagsEl.innerHTML=''
+    genres.forEach(genre=>{
+        const t = document.createElement('div');
+         t.classList.add('tag');
+        t.id=genre.id;
+        t.innerText = genre.name
+        t.addEventListener('click',()=>{
+            
+        })
+        tagsEl.append(t);
+    })
+    
+}
 
 getMovies(API_URL)
 function getMovies(url) {
@@ -19,6 +71,8 @@ function getMovies(url) {
         showMovies(data.results);
     })
 }
+
+
 
 function showMovies(data) {
     

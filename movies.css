@@ -7,9 +7,7 @@
 *{
     margin: 0;
     padding: 0; 
-    
-    
-}
+  }
 
 .navbar-brand p{
     padding: 13px 0 0 2px;
@@ -301,3 +299,14 @@ footer{
     background: linear-gradient(225deg, #016603 0%, #73e329 50%, #133000 100%);
     cursor: default;
 }
+
+
+.mflogo{
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .mflogo:hover{  
+    transform: rotate(360deg);
+  }
+  
+  

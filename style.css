@@ -223,3 +223,12 @@ footer{
   padding-top: 100px;
   
 }
+
+.mflogo{
+  transition: all 0.5s ease-in-out;
+}
+
+.mflogo:hover{  
+  transform: rotate(360deg);
+}
+

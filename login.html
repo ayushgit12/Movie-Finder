@@ -25,20 +25,36 @@
 
     <!-- --------------------------------------------------------- -->
 
-    <nav class="navbar bg-body-tertiary" style="position: fixed; width: 100% ">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; z-index: 999; width: 100%;" ;>
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
                 <span><img src="images/logo.png" alt="Logo" width="50" height="50"
-                        class="d-inline-block align-text-top"></span>
-                        <span>
-                            <p><b>Movie Finder</b></p>
-                        </span>
-                    </a>
-            
-                <div class="top-data" style="display: flex; justify-content: flex-end; width: 74vw;;"></div>
-                <!-- <span>Contact Us</span> -->
-                <span style="padding-right: 5px;">Help</span>
-                
+                        class="d-inline-block align-text-top mflogo"></span>
+                <span>
+                    <p><b>Movie Finder</b></p>
+                </span>
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Pricing</a>
+                    </li>
+                    <li class=" nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Watch History</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <section>
@@ -55,14 +71,16 @@
                     <input type="password" id="password"
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px;"
                         placeholder="Password" required>
+
+                    <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox" class="chck"
+                            style="margin: 5px;">Remember Me</span>
+                    <button type="submit" class="btn btn-dark" style="margin-top: 40px;">Login</button>
                 </form>
-                <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox" class="chck"
-                        style="margin: 5px;">Remember Me</span>
-                <button type="submit" class="btn btn-dark" style="margin-top: 40px;">Login</button>
                 <div class="create" style="padding-top: 10px;">
                     Don't have an account?
                     <div><a href="signup.html" style="height: none; color: black;"><button type="button"
-                                style="border: none; padding: 7px; margin-left: 30px;">Sign up Now!</button></a></div>
+                                style="border: none; padding: 7px; margin-left: 30px;" class="signup">Sign up
+                                Now!</button></a></div>
                 </div>
             </div>
         </div>
@@ -87,7 +105,7 @@
     <script type="module">
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getDatabase, set, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
@@ -106,28 +124,29 @@
         const app = initializeApp(firebaseConfig);
         const db = getDatabase();
         const auth = getAuth(app);
-        const dbRef = ref(db)
-
+        const dbref = ref(db);
 
         let EmailInp = document.getElementById('emailid')
         let PassInp = document.getElementById('password')
         let mainForm = document.getElementById('add')
 
 
-        // console.log(NameInp,EmailInp,PassInp)
+        console.log(EmailInp.value, PassInp.value);
 
-        let signInUser = evt => {
+        let SignInUser = evt => {
             evt.preventDefault();
             signInWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
-                    console.log(credentials)
+                    document.querySelector(".success").style.display = "block";
+
                 })
                 .catch((error) => {
-                    alert("Some error : ", error.message)
+                    // FINALLY IF NO SOLUTION FOUND, Change innerHTML of querySelector to error.message
+                    alert(error.message);
                 })
         }
 
-        mainForm.addEventListener('submit', signInUser)
+        mainForm.addEventListener('submit', SignInUser);
     </script>
 
 
