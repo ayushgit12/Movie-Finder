@@ -87,17 +87,17 @@
                 </form>
             </div>
             <div class="profile">
-                <span style="display: flex;"><img src="images/user.png" alt="" height="38px" width="38px"
+                <span style="display: flex;"><img id="prof-img" src="images/user.png" alt="" height="38px" width="38px"
                         style="border-radius: 50%; margin-top: 5px;">
                     <p style="padding: 6px 0 0 6px;">
-                    <div class="dropdown">
-                        <button class="dropbtn">Username <i class="fa-solid fa-caret-down arr"
+                    <div class="dropdown" style="margin-right: 20px;">
+                        <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
                                 style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
                         <div class="dropdown-content" style="padding-right: 20px;">
                             <a href="#">Account Settings</a>
                             <a href="#">Your WatchLater</a>
                             <a href="#">Help</a>
-                            <a href="index.html">Signout</a>
+                            <button type="button" style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px; width: 130px; text-align: start;" id="signout-btn">Signout</button>
 
                         </div>
                     </div>
@@ -107,27 +107,28 @@
         </div>
     </nav>
     <div class="main-container" style="font-family: sans-serif;">
+        <h2 id="greet" style="padding:20px; text-shadow: 12px 7px 7px rgb(7, 7, 7);"><b>Welcome, <span id="user-nm-top" style="font-size: 40px ;color: white;">Username </span>!</b></h2>
         
-        <h2 class='toph' style="padding: 25px;"><b>COMING SOON ON </b><span class="mf"><b>MOVIE
+        <h2 class='toph' style="padding: 25px; "><b style="text-shadow: 12px 7px 7px rgb(7, 7, 7);">COMING SOON ON </b><span class="mf"><b>MOVIE
                 FINDER</b></span>... </h2>
         <div class="container1">
             <div id="carouselExampleAutoplaying" class="carousel slide top-slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class=" carousel-item active promo-top">
                         <img src="images/promo.jpeg" height="100%" class="d-block" width="80%" alt="..."
-                            style="margin: auto;">
+                            style="margin: auto; border-radius: 10px; box-shadow: 12px 7px 7px rgb(23, 23, 23);">
                         <a href="https://www.youtube.com/watch?v=973Ct2AC3EA" target='_blank'><button>Watch
                                 Trailer</button></a>
                     </div>
                     <div class="carousel-item promo-top">
                         <img src="images/promo2.jpeg" height="100%" class="d-block" width="80%" alt="..."
-                            style="margin: auto;">
+                            style="margin: auto; border-radius: 10px; box-shadow: 12px 7px 7px rgb(23, 23, 23);">
                         <a href="https://youtu.be/_inKs4eeHiI?feature=shared" target='_blank'><button>Watch
                                 Trailer</button></a>
                     </div>
                     <div class="carousel-item promo-top">
                         <img src="images/promo3.png" height="100%" class="d-block" width="80%" alt="..."
-                            style="margin: auto;">
+                            style="margin: auto; border-radius: 10px; box-shadow: 12px 7px 7px rgb(23, 23, 23);">
                         <a href="https://youtu.be/faKoYc2qHEQ?feature=shared" target='_blank'><button>Watch
                                 Trailer</button></a>
                     </div>
@@ -223,7 +224,7 @@
                 </div>
             </div>
             <div class="movie-list-container" style="padding-top: 20px;">
-                <h2 class="movie-list-title title2"><b>POPULAR TV SERIES </b></h2>
+                <h2 class="movie-list-title title2"><b style="text-shadow: 12px 7px 7px rgb(7, 7, 7);">POPULAR TV SERIES </b></h2>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
@@ -303,14 +304,14 @@
             </div>
 
             <div class="promo-out">
-                <h2 style="margin-left: 20px; margin-bottom: 30px;">HOT RIGHT NOW!</h2>
+                <h2 style="margin-left: 20px; margin-bottom: 30px; text-shadow: 12px 7px 7px rgb(7, 7, 7);"><b>HOT RIGHT NOW!</b></h2>
                 <div class="promo" style="display: flex; justify-content: center; cursor: pointer;">
-                    <img src="images/promo3.jpeg" width="95%" alt="">
+                    <img src="images/promo3.jpeg" width="95%" alt="" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                     <button class="promo-button">WATCH NOW!</button>
                 </div>
             </div>
             <div class="movie-list-container" style="padding-top: 20px;">
-                <h2 class="movie-list-title"><b>DON'T MISS OUT THESE! </b></h2>
+                <h2 class="movie-list-title"><b style=" text-shadow: 12px 7px 7px rgb(7, 7, 7);">DON'T MISS OUT THESE! </b></h2>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
@@ -389,7 +390,7 @@
                 </div>
             </div>
             <div class="movie-list-container" style="padding-top: 20px;">
-                <h2 class="movie-list-title">TV SERIES TO LIGHTEN YOUR MOOD! </h2>
+                <h2 class="movie-list-title"><b style=" text-shadow: 12px 7px 7px rgb(7, 7, 7);">TV SERIES TO LIGHTEN YOUR MOOD! </b></h2>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
@@ -476,7 +477,7 @@
             </div>
             <div style="display: flex; justify-content: center;">
                 <button class="btn-top" type="button"
-                    style="margin-top: 18.50px; margin-bottom: 50px; border-radius: 8px; padding: 4px 6px;">
+                    style="margin-top: 18.50px; margin-bottom: 50px; border-radius: 8px; padding: 4px 6px; box-shadow: 12px 7px 7px rgb(7, 7, 7);">
                     <i class="fa-solid fa-chevron-up"></i>
                     <span role="status">Go to Top</span>
                 </button>
@@ -493,6 +494,33 @@
         </footer>
 
         <script src="api.js"></script>
+
+        <script>
+            let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
+            let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
+
+
+            let userN = document.getElementById("usernm")
+            let userNtop = document.getElementById("user-nm-top")
+            userN.innerText = UserInfo.name
+            userNtop.innerText = UserInfo.name
+            let signoutBtn = document.getElementById("signout-btn")
+
+            let signout = ()=>{
+                sessionStorage.removeItem("user-creds");
+                sessionStorage.removeItem("user-info");
+                window.location.href="login.html"
+            }
+
+            // let CheckCred = ()=>{
+            //     if(!sessionStorage.getItem("user-cred"))
+            //         window.location.href='login.html'
+            //     else    
+            //         userN.innerText=UserInfo.name;
+            // }
+            // window.addEventListener('load',CheckCred)
+            signoutBtn.addEventListener('click',signout)
+        </script>
 </body>
 
 </html>

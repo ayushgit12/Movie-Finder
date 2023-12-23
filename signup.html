@@ -197,7 +197,12 @@
             evt.preventDefault();
             createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
+                    set(ref(db,'UsersAuthList/'+ credentials.user.id),{
+                        name: NameInp.value
+                        
+                    })
                     document.querySelector(".success").style.display = "block";
+
 
                 })
                 .catch((error) => {
