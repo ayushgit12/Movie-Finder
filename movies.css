@@ -68,22 +68,57 @@ body{
     margin-right: 30px;
     position: relative;
     cursor: pointer;
+    position: relative;
     
 }
 
 .movie-list-item:hover .movie-list-item-img{
-    transform: scale(1.2);
+    transform: scale(1.24);
     margin: 0 30px ;
     opacity: 0.7;
 }
 
-.movie-list-item:hover .movie-list-item-img,
+.movie-list-item:hover .movie-list-item-img{
+    /* color: #333; */
+    opacity: 0.3;
+    transition: 1s all ease-in-out;
+}
+
 .movie-list-item:hover .movie-list-item-title,
-.movie-list-item:hover .movie-list-item-desc,
 .movie-list-item:hover .movie-list-item-button{
+    opacity: 1;
+    transition: 1s all ease-in-out;
+}
+
+.movie-list-item:hover .movie-list-item-desc{
+    width: 230px;
     opacity: 0.8;
     transition: 1s all ease-in-out;
 }
+
+.yellowgreen{
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+.red{
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+.orange{
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+
+.movie-list-item:hover .yellowgreen,
+.movie-list-item:hover .green,
+.movie-list-item:hover .orange,
+.movie-list-item:hover .red{
+    opacity: 1;
+    transition: 1s all ease-in-out;
+    transform: translateY(-20px);
+    
+};
+
 
 .movie-list-item-button:hover{
     background-color: green;
@@ -91,19 +126,20 @@ body{
 }
 
 .movie-list-item-title{
-    background-color: #333;
+    /* background-color: #333; */
+    /* bottom: 0; */
     padding: 0 10px;
     font-size: 26px;
     font-weight: bold;
     position: absolute;
     top: 10%;
     left: 10px;
-    opacity: 0 ;
+    opacity: 0.5 ;
     transition: 1s all ease-in-out;
 }
 .movie-list-item-desc{
-    max-width: 300px;
-    max-height: 150px;
+    
+    max-height: 100px;
     overflow: scroll;
     background-color: #333;
     padding: 10px;
@@ -111,9 +147,9 @@ body{
     font-size: 14px;
     font-weight: bold;
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50px;
-    width: 230px;
+    width: 130px;
     opacity: 0 ;
     transition: 1s all ease-in-out;
 }
@@ -258,20 +294,29 @@ footer{
     padding: 3px;
     border-radius: 10px;
     font-size: 20px;
+    position: absolute;
+    top: 0px;
+    left: 8px;
 }
 .yellowgreen{
     background-color: yellowgreen;
     padding: 3px;
     border-radius: 10px;
     font-size: 20px;
+    position: absolute;
+    top: 0px;
+    left: 8px;
 }
 .orange{
     background-color: orange;
     padding: 3px;
     border-radius: 10px;
     font-size: 20px;
+    position: absolute;
+    top: 0px;
+    left: 8px;
 }
-.green{
+.red{
     background-color: red;
     padding: 3px;
     border-radius: 10px;
@@ -326,3 +371,9 @@ footer{
     transition: all 0.2s ease-in-out;
     cursor: pointer;
   }
+
+
+.promo-top img:hover{
+    opacity: 0.95;
+}
+

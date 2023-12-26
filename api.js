@@ -84,7 +84,7 @@ function showMovies(data) {
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
         <img src="${IMAGE_URL+poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title}<span class="${getColor(vote_average)}">${vote_average}</span></span>
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             `
@@ -112,7 +112,7 @@ function showTV(data) {
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
         <img src="${IMAGE_URL+poster_path}" alt="https://t4.ftcdn.net/jpg/00/89/55/15/240_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${name} <span class="${getColor(vote_average)}">${vote_average}</span></span>
+                            <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             `
@@ -141,7 +141,7 @@ function showMovies3(data) {
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
         <img src="${IMAGE_URL+poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title} <span class="${getColor(vote_average)}">${vote_average}</span></span>
+                            <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             `
@@ -171,7 +171,7 @@ function showTV2(data) {
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
         <img src="${IMAGE_URL+poster_path}" alt="images/nopic.jpeg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${name} <span class="${getColor(vote_average)}">${vote_average}</span></span>
+                            <span class="movie-list-item-title">${name}</span> <span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             `
