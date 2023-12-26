@@ -72,6 +72,12 @@ body{
     
 }
 
+.movie-list-item-button:hover{
+    background-color: #016603;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
 .movie-list-item:hover .movie-list-item-img{
     transform: scale(1.24);
     margin: 0 30px ;
@@ -377,3 +383,21 @@ footer{
     opacity: 0.95;
 }
 
+.promo:hover .promo-desc{
+    opacity: 1;
+    width: 100px;
+    background-color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+.promo-desc{
+    opacity: 0;
+    width: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.promo-top a button:hover{
+    background-color: #016603;
+    color: white;
+    transition: all 0.5s ease-in-out;
+}
