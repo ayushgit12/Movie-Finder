@@ -131,7 +131,7 @@ function getMovies(url) {
         else {
             document.querySelector(".titletop").style.display = 'block'
             document.querySelector(".arrow").style.display = 'none'
-            document.querySelector(".titletop").innerHTML = `<h1 class="nores">Psssshhh.... No results found! Closest results found</h1>`
+            document.querySelector(".titletop").innerHTML = `<h1 class="nores">Psssshhh.... No results found! Closest results found : </h1><br><br>`
 
         }
     })
@@ -144,7 +144,7 @@ function showMovies(data) {
     main[0].innerHTML = ''
 
     data.forEach(movie => {
-        const { title, poster_path, vote_average, overview, id } = movie
+        const { title, poster_path, vote_average, overview, id, origin_country } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
@@ -170,10 +170,35 @@ function showMovies(data) {
 /* Open when someone clicks on the span element */
 function openNav(movie) {
     let id = movie.id
+    if(movie.origin_country)
+        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">MOVIE OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
+    
+    else
+        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">MOVIE OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
+    
     fetch(BASE_URL+"/movie/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
-        console.log(videoData)
+        if(videoData){
+            document.getElementById("overlay-content").innerHTML += `<br><br><br>`
+            document.getElementById("myNav").style.width = "100%";
+            if(videoData.results.length>0){
+                var emb=[]
+                videoData.results.forEach(vid=>{
+                    let {name,key,site} = vid
+
+                    if(site=='YouTube')
+                        emb.push(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
+
+
+                })
+
+                document.getElementById("overlay-content").innerHTML+=emb.join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+            }
+            else{
+                document.getElementById("overlay-content").innerHTML += ``;
+            }
+            // console.log(videoData)
+        }
     })
-    document.getElementById("myNav").style.width = "100%";
   }
   
   /* Close when someone clicks on the "x" symbol inside the overlay */
@@ -200,16 +225,22 @@ function showTV(data) {
     main[1].innerHTML = ''
 
     data.forEach(movie => {
-        const { name, poster_path, vote_average, overview } = movie
+        const { name, poster_path, vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL + poster_path}" alt="https://t4.ftcdn.net/jpg/00/89/55/15/240_F_89551596_LdHAZRwz3i4EM4J0NHNHy2hEUYDfXc0j.jpg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
+                            <button class="know-more" id=${id}>Know More</button>
                             `
         main[1].appendChild(movieEl)
+
+        document.getElementById(id).addEventListener('click',()=>{
+            console.log(id)
+            openNav(movie)
+        })
     })
 
 
@@ -229,7 +260,7 @@ function showMovies3(data) {
 
     for (let i = 9; i < 20; i++) {
         // data.forEach(movie => {
-        const { title, poster_path, vote_average, overview } = data[i]
+        const { title, poster_path, vote_average, overview, id} = data[i]
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
@@ -237,8 +268,14 @@ function showMovies3(data) {
                             <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
+                            <button class="know-more" id=${id}>Know More</button>
                             `
         main[2].appendChild(movieEl)
+
+        document.getElementById(id).addEventListener('click',()=>{
+            console.log(id)
+            openNav(data[i])
+        })
         // })
     }
 
@@ -259,7 +296,7 @@ function showTV2(data) {
 
     for (let i = 9; i < 20; i++) {
         // data.forEach(movie => {
-        const { name, poster_path, vote_average, overview } = data[i]
+        const { name, poster_path, vote_average, overview, id} = data[i]
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
@@ -267,8 +304,14 @@ function showTV2(data) {
                             <span class="movie-list-item-title">${name}</span> <span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
+                            <button class="know-more" id=${id}>Know More</button>
                             `
         main[3].appendChild(movieEl)
+
+        document.getElementById(id).addEventListener('click',()=>{
+            console.log(id)
+            openNav(data[i])
+        })
         // })
     }
 

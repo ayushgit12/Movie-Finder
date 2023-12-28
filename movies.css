@@ -439,6 +439,8 @@ footer{
 
 .nores{
     padding: 10px;
+    font-family: 'Roboto';    
+
 }
 
 #clear{
@@ -506,7 +508,7 @@ footer{
   /* Position the close button (top right corner) */
   .overlay .closebtn {
     position: absolute;
-    top: 60px;
+    top: 15px;
     right: 45px;
     font-size: 60px;
   }
@@ -520,3 +522,11 @@ footer{
       right: 35px;
     }
   }
+
+
+.origin-country{
+    text-align: center;
+    margin: 20px;
+    color: rgb(108, 108, 108);
+    
+}
