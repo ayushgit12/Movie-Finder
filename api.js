@@ -171,10 +171,10 @@ function showMovies(data) {
 function openNav(movie) {
     let id = movie.id
     if(movie.origin_country)
-        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">MOVIE OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:35px 80px">${movie.overview}</div>`
     
     else
-        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">MOVIE OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
     
     fetch(BASE_URL+"/movie/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
         if(videoData){
@@ -209,9 +209,6 @@ function openNav(movie) {
 
 
 
-
-
-
 getTV(TV_Series_URL)
 function getTV(url) {
     fetch(url).then(res => res.json()).then(data => {
@@ -235,8 +232,8 @@ function showTV(data) {
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
-        main[1].appendChild(movieEl)
-
+                            main[1].appendChild(movieEl)
+                            
         document.getElementById(id).addEventListener('click',()=>{
             console.log(id)
             openNav(movie)
@@ -271,7 +268,7 @@ function showMovies3(data) {
                             <button class="know-more" id=${id}>Know More</button>
                             `
         main[2].appendChild(movieEl)
-
+        // console.log(document.getElementById(id));
         document.getElementById(id).addEventListener('click',()=>{
             console.log(id)
             openNav(data[i])
