@@ -72,10 +72,10 @@ body{
     
 }
 
-.movie-list-item-button:hover{
+.know-more:hover{
     background-color: #016603;
     color: white;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.5s ease-in-out; */
 }
 
 .movie-list-item:hover .movie-list-item-img{
@@ -91,9 +91,10 @@ body{
 }
 
 .movie-list-item:hover .movie-list-item-title,
-.movie-list-item:hover .movie-list-item-button{
+.movie-list-item:hover .movie-list-item-button,
+.movie-list-item:hover .know-more{
     opacity: 1;
-    transition: 1s all ease-in-out;
+    transition: 0.8s all ease-in-out;
 }
 
 .movie-list-item:hover .movie-list-item-desc{
@@ -128,6 +129,7 @@ body{
 
 .movie-list-item-button:hover{
     background-color: green;
+    transition: all 0.5s ease-in-out;
     color: white;
 }
 
@@ -161,15 +163,16 @@ body{
 }
 
 .movie-list-item-button{
-    padding: 10px;
+    padding: 5px 20px;
     background-color: yellowgreen;
     border: none; 
     border-radius: 10px;
+    font-size: 15px;
     outline: none;
     cursor: pointer;
     position: absolute;
-    bottom: 3px;
-    left: 50px;
+    bottom: 45px;
+    left: 28px;
     opacity: 0;
 }
 
@@ -446,3 +449,74 @@ footer{
     display: flex;
     align-items: center;
 }
+
+.know-more{
+    padding: 6px 10px;
+    background-color: yellowgreen;
+    border: none; 
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    left: 26px;
+    opacity: 0;
+}
+
+
+/* The Overlay (background) */
+.overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */   
+    height: 100%;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0); /* Black fallback color */
+    background-color: rgba(0,0,0, 0.9); /* Black w/opacity */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+  }
+  
+  /* Position the content inside the overlay */
+  .overlay-content {
+    position: relative;
+    top: 25%; /* 25% from the top */
+    width: 100%; /* 100% width */
+    text-align: center; /* Centered text/links */
+    margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+  }
+  
+  /* The navigation links inside the overlay */
+  .overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block; /* Display block instead of inline */
+    transition: 0.3s; /* Transition effects on hover (color) */
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+  }
+  
+  /* Position the close button (top right corner) */
+  .overlay .closebtn {
+    position: absolute;
+    top: 60px;
+    right: 45px;
+    font-size: 60px;
+  }
+  
+  /* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 20px}
+    .overlay .closebtn {
+      font-size: 40px;
+      top: 15px;
+      right: 35px;
+    }
+  }

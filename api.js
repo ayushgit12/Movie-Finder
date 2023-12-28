@@ -144,7 +144,7 @@ function showMovies(data) {
     main[0].innerHTML = ''
 
     data.forEach(movie => {
-        const { title, poster_path, vote_average, overview } = movie
+        const { title, poster_path, vote_average, overview, id } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
@@ -152,12 +152,40 @@ function showMovies(data) {
                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
+                            <button class="know-more" id=${id}>Know More</button>
                             `
         main[0].appendChild(movieEl)
+
+        document.getElementById(id).addEventListener('click',()=>{
+            console.log(id)
+            openNav(movie)
+        })
     })
 
 
 }
+
+
+
+/* Open when someone clicks on the span element */
+function openNav(movie) {
+    let id = movie.id
+    fetch(BASE_URL+"/movie/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
+        console.log(videoData)
+    })
+    document.getElementById("myNav").style.width = "100%";
+  }
+  
+  /* Close when someone clicks on the "x" symbol inside the overlay */
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
+
+
+
+
+
+
 
 getTV(TV_Series_URL)
 function getTV(url) {
