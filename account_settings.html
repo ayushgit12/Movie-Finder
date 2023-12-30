@@ -110,16 +110,44 @@
         </div>
     </nav>
 
-    <div class="main-container" style="font-family: sans-serif;"></div>
-
+    <div class="main-container" style="font-family: sans-serif;">
+        <h2 style="margin: 18px 0 10px 19px; ">Account & Settings </h2>
+        <hr>
+        <div class="content">
+            <h2>PERSONAL DETAILS</h2>
+            <div class="email"><i class="fa-regular fa-envelope env"></i><span id="emid"></span></div>
+            <div class="f-name" style="display: flex; gap: 25vw; justify-content: center; font-size: 20px;"><span>Full Name</span><span id="fname"></span></div>
+            <div class="cno" style="display: flex; gap: 25vw; justify-content: center; font-size: 20px;"><span>Contact Number</span><span id="cno">Add</span></div>
+        </div>
+    
+    </div>
+    <!-- <i class="fa-solid fa-envelope env"></i> -->
 
 
 
 
     <script>
+
+document.querySelector(".env").addEventListener("mouseover", function() {
+      // Change the class when the mouse is over the element
+      document.querySelector(".env").classList.remove("fa-regular");
+      document.querySelector(".env").classList.add("fa-solid");
+    });
+document.querySelector(".env").addEventListener("mouseout", function() {
+      // Change the class when the mouse is over the element
+      document.querySelector(".env").classList.remove("fa-solid");
+      document.querySelector(".env").classList.add("fa-regular");
+    });
+
+
         let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
         let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
 
+        console.log(UserCreds)
+        console.log(UserInfo) // CONTAINS NAME AND CREATION TIME AND PHONE NUMBER
+        document.getElementById("emid").innerHTML=UserCreds.email
+        document.getElementById("fname").innerHTML=UserInfo.name
+        document.getElementById("cno").innerHTML=UserInfo.phnNo
 
         let userN = document.getElementById("usernm")
         let userNtop = document.getElementById("user-nm-top")

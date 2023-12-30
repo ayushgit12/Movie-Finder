@@ -1,1 +1,12 @@
+#emid{
+    font-size: 14px;  
+    padding-left: 5px; 
+}
 
+.email{
+    padding: 16px;
+}
+
+.content{
+    text-align: center;
+}

@@ -50,7 +50,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="movies.html">Home</a>
+                        <a class="nav-link active nav-up" aria-current="page" href="movies.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -71,13 +71,13 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Movies</a>
+                        <a class="nav-link nav-up" href="#">Movies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="width: 90px;">TV Series</a>
+                        <a class="nav-link nav-up" href="#" style="width: 90px;">TV Series</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="width: 90px;">WatchList</a>
+                        <a class="nav-link nav-up" href="#" style="width: 90px;">WatchList</a>
                     </li>
                 </ul>
 
@@ -572,7 +572,7 @@
             let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
             let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
 
-
+            console.log(UserInfo)
             let userN = document.getElementById("usernm")
             let userNtop = document.getElementById("user-nm-top")
             userN.innerText = UserInfo.name

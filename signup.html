@@ -89,7 +89,7 @@
                         <a class="nav-link" href="#">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true"">Pricing</a>
+                        <a class="nav-link disabled" aria-disabled="true">Pricing</a>
                   </li>
                   <li class=" nav-item">
                             <a class="nav-link disabled" aria-disabled="true">Watch History</a>
@@ -99,8 +99,8 @@
         </div>
     </nav>
 
-    <section>
-        <div class="box">
+    <section style="height: 110vh;">
+        <div class="box" style="height: 80vh;">
             <img src="images/login2.png" style="width: 25vw; padding-bottom: 40px;">
             <div class="info" style="z-index: 100;">
                 <div class="alert alert-success success" role="alert" style="display: none; width: 25vw;">
@@ -122,6 +122,9 @@
                     <input type="text" id="name"
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
                         placeholder="Enter your full name" required>
+                    <input type="text" id="phoneNo"
+                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
+                        placeholder="Contact Number " >
                     <input type="email" id="emailid"
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216); border: none; padding: 7px; margin: 5px"
                         placeholder="Email Address" required>
@@ -185,24 +188,30 @@
         const db = getDatabase();
         const auth = getAuth(app);
 
+
         let NameInp = document.getElementById('name')
         let EmailInp = document.getElementById('emailid')
         let PassInp = document.getElementById('password')
+        let phnNoInp = document.getElementById('phoneNo')
         let mainForm = document.getElementById('add')
+        
 
-
-        console.log(NameInp.value, EmailInp.value, PassInp.value)
-
+        // console.log(NameInp.value, EmailInp.value, PassInp.value)
+        
         let registerUser = evt => {
+            document.querySelector(".success").style.display = "none";    
             evt.preventDefault();
             createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
-                    set(ref(db,'UsersAuthList/'+ credentials.user.id),{
-                        name: NameInp.value
+                    console.log(credentials.user)
+                    set(ref(db,'UsersAuthList/'+ credentials.user.uid),{
+                        name: NameInp.value,
+                        crtTime: credentials.user.metadata.creationTime,
+                        phnNo: phnNoInp.value
                         
                     })
                     document.querySelector(".success").style.display = "block";
-
+                    
 
                 })
                 .catch((error) => {
