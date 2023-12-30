@@ -92,15 +92,18 @@
     </nav>
 
     <div class="main-container" style="font-family: sans-serif; padding: 10vh 18vw;">
-        <h2 style="margin: 18px 0 10px 19px; "><b><i class="fa-solid fa-gear" style="padding-right: 8px;"></i>Account & Settings</b> </h2>
+        <h2 class="setthd" style="margin: 28px 0 10px 19px; "><b><i class="fa-solid fa-gear sett" style="padding-right: 8px;"></i>Account & Settings</b> </h2>
+        <br>
+        <div style="display: flex; justify-content: center;">
+            <div class="alert alert-warning" role="alert" style="width: 80vw; text-align: center;">
+                <i class="fa-solid fa-triangle-exclamation" style="padding-right: 5px;"></i>Please ensure that all your
+                information is correct so that we can provide content according to your preferences.
+            </div>
+        </div>
 
-        <div style="display: flex; justify-content: center;"><div class="alert alert-warning" role="alert" style="width: 80vw; text-align: center;">
-            <i class="fa-solid fa-triangle-exclamation" style="padding-right: 5px;"></i>Please ensure that all your information is correct so that we can provide content according to your preferences.
-          </div></div>
-          
-          <div class="content" >
-              <h2><i class="fa-solid fa-file-pen" style="padding-right: 10px;"></i>PERSONAL DETAILS</h2>
-              <hr>
+        <div class="content">
+            <h2><i class="fa-solid fa-file-pen" style="padding-right: 10px;"></i>PERSONAL DETAILS</h2>
+            <hr>
             <div style="margin: 40px 0 10px 0;"><img style="border-radius: 50%;" src="images/user.png" height="150px"
                     alt=""></div>
             <div class="email"><i class="fa-regular fa-envelope env"></i><span class="emid"></span></div>
@@ -117,21 +120,60 @@
                 <span id="cno">Add</span>
 
                 <span>Account Created on : </span>
-                <span id="accsince"></span>
+                <span><span id="accsince"></span></span>
                 <br><br><br>
 
             </div>
 
-            
+
 
 
             <div class="playback-settings">
                 <h2><i class="fa-solid fa-circle-play" style="padding-right: 10px;"></i>PLAYBACK SETTINGS</h2>
                 <hr>
+
+                <div class="prof-info" style="padding: 0 15vw;">
+
+
+                    <span><button type="button" style="background: none; border: none;" class="btn btn-secondary"
+                            data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="Once a media ends, another similar type media starts playing.">
+                            <i class="fa-solid fa-question"
+                                style="background-color: black; width: 20px; height: 20px;border-radius: 50%;"></i>
+                        </button>Autoplay :</span>
+
+                    <span style="padding-top:12px ;"><!-- Rounded switch -->
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label></span>
+
+                        <span><button type="button" style="background: none; border: none;" class="btn btn-secondary"
+                            data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
+                            data-bs-title="This will decide whether to show X rated movies or not.">
+                            <i class="fa-solid fa-question"
+                                style="background-color: black; width: 20px; height: 20px;border-radius: 50%;"></i>
+                        </button>Are you 18 or older?</span>
+                    <span style="padding-top:12px ;"><!-- Rounded switch -->
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label></span>
+
+                    <span>Your Contact Number : </span>
+                    <span id="cno">Add</span>
+
+                    <span>Account Created on : </span>
+                    <span id="accsince"></span>
+                    <br><br><br>
+
+                </div>
+                
             </div>
         </div>
-
-        <ul class="circles">
+        
+        
+        <!-- <ul class="circles">
             <li></li>
             <li></li>
             <li></li>
@@ -142,11 +184,10 @@
             <li></li>
             <li></li>
             <li></li>
-        </ul>
-    
+        </ul> -->
     </div>
 
-    
+
     <!-- <i class="fa-solid fa-envelope env"></i> -->
 
 
@@ -157,7 +198,13 @@
     </footer>
 
     <script>
+
+
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         // HOVER ANIMATION ON ENVELOPE OF EMAIL
+        // document.querySelector(".arr").style.display = 'none'
+
 
         document.querySelector(".env").addEventListener("mouseover", function () {
 
@@ -182,13 +229,14 @@
         document.getElementById("fname").innerHTML = UserInfo.name
         document.getElementById("cno").innerHTML = UserInfo.phnNo
         document.getElementById("accsince").innerHTML = UserInfo.creationTime
-        
+
 
         let userN = document.getElementById("usernm")
 
         userN.innerText = UserInfo.name
 
         let signoutBtn = document.getElementById("signout-btn")
+
 
         let signout = () => {
             sessionStorage.removeItem("user-creds");
