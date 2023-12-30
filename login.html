@@ -162,8 +162,10 @@
                                 phnNo: snapshot.val().phnNo
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                            setTimeout(()=>{
 
-                            window.location.href = 'movies.html';
+                                window.location.href = 'movies.html';
+                            },2000)
 
                         }
                     })

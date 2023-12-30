@@ -21,6 +21,9 @@
     padding: 8px 0;
 }
 
+.nav-link:hover{
+    background-color: yellowgreen;
+}
 
 
 .env{
