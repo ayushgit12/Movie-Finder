@@ -14,12 +14,18 @@
 .prof-info{
     display: grid;
     grid-template-columns: auto auto;
+    font-size: 17px;
+    /* grid-row: 300px; */
+}
+.prof-info span{
+    padding: 8px 0;
 }
 
 
 
 .env{
     padding-right: 10px;
+    position: relative;
     z-index: 999;
 }
 
