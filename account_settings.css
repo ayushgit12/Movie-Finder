@@ -11,7 +11,9 @@
     text-align: center;
 }
 
-.prof-info{
+.prof-info
+{
+    padding: 0 15vw;
     display: grid;
     grid-template-columns: auto auto;
     font-size: 17px;
@@ -224,6 +226,7 @@
         transform: rotate(1turn);
     }
 }
+
 
 @media screen and (max-width:516px) {
     .setthd{
