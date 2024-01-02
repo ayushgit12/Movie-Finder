@@ -33,6 +33,14 @@
 
     <!--  -->
 
+    <div class="signout-out">
+        <div class="signout-win">
+            <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;"><p style="padding-top: 1vh; color: black;">Signout Window</p><button type="button" class="btn-close signout-close" aria-label="Close"></button></div>
+            <p style="padding: 20px;">Are you sure you want to signout?</p>
+            <button type="button" class="signout-yes signout-btns">Sign Out</button><button type="button" class="cancel signout-btns">Cancel</button>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; z-index: 999; width: 100%;" ;>
         <div class="container-fluid">
             <a class="navbar-brand" href="movies.html">
@@ -94,7 +102,7 @@
                     <div class="dropdown" style="margin-right: 20px;">
                         <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
                                 style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
-                        <div class="dropdown-content" >
+                        <div class="dropdown-content">
                             <a href="account_settings.html">Account Settings</a>
                             <a href="#">Your WatchLater</a>
                             <a href="#">Help</a>
@@ -118,7 +126,7 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
         <!-- Overlay content -->
-        <div class="overlay-content" id ="overlay-content"></div>
+        <div class="overlay-content" id="overlay-content"></div>
 
     </div>
 
@@ -354,7 +362,9 @@
                         NOW!</b></h2>
                 <div class="promo" style="display: flex; justify-content: center; cursor: pointer; position: relative;">
                     <img src="images/promo3.jpeg" width="95%" alt="" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                    <div class="promo-desc" style="position: absolute; top: 5%; width: 30vw; left: 5%;">The story
+                    <div class="promo-desc"
+                        style="position: absolute; top: 5%; width: 30vw; left: 5%; height: 16vh; overflow: scroll;">The
+                        story
                         follows characters from the fictional town of Winden, Germany, as they pursue the truth in the
                         aftermath of a child's disappearance. They follow connections between four estranged families to
                         unravel a sinister time travel conspiracy that spans several generations.</div>
@@ -585,14 +595,28 @@
                 window.location.href = "login.html"
             }
 
-            // let CheckCred = ()=>{
-            //     if(!sessionStorage.getItem("user-cred"))
-            //         window.location.href='login.html'
-            //     else    
-            //         userN.innerText=UserInfo.name;
-            // }
-            // window.addEventListener('load',CheckCred)
-            signoutBtn.addEventListener('click', signout)
+            let CheckCred = () => {
+                if (!sessionStorage.getItem("user-creds"))
+                    window.location.href = 'login.html'
+                else
+                    userN.innerText = UserInfo.name;
+            }
+            window.addEventListener('load', CheckCred)
+            signoutBtn.addEventListener('click', ()=>{
+                document.querySelector(".signout-out").style.display="flex"
+                document.querySelector(".main-container").style.opacity="0.5"
+                document.querySelector(".signout-close").addEventListener('click',()=>{
+                    window.location.href='movies.html'
+                })
+                document.querySelector(".cancel").addEventListener('click',()=>{
+                    window.location.href='movies.html'
+                })
+                document.querySelector(".signout-yes").addEventListener('click',signout)
+                
+
+            })
+
+
         </script>
 </body>
 
