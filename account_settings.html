@@ -35,6 +35,19 @@
 
     <!--  -->
 
+
+
+
+
+    <div class="signout-out">
+        <div class="signout-win">
+            <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;"><p style="padding-top: 1vh; color: black;">Signout Window</p><button type="button" class="btn-close signout-close" aria-label="Close"></button></div>
+            <p style="padding: 20px;">Are you sure you want to signout?</p>
+            <button type="button" class="signout-yes signout-btns">Sign Out</button><button type="button" class="cancel signout-btns">Cancel</button>
+        </div>
+    </div>
+
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; z-index: 999; width: 100%;" ;>
         <div class="container-fluid">
             <a class="navbar-brand" href="movies.html">
@@ -245,14 +258,26 @@
             window.location.href = "login.html"
         }
 
-        // let CheckCred = ()=>{
-        //     if(!sessionStorage.getItem("user-cred"))
-        //         window.location.href='login.html'
-        //     else    
-        //         userN.innerText=UserInfo.name;
-        // }
-        // window.addEventListener('load',CheckCred)
-        signoutBtn.addEventListener('click', signout)
+        let CheckCred = ()=>{
+            if(!sessionStorage.getItem("user-creds"))
+                window.location.href='login.html'
+            else    
+                userN.innerText=UserInfo.name;
+        }
+        window.addEventListener('load',CheckCred)
+        signoutBtn.addEventListener('click', ()=>{
+                document.querySelector(".signout-out").style.display="flex"
+                document.querySelector(".main-container").style.opacity="0.5"
+                document.querySelector(".signout-close").addEventListener('click',()=>{
+                    window.location.href='movies.html'
+                })
+                document.querySelector(".cancel").addEventListener('click',()=>{
+                    window.location.href='movies.html'
+                })
+                document.querySelector(".signout-yes").addEventListener('click',signout)
+                
+
+            })
     </script>
 
 </body>

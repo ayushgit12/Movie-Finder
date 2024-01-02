@@ -98,7 +98,7 @@ function clearBtn() {
     let clear = document.createElement('div');
     clear.classList.add('tag')
     clear.id = 'clear'
-    clear.innerText = 'Clear X'
+    clear.innerText = 'Clear All Filters X'
     tagsEl.append(clear)
     clear.addEventListener('click', () => {
         selectedGenre = []
@@ -150,7 +150,6 @@ function showMovies(data) {
         movieEl.innerHTML = `
         <img src="${(poster_path)?IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
-                            <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
@@ -170,11 +169,12 @@ function showMovies(data) {
 /* Open when someone clicks on the span element */
 function openNav(movie) {
     let id = movie.id
+    console.log(movie)
     if(movie.origin_country)
-        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:35px 80px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109); opacity:">Released on : ${movie.release_date}</h4><div style="font-size:17px; color: gray; padding:35px 80px">${movie.overview}</div>`
     
     else
-        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109)">Released on : ${movie.release_date}</h4><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
     
     fetch(BASE_URL+"/movie/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
         if(videoData){
@@ -229,7 +229,6 @@ function showTV(data) {
         movieEl.innerHTML = `
         <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
-                            <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
@@ -270,11 +269,11 @@ function showMovies3(data) {
                             `
         main[2].appendChild(movieEl)
         // console.log(document.getElementById(id));
+        console.log(document.getElementById(id))
         document.getElementById(id).addEventListener('click',()=>{
-            console.log(id)
             openNav(data[i])
         })
-        // })
+        
     }
 
 

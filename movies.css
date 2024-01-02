@@ -566,6 +566,13 @@ footer{
     background-color: red;
 }
 
+.signout-yes:hover{
+    background-color: rgb(229, 0, 0);
+}
+.cancel:hover{
+    background-color: #c7c7c7;
+}
+
 .signout-out{
     
     z-index: 999;
