@@ -62,11 +62,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active nav-up" aria-current="page" href="movies.html" style="background-color: yellowgreen;">Home</a>
+                        <a class="nav-link active nav-up" aria-current="page" href="movies.html" style="background-color: yellowgreen; border-radius: 10px;">Home </a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
-                            <button class="dropbtn"><span>Genres</span><i class="fa-solid fa-caret-down arr"
+                            <button class="dropbtn" style="border-radius: 10px;"><span>Genres</span><i class="fa-solid fa-caret-down arr"
                                     style="margin-left: 10.5px;"></i></button>
                             <div class="dropdown-content tags">
                                 <div class="tag">Comedy</div>
@@ -679,9 +679,9 @@
 
             console.log(UserInfo)
             let userN = document.getElementById("usernm")
-            // let userNtop = document.getElementById("user-nm-top")
+            let userNtop = document.getElementById("user-nm-top")
             userN.innerText = UserInfo.name
-            // userNtop.innerText = UserInfo.name
+            userNtop.innerText = UserInfo.name
             let signoutBtn = document.getElementById("signout-btn")
 
             let signout = () => {
