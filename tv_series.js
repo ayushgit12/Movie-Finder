@@ -177,7 +177,6 @@ function showMovies3(data) {
         movieEl.innerHTML = `
         <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name} </span><span class="${getColor(vote_average)}">${vote_average}</span>
-                            <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
@@ -215,7 +214,6 @@ function showTV2(data) {
         movieEl.innerHTML = `
         <img src="${IMAGE_URL + poster_path}" alt="images/nopic.jpeg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name}</span> <span class="${getColor(vote_average)}">${vote_average}</span>
-                            <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
@@ -254,7 +252,6 @@ function showMovies4(data) {
         movieEl.innerHTML = `
         <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
-                            <p class="movie-list-item-desc">${overview}</p>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
@@ -317,7 +314,6 @@ load.addEventListener('click',()=>{
             movieEl.innerHTML = `
             <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                 <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
-                                <p class="movie-list-item-desc">${overview}</p>
                                 <button class="movie-list-item-button">WATCH</button>
                                 <button class="know-more" id=${id}>Know More</button>
                                 `
