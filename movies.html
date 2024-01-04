@@ -35,9 +35,13 @@
 
     <div class="signout-out">
         <div class="signout-win">
-            <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;"><p style="padding-top: 1vh; color: black;">Signout Window</p><button type="button" class="btn-close signout-close" aria-label="Close"></button></div>
+            <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;">
+                <p style="padding-top: 1vh; color: black;">Signout Window</p><button type="button"
+                    class="btn-close signout-close" aria-label="Close"></button>
+            </div>
             <p style="padding: 20px;">Are you sure you want to signout?</p>
-            <button type="button" class="signout-yes signout-btns">Sign Out</button><button type="button" class="cancel signout-btns">Cancel</button>
+            <button type="button" class="signout-yes signout-btns">Sign Out</button><button type="button"
+                class="cancel signout-btns">Cancel</button>
         </div>
     </div>
 
@@ -58,7 +62,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active nav-up" aria-current="page" href="movies.html">Home</a>
+                        <a class="nav-link active nav-up" aria-current="page" href="movies.html" style="background-color: yellowgreen;">Home</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown">
@@ -79,10 +83,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-up" href="#">Movies</a>
+                        <a class="nav-link nav-up" href="many.html">Movies</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link nav-up" href="#" style="width: 90px;">TV Series</a>
+                        <a class="nav-link nav-up" href="tv_series.html" style="width: 90px;">TV Series</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link nav-up" href="#" style="width: 90px;">WatchList</a>
@@ -266,7 +270,7 @@
                     <i class="fa-solid fa-chevron-right arrow"></i>
                 </div>
             </div>
-            
+
             <div class="movie-list-container" style="padding-top: 20px;">
                 <h2 class="movie-list-title title2"><b style="text-shadow: 12px 7px 7px rgb(7, 7, 7);">POPULAR TV SERIES
                     </b></h2>
@@ -364,7 +368,7 @@
                 <div class="promo" style="display: flex; justify-content: center; cursor: pointer; position: relative;">
                     <img src="images/promo3.jpeg" width="95%" alt="" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                     <div class="promo-desc"
-                        style="position: absolute; top: 5%; width: 30vw; left: 5%; height: 16vh; overflow: scroll;">The
+                        style="position: absolute; top: 5%; width: 30vw; left: 5%; height: 16vh; overflow: hidden;">The
                         story
                         follows characters from the fictional town of Winden, Germany, as they pursue the truth in the
                         aftermath of a child's disappearance. They follow connections between four estranged families to
@@ -462,7 +466,7 @@
                     <i class="fa-solid fa-chevron-right arrow"></i>
                 </div>
             </div>
-            
+
             <div class="movie-list-container" style="padding-top: 20px;">
                 <h2 class="movie-list-title"><b style=" text-shadow: 12px 7px 7px rgb(7, 7, 7);">TV SERIES TO LIGHTEN
                         YOUR MOOD! </b></h2>
@@ -554,7 +558,7 @@
                 </div>
             </div>
             <div class="movie-list-container" style="padding-top: 20px;">
-                <h2 class="movie-list-title titletop"><b>NEW RELEASES </b></h2>
+                <h2 class="movie-list-title titletop"><b>GET READY FOR A SPOOKY NIGHT ! </b></h2>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
@@ -675,9 +679,9 @@
 
             console.log(UserInfo)
             let userN = document.getElementById("usernm")
-            let userNtop = document.getElementById("user-nm-top")
+            // let userNtop = document.getElementById("user-nm-top")
             userN.innerText = UserInfo.name
-            userNtop.innerText = UserInfo.name
+            // userNtop.innerText = UserInfo.name
             let signoutBtn = document.getElementById("signout-btn")
 
             let signout = () => {
@@ -693,18 +697,37 @@
                     userN.innerText = UserInfo.name;
             }
             window.addEventListener('load', CheckCred)
-            signoutBtn.addEventListener('click', ()=>{
-                document.querySelector(".signout-out").style.display="flex"
-                document.querySelector(".main-container").style.opacity="0.5"
-                document.querySelector(".signout-close").addEventListener('click',()=>{
-                    window.location.href='movies.html'
+            signoutBtn.addEventListener('click', () => {
+                document.querySelector(".signout-out").style.display = "flex"
+                document.querySelector(".main-container").style.opacity = "0.5"
+                document.querySelector(".signout-close").addEventListener('click', () => {
+                    window.location.href = 'movies.html'
                 })
-                document.querySelector(".cancel").addEventListener('click',()=>{
-                    window.location.href='movies.html'
+                document.querySelector(".cancel").addEventListener('click', () => {
+                    window.location.href = 'movies.html'
                 })
-                document.querySelector(".signout-yes").addEventListener('click',signout)
-                
+                document.querySelector(".signout-yes").addEventListener('click', signout)
 
+
+            })
+
+            let movieImg = document.querySelectorAll(".movie-list-item-img")
+
+            movieImg.forEach(mI => {
+                mI.addEventListener('click', () => {
+                    console.log(mI)
+                    window.location.href = 'info.html'
+                }
+                )
+            })
+
+            let navbtns = document.querySelectorAll(".nav-up")
+            console.log(navbtns)
+            navbtns.forEach(nvb=>{
+                nvb.addEventListener('click',()=>{
+                    console.log(nvb)
+                    nvb.style.backgroundColor='yellowgreen'
+                })
             })
 
 

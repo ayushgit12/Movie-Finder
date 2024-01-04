@@ -79,7 +79,7 @@ function setGenre() {
             if (selectedGenre.length !== 0)
                 document.querySelector('.titletop').innerHTML = 'Search Results : ';
 
-            console.log(selectedGenreName)
+            // console.log(selectedGenreName)
 
 
             // console.log(selectedGenre)
@@ -169,7 +169,7 @@ function showMovies(data) {
 /* Open when someone clicks on the span element */
 function openNav(movie) {
     let id = movie.id
-    console.log(movie)
+    // console.log(movie)
     if(movie.origin_country && movie.release_date)
         document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109); opacity:">Released on : ${movie.release_date}</h4><div style="font-size:17px; color: gray; padding:35px 80px">${movie.overview}</div>`
     
@@ -219,7 +219,7 @@ function openNav(movie) {
 getTV(TV_Series_URL)
 function getTV(url) {
     fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results);
+        // console.log(data.results);
         showTV(data.results);
     })
 }
@@ -233,7 +233,7 @@ function showTV(data) {
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);" >
                             <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -275,7 +275,7 @@ function showMovies3(data) {
                             `
         main[2].appendChild(movieEl)
         // console.log(document.getElementById(id));
-        console.log(document.getElementById(id))
+        // console.log(document.getElementById(id))
         document.getElementById(id).addEventListener('click',()=>{
             openNav(data[i])
         })
@@ -326,7 +326,7 @@ function showTV2(data) {
 
 
 
-getMovies4(BASE_URL + '/discover/movie?sort_by=popularity.desc/comedy&' + API_KEY);
+getMovies4(BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY+'&with_genres=27');
 function getMovies4(url) {
     fetch(url).then(res => res.json()).then(data => {
         //  console.log(data.results);
@@ -352,8 +352,8 @@ function showMovies4(data) {
                             `
         main[4].appendChild(movieEl)
         // console.log(document.getElementById(id));
-        console.log(document.getElementById(id))
         document.getElementById(id).addEventListener('click',()=>{
+            console.log(document.getElementById(id))
             openNav(movie)
         })
         
