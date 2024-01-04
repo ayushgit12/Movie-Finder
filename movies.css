@@ -98,9 +98,21 @@ body{
 
 .movie-list-item:hover .movie-list-item-title,
 .movie-list-item:hover .movie-list-item-button,
-.movie-list-item:hover .know-more{
+.movie-list-item:hover .know-more,
+.movie-list-item:hover .watchLater
+
+{
     opacity: 1;
     transition: 0.8s all ease-in-out;
+}
+
+.watchLater:hover .watchLaterdesc{
+    opacity: 1;
+    transition: 0.8s all ease-in-out;
+}
+
+.watchLater:hover{
+    background-color: green;
 }
 
 .movie-list-item:hover .movie-list-item-desc{
@@ -445,7 +457,7 @@ footer{
 
 .nores{
     padding: 10px;
-    font-family: 'Roboto';    
+    font-family: sans-serif;    
 
 }
 
@@ -589,4 +601,46 @@ footer{
 
 body{
     position: relative;
+}
+
+
+
+.watchLater{
+    position: absolute;
+    background-color: yellowgreen;
+    color: black;
+    border-radius: 50%;
+    padding: 6px 10px;
+    /* background-color: yellowgreen; */
+    border: none; 
+    /* border-radius: 10px; */
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    right: 26px;
+    opacity: 0;
+    height: 40px;
+    width: 40px;
+}
+
+
+.watchLaterdesc{
+    position: absolute;
+    background-color: #121212;
+    color: white;
+    border-radius: 10px;
+    padding-top: 6px;
+    /* background-color: yellowgreen; */
+    border: none; 
+    /* border-radius: 10px; */
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 40px;
+    text-align: center;
+    right: 26px;
+    opacity: 0;
+    height: 40px;
+    width: 10vw;
 }

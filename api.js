@@ -152,6 +152,8 @@ function showMovies(data) {
                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
+                            <span class="watchLaterdesc">Add to Watch Later</span>
+                            <button class="watchLater"><i class="fa-solid fa-plus watchL"></i></i></button>
                             `
         main[0].appendChild(movieEl)
 
@@ -171,16 +173,16 @@ function openNav(movie) {
     let id = movie.id
     // console.log(movie)
     if(movie.origin_country && movie.release_date)
-        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109); opacity:">Released on : ${movie.release_date}</h4><div style="font-size:17px; color: gray; padding:35px 80px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109);">Released on : ${movie.release_date}</h4><div style="font-size:17px; color: gray;z-index:999 ;padding:35px 80px">${movie.overview}</div>`
     
     else if(movie.origin_country)
-        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:35px 80px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div>`
 
     else if(movie.release_date)
-        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109); opacity:">Released on : ${movie.release_date}</h4><div style="font-size:17px; color: gray; padding:35px 80px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109); opacity:">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div>`
     
     else
-        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px">${movie.overview}</div>`
+        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px;z-index:999">${movie.overview}</div>`
     
     fetch(BASE_URL+"/movie/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
         if(videoData){
