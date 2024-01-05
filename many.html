@@ -755,12 +755,13 @@
 
             })
 
+            // let movieImg = document.querySelectorAll(".movie-list-item-img")
             let movieImg = document.querySelectorAll(".movie-list-item-img")
 
             movieImg.forEach(mI => {
-                mI.addEventListener('click', () => {
-                    console.log(mI)
-                    window.location.href = 'info.html'
+                console.log(movieImg)
+                movieImg.addEventListener('click', () => {
+                    window.location = 'info.html'
                 }
                 )
             })

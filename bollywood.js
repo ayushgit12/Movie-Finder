@@ -1,6 +1,6 @@
 const API_KEY = 'api_key=aff98581fbcc8eff4609f1ab795c9a8f'
 const BASE_URL = 'https://api.themoviedb.org/3';
-const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
+const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY+'&with_original_language=hi';
 const searchURL = BASE_URL + '/search/movie?' + API_KEY;
 const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 const TV_Series_URL = BASE_URL + '/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&' + API_KEY;
@@ -180,40 +180,22 @@ let movieImg = document.querySelectorAll(".movie-list-item-button")
 
 
 
-const similar1 = 'https://api.themoviedb.org/3/movie/'
-const similar2 = '/similar?&api_key=aff98581fbcc8eff4609f1ab795c9a8f'
-const genresOv = 'https://api.themoviedb.org/3/movie/'
-const genresOv2 = '?language=en-US&'+API_KEY
 
 /* Open when someone clicks on the span element */
 function openNav(movie) {
     let id = movie.id
-
-
-
-    fetch((genresOv+id+genresOv2)).then(res => res.json()).then(data => {
-        // console.log(data.budget);
-        // showTV(data.results);
-        // console.log(data.genres)
-        let genreOv = []
-        data.genres.forEach(gen=>{
-            genreOv.push(gen.name)
-        })
-        console.log(genreOv)
-        
-
     // console.log(movie)
     if(movie.origin_country && movie.release_date)
-    document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
+        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109);">Released on : ${movie.release_date}</h4><div style="font-size:17px; color: gray;z-index:999 ;padding:35px 80px">${movie.overview}</div>`
     
     else if(movie.origin_country)
-    document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
+        document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div>`
 
     else if(movie.release_date)
-        document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
+        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><h4 style="color: rgb(178, 212, 109); opacity:">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div>`
     
     else
-    document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br>̀<div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
+        document.getElementById("overlay-content").innerHTML = `<h1 style="color: gray">OVERVIEW</h1><div style="font-size:17px; color: gray; padding:25px;z-index:999">${movie.overview}</div>`
     
     fetch(BASE_URL+"/movie/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
         if(videoData){
@@ -238,76 +220,8 @@ function openNav(movie) {
             // console.log(videoData)
         }
     })
-})
-}
+  }
   
-
-const genresOvTV = 'https://api.themoviedb.org/3/tv/'
-const genresOvTV2 = '?language=en-US&'+API_KEY
-
-function openNavTV(movie) {
-    let id = movie.id
-
-
-
-    fetch((genresOvTV+id+genresOvTV2)).then(res => res.json()).then(data => {
-        console.log(data);
-        // showTV(data.results);
-        // console.log(data.genres)
-        let genreOv = []
-        data.genres.forEach(gen=>{
-            genreOv.push(gen.name)
-        })
-        console.log(genreOv)
-        
-
-    // console.log(movie)
-    if(movie.origin_country && movie.release_date)
-    document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div>`
-    
-    else if(movie.origin_country)
-    document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div>`
-
-    else if(movie.release_date)
-        document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div>`
-    
-    else
-    document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div>`
-    
-    fetch(BASE_URL+"/tv/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
-        if(videoData){
-            document.getElementById("overlay-content").innerHTML += `<br><br><br>`
-            document.getElementById("myNav").style.width = "100%";
-            if(videoData.results.length>0){
-                var emb=[]
-                videoData.results.forEach(vid=>{
-                    let {name,key,site} = vid
-
-                    if(site=='YouTube')
-                        emb.push(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
-
-
-                })
-
-                document.getElementById("overlay-content").innerHTML+=emb.join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
-            }
-            else{
-                document.getElementById("overlay-content").innerHTML += ``;
-            }
-            // console.log(videoData)
-        }
-    })
-})
-}
-
-
-
-
-
-
-
-
-
   /* Close when someone clicks on the "x" symbol inside the overlay */
   function closeNav() {
 
@@ -317,7 +231,7 @@ function openNavTV(movie) {
 
 
 
-getTV(TV_Series_URL)
+getTV(TV_Series_URL+'&with_original_language=hi')
 function getTV(url) {
     fetch(url).then(res => res.json()).then(data => {
         // console.log(data.results);
@@ -330,7 +244,7 @@ function showTV(data) {
     main[1].innerHTML = ''
 
     data.forEach(movie => {
-        const { name, poster_path, vote_average, id} = movie
+        const { name, poster_path, vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
@@ -343,7 +257,7 @@ function showTV(data) {
                             
         document.getElementById(id).addEventListener('click',()=>{
             console.log(id)
-            openNavTV(movie)
+            openNav(movie)
         })
     })
 
@@ -387,7 +301,7 @@ function showMovies3(data) {
 
 
 
-getTV2(TV_Series_URL)
+getTV2(TV_Series_URL+'&with_original_language=hi')
 function getTV2(url) {
     fetch(url).then(res => res.json()).then(data => {
         //  console.log(data.results);
@@ -414,7 +328,7 @@ function showTV2(data) {
 
         document.getElementById(id).addEventListener('click',()=>{
             console.log(id)
-            openNavTV(data[i])
+            openNav(data[i])
         })
         // })
     }
@@ -425,7 +339,7 @@ function showTV2(data) {
 
 
 
-getMovies4(BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY+'&with_genres=27');
+getMovies4(BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY+'&with_genres=27'+'&with_original_language=hi');
 function getMovies4(url) {
     fetch(url).then(res => res.json()).then(data => {
         //  console.log(data.results);
@@ -495,4 +409,4 @@ form.addEventListener('submit', (e) => {
     document.querySelector('.title2').innerHTML = 'Some other related Results:';
 })
 
-    
+
