@@ -160,11 +160,24 @@ function showMovies(data) {
         document.getElementById(id).addEventListener('click',()=>{
             console.log(id)
             openNav(movie)
+            // window.location.href = 'info.html'
         })
     })
 
 
 }
+
+
+let movieImg = document.querySelectorAll(".movie-list-item-button")
+            console.log(movieImg)
+            movieImg.forEach(mI => {
+                console.log(mI)
+                mI.addEventListener('click', () => {
+                    window.location.href = 'info.html'
+                }
+                )
+            })
+
 
 
 
