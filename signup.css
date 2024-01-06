@@ -36,35 +36,10 @@ section {
     align-items: center;
     justify-content: center;
 }
-.login2img{
-  width: 400px;
-}
-
-
-
-@media only screen and (max-width:400px) {
-  .login2img{
-      width: 100px;
-  }
-  #name{
-      width: 50vw;
-  }
-  #emailid{
-      width: 50vw;
-  }
-  #phoneNo{
-      width: 50vw;
-  }
-  #password{
-      width: 50vw;
-  }
-}
-
-
 
 .box{
   margin-top: 120px;
-    height: 70vh;
+    height: 80vh;
     width: 70vw;
     background-color: white;
     border-radius: 10px;
@@ -211,53 +186,91 @@ footer{
 
 @media only screen and (max-width:1000px) {
   .box{
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-bottom: 50px;
-    /* height: 100vh; */
-    /* overflow: scroll; */
-    /* height: 90vh; */
-}
-.login2img{
-  position: absolute;
-  top: 80px;
-}
-.signuptop{
-  position: absolute;
-  top: 60px;
-  padding: 0 30px;
-}
-.signupheading{
-  position: absolute;
-  top: 10px;
-}
-#addbox{
-  /* padding-top: 1000px; */
-  width: 50vw;
-  position: absolute;
-  top: 230px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      margin-bottom: 50px;
+      /* height: 100vh; */
+      /* overflow: scroll; */
+      /* height: 90vh; */
+  }
+  .login2img{
+    position: absolute;
+    top: 80px;
+  }
+  .signuptop{
+    position: absolute;
+    top: 60px;
+    padding: 0 30px;
+  }
+  .signupheading{
+    position: absolute;
+    top: 10px;
+  }
+  #addbox{
+    /* padding-top: 1000px; */
+    width: 50vw;
+    position: absolute;
+    top: 280px;
+    
+    width: 80%;
+  }
+  .create{
+    position: absolute;
+    top: 580px;
+  }
+  section{
+    height: auto;
+  }
+
   
-  width: 80%;
-}
-.create{
-  position: absolute;
-  top: 450px;
-}
-section{
-  height: auto;
+  
 }
 
+@media only screen and (max-width:400px) {
+    .login2img{
+        width: 100px;
+    }
+    #name{
+        width: 50vw;
+    }
+    #emailid{
+        width: 50vw;
+    }
+    #phoneNo{
+        width: 50vw;
+    }
+    #password{
+        width: 50vw;
+    }
+}
+
+
+.mflogo:hover{  
+  transform: rotate(360deg);
+}
+
+.mflogo{
+  transition: all 0.5s ease-in-out;
+}  
+
+.signup:hover{
+  background-color: #d2d2d2;
+}
+
+.login2img{
+  width: 400px;
 }
 
 @media only screen and (max-width:902px){
-  .login2img{
-    width: 40vw;
-    margin-bottom: 50px;
-    
+    .login2img{
+      width: 40vw;
+      margin-bottom: 50px;
+      
+    }
+    .box{
+        height: 100vh;
+    }
   }
-  .box{
-    height: 85vh;
-  }
-}
-
+  
+  

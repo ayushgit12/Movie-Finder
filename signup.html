@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Now</title>
     <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="signup.css">
 
 </head>
 
@@ -19,14 +19,7 @@
         display: flex;
     }
 
-    @media only screen and (max-width:1000px) {
-        .box {
-            display: flex;
-            flex-direction: column;
-            height: 90vh;
-        }
-
-    }
+    
 
     .mflogo {
         transition: all 0.5s ease-in-out;
@@ -99,9 +92,9 @@
         </div>
     </nav>
 
-    <section style="height: 110vh;">
-        <div class="box" style="height: 80vh;">
-            <img src="images/login2.png" style="width: 25vw; padding-bottom: 40px;">
+    <section>
+        <div class="box">
+            <img src="images/login2.png" class="login2img" style="padding-bottom: 40px;">
             <div class="info" style="z-index: 100;">
                 <div class="alert alert-success success" role="alert" style="display: none; width: 25vw;">
                     Account Successfully created! Return to <a href="login.html">login page</a> to continue
@@ -116,9 +109,9 @@
                 <div class="alert alert-danger err2" role="alert" style="display: none;">
                     Invalid email ID. Try again!
                 </div>
-                <h2>Sign Up Now!</h2>
-                <h6 style="text-align: center;">To Enjoy the Benefits You are Missing out!</h6>
-                <form id="add" style="display: flex; flex-direction: column; justify-content: center;">
+                <h2 class="signupheading">Sign Up Now!</h2>
+                <h6 class="signuptop" style="text-align: center;">To Enjoy the Benefits You are Missing out!</h6>
+                <div id="addbox"><form id="add" style="display: flex; flex-direction: column; justify-content: center;">
                     <input type="text" id="name"
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
                         placeholder="Enter your full name" required>
@@ -131,10 +124,9 @@
                     <input type="password" id="password"
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px"
                         placeholder="Enter Password" required>
-                    <span style="padding-top: 5px; padding-right: 70px;"><input type="checkbox"
-                            style="margin: 5px;">Remember Me</span>
                     <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Create account</button>
                 </form>
+            </div>
                 <div class="create" style="padding-top: 10px;">
                     Or sign-up using:
                     <div class="imgs">

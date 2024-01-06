@@ -59,7 +59,7 @@
     </nav>
     <section>
         <div class="box">
-            <img src="images/login2.png" style="width: 25vw;">
+            <img src="images/login2.png" class="login2img" style="padding-bottom: 40px;">
             <div class="info" style="z-index: 100;">
                 <div class="alert alert-success success" role="alert" style="display: none;">
                     Account Successfully Logged In! Redirecting to Home Page<div class="spinner-border text-success"
@@ -67,10 +67,10 @@
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
-                <h3>Welcome Back User!</h3>
-                <h2>Sign In</h2>
+                <h3 class="signupheading">Welcome Back User!</h3>
+                <h2 class="signuptop">Sign In</h2>
 
-                <form id="add">
+                <div id="addbox"><form id="add">
                     <input type="email" id="emailid"
                         style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216); border: none; padding: 7px;"
                         placeholder="Email Address" required>
@@ -82,6 +82,7 @@
                             style="margin: 5px;">Remember Me</span>
                     <button type="submit" class="btn btn-dark" style="margin-top: 40px;">Login</button>
                 </form>
+            </div>
                 <div class="create" style="padding-top: 10px;">
                     Don't have an account?
                     <div><a href="signup.html" style="height: none; color: black;"><button type="button"
