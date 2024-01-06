@@ -55,9 +55,7 @@ function showMovies(data) {
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${(poster_path)?IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
-                            <button class="movie-list-item-button">WATCH</button>
+        <img src="${(poster_path)?IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);"><span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span><button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
         main[0].appendChild(movieEl)
@@ -348,5 +346,3 @@ form.addEventListener('submit', (e) => {
     }
     document.querySelector('.title2').innerHTML = 'Some other related Results:';
 })
-
-
