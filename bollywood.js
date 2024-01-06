@@ -412,7 +412,7 @@ function showTV(data) {
 
 }
 
-getMovies3(API_URL)
+getMovies3(API_URL+'&page=2')
 function getMovies3(url) {
     fetch(url).then(res => res.json()).then(data => {
         //  console.log(data.results);
@@ -424,9 +424,10 @@ function showMovies3(data) {
 
     main[2].innerHTML = ''
 
-    for (let i = 9; i < 20; i++) {
-        // data.forEach(movie => {
-        const { title, poster_path, vote_average, overview, id} = data[i]
+    // for (let i = 9; i < 20; i++) {
+        data.forEach(movie => {
+            if(movie.poster_path){
+        const { title, poster_path, vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
@@ -439,17 +440,18 @@ function showMovies3(data) {
         // console.log(document.getElementById(id));
         // console.log(document.getElementById(id))
         document.getElementById(id).addEventListener('click',()=>{
-            openNav(data[i])
+            openNav(movie)
         })
-        
     }
+        
+    })
 
 
 }
 
 
 
-getTV2(TV_Series_URL+'&with_original_language=hi')
+getTV2(TV_Series_URL+'&with_original_language=hi'+'&page=2')
 function getTV2(url) {
     fetch(url).then(res => res.json()).then(data => {
         //  console.log(data.results);
@@ -461,9 +463,10 @@ function showTV2(data) {
 
     main[3].innerHTML = ''
 
-    for (let i = 9; i < 20; i++) {
-        // data.forEach(movie => {
-        const { name, poster_path, vote_average, overview, id} = data[i]
+    // for (let i = 9; i < 20; i++) {
+        data.forEach(movie => {
+            if(movie.poster_path){
+        const { name, poster_path, vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
@@ -475,14 +478,15 @@ function showTV2(data) {
         main[3].appendChild(movieEl)
 
         document.getElementById(id).addEventListener('click',()=>{
-            console.log(id)
-            openNavTV(data[i])
+            // console.log(id)
+            openNavTV(movie)
         })
-        // })
+        }
+        })
     }
 
 
-}
+
 
 
 
