@@ -19,7 +19,7 @@
         display: flex;
     }
 
-    
+
 
     .mflogo {
         transition: all 0.5s ease-in-out;
@@ -83,9 +83,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" aria-disabled="true">Pricing</a>
-                  </li>
-                  <li class=" nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Watch History</a>
+                    </li>
+                    <li class=" nav-item">
+                        <a class="nav-link disabled" aria-disabled="true">Watch History</a>
                     </li>
                 </ul>
             </div>
@@ -111,26 +111,27 @@
                 </div>
                 <h2 class="signupheading">Sign Up Now!</h2>
                 <h6 class="signuptop" style="text-align: center;">To Enjoy the Benefits You are Missing out!</h6>
-                <div id="addbox"><form id="add" style="display: flex; flex-direction: column; justify-content: center;">
-                    <input type="text" id="name"
-                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
-                        placeholder="Enter your full name" required>
-                    <input type="text" id="phoneNo"
-                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
-                        placeholder="Contact Number " >
-                    <input type="email" id="emailid"
-                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216); border: none; padding: 7px; margin: 5px"
-                        placeholder="Email Address" required>
-                    <input type="password" id="password"
-                        style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px"
-                        placeholder="Enter Password" required>
-                    <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Create account</button>
-                </form>
-            </div>
+                <div id="addbox">
+                    <form id="add" style="display: flex; flex-direction: column; justify-content: center;">
+                        <input type="text" id="name"
+                            style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
+                            placeholder="Enter your full name" required>
+                        <input type="text" id="phoneNo"
+                            style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px;"
+                            placeholder="Contact Number ">
+                        <input type="email" id="emailid"
+                            style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216); border: none; padding: 7px; margin: 5px"
+                            placeholder="Email Address" required>
+                        <input type="password" id="password"
+                            style="height: 50px; border-radius: 5px; background-color: rgb(216, 216, 216);border: none; padding: 7px; margin: 5px"
+                            placeholder="Enter Password" required>
+                        <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Create account</button>
+                    </form>
+                </div>
                 <div class="create" style="padding-top: 10px;">
                     Or sign-up using:
                     <div class="imgs">
-                        <img src="images/ggl.png" height="33px" width="33px" alt="">
+                        <img id="gglimg" src="images/ggl.png" height="33px" width="33px" alt="">
                         <img src="images/fb.png" height="30px" width="30px" alt="">
                     </div>
                 </div>
@@ -161,7 +162,7 @@
 
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-        import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, getRedirectResult } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
 
@@ -186,24 +187,24 @@
         let PassInp = document.getElementById('password')
         let phnNoInp = document.getElementById('phoneNo')
         let mainForm = document.getElementById('add')
-        
+
 
         // console.log(NameInp.value, EmailInp.value, PassInp.value)
-        
+
         let registerUser = evt => {
-            document.querySelector(".success").style.display = "none";    
+            document.querySelector(".success").style.display = "none";
             evt.preventDefault();
             createUserWithEmailAndPassword(auth, EmailInp.value, PassInp.value)
                 .then((credentials) => {
                     console.log(credentials.user)
-                    set(ref(db,'UsersAuthList/'+ credentials.user.uid),{
+                    set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
                         name: NameInp.value,
                         crtTime: credentials.user.metadata.creationTime,
                         phnNo: phnNoInp.value
-                        
+
                     })
                     document.querySelector(".success").style.display = "block";
-                    
+
 
                 })
                 .catch((error) => {
@@ -220,6 +221,34 @@
         }
 
         mainForm.addEventListener('submit', registerUser);
+
+
+        // GOOGLE LOGIN
+        //    import {} from "firebase/auth";
+        const provider = new GoogleAuthProvider();
+        document.getElementById("gglimg").addEventListener('click', (e) => {
+            // signInWithRedirect(auth, provider)
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    // This gives you a Google Access Token. You can use it to access the Google API.
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    // The signed-in user info.
+                    const user = result.user;
+                    window.location.href = 'movies.html'
+                    // IdP data available using getAdditionalUserInfo(result)
+                    // ...
+                }).catch((error) => {
+                    // Handle Errors here.
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    // The email of the user's account used.
+                    const email = error.customData.email;
+                    // The AuthCredential type that was used.
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    // ...
+                })
+        })
     </script>
 
 
