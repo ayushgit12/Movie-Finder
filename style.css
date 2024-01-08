@@ -221,7 +221,7 @@ footer{
   text-align: center;
   font-weight: 600;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  padding-top: 100px;
+  padding-top: 125px;
   
 }
 
@@ -244,6 +244,15 @@ footer{
 
   
   
+}
+
+@media screen and (max-width:635px){
+  .content{
+    width: 80vw;
+  }
+  .carousel-imgs{
+    width: 80vw;
+  }
 }
 
 
