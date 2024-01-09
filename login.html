@@ -153,6 +153,18 @@
                     // },2000)
                     
                     document.querySelector(".success").style.display = "block";
+                    let width=screen.width
+
+                    if(width<475){
+                        document.getElementById("addbox").style.paddingTop="108px"
+                        document.querySelector(".create").style.display="none"
+                        document.querySelector(".chck").style.paddingTop="108px"
+                        document.querySelector(".btn").style.marginTop="17px"
+                        document.querySelector(".success").style.display = "block";
+                        document.querySelector(".success").style.width = "68vw";
+
+
+                    }
                    
                     get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot) => {
                         if (snapshot.exists) {
@@ -166,6 +178,7 @@
                             setTimeout(()=>{
 
                                 window.location.href = 'movies.html';
+                                
                             },2000)
 
                         }

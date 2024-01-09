@@ -204,6 +204,19 @@
 
                     })
                     document.querySelector(".success").style.display = "block";
+                    let width=screen.width
+
+                    if(width<475){
+                        document.getElementById("addbox").style.paddingTop="73px"
+                        document.querySelector(".create").style.display="none"
+                        // document.querySelector(".chck").style.paddingTop="108px"
+                        document.querySelector(".btn").style.marginTop="11px"
+                        document.querySelector(".success").style.display = "block";
+                        document.querySelector(".success").style.marginBottom = "81px";
+                        document.querySelector(".success").style.width = "68vw";
+
+
+                    }
 
 
                 })
