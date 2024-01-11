@@ -12,7 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="movies.css">
     <link rel="stylesheet" href="account_settings.css">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -20,7 +20,7 @@
 <body>
 
     <!-- //BOOTSTRAP DATA -->
-    
+
 
     <!-- --------------------------------------------------------- -->
 
@@ -33,9 +33,13 @@
 
     <div class="signout-out">
         <div class="signout-win">
-            <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;"><p style="padding-top: 1vh; color: black;">Signout Window</p><button type="button" class="btn-close signout-close" aria-label="Close"></button></div>
+            <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;">
+                <p style="padding-top: 1vh; color: black;">Signout Window</p><button type="button"
+                    class="btn-close signout-close" aria-label="Close"></button>
+            </div>
             <p style="padding: 20px;">Are you sure you want to signout?</p>
-            <button type="button" class="signout-yes signout-btns">Sign Out</button><button type="button" class="cancel signout-btns">Cancel</button>
+            <button type="button" class="signout-yes signout-btns">Sign Out</button><button type="button"
+                class="cancel signout-btns">Cancel</button>
         </div>
     </div>
 
@@ -84,7 +88,7 @@
                             <a href="#">Help</a>
                             <button type="button"
                                 style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
-                                id="signout-btn" >Signout</button>
+                                id="signout-btn">Signout</button>
 
                         </div>
                     </div>
@@ -95,7 +99,8 @@
     </nav>
 
     <div class="main-container" style="font-family: sans-serif; padding: 10vh 18vw;">
-        <h2 class="setthd" style="margin: 28px 0 10px 19px; "><b><i class="fa-solid fa-gear sett" style="padding-right: 8px;"></i>Account & Settings</b> </h2>
+        <h2 class="setthd" style="margin: 28px 0 10px 19px; "><b><i class="fa-solid fa-gear sett"
+                    style="padding-right: 8px;"></i>Account & Settings</b> </h2>
         <br>
         <div style="display: flex; justify-content: center;">
             <div class="alert alert-warning" role="alert" style="width: 80vw; text-align: center;">
@@ -151,7 +156,7 @@
                             <span class="slider round"></span>
                         </label></span>
 
-                        <span><button type="button" style="background: none; border: none;" class="btn btn-secondary"
+                    <span><button type="button" style="background: none; border: none;" class="btn btn-secondary"
                             data-bs-toggle="tooltip" data-bs-placement="left" data-bs-custom-class="custom-tooltip"
                             data-bs-title="This will decide whether to show X rated movies or not.">
                             <i class="fa-solid fa-question"
@@ -164,15 +169,15 @@
                             <span class="slider round"></span>
                         </label></span>
 
-                    
-                        
+
+
 
                 </div>
-                
+
             </div>
         </div>
-        
-        
+
+
         <!-- <ul class="circles">
             <li></li>
             <li></li>
@@ -200,8 +205,8 @@
     <script>
 
 
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         // HOVER ANIMATION ON ENVELOPE OF EMAIL
         // document.querySelector(".arr").style.display = 'none'
 
@@ -244,30 +249,34 @@
             window.location.href = "login.html"
         }
 
-        let CheckCred = ()=>{
-            if(!sessionStorage.getItem("user-creds"))
-                window.location.href='login.html'
-            else    
-                userN.innerText=UserInfo.name;
+        let CheckCred = () => {
+            if (!sessionStorage.getItem("user-creds"))
+                window.location.href = 'login.html'
+            else
+                userN.innerText = UserInfo.name;
         }
-        window.addEventListener('load',CheckCred)
-        signoutBtn.addEventListener('click', ()=>{
-                document.querySelector(".signout-out").style.display="flex"
-                document.querySelector(".main-container").style.opacity="0.5"
-                document.querySelector(".signout-close").addEventListener('click',()=>{
-                    window.location.href='movies.html'
-                })
-                document.querySelector(".cancel").addEventListener('click',()=>{
-                    window.location.href='movies.html'
-                })
-                document.querySelector(".signout-yes").addEventListener('click',signout)
-                
-
+        window.addEventListener('load', CheckCred)
+        signoutBtn.addEventListener('click', () => {
+            document.querySelector(".signout-out").style.display = "flex"
+            document.querySelector(".main-container").style.opacity = "0.5"
+            document.querySelector(".signout-close").addEventListener('click', () => {
+                window.location.href = 'movies.html'
             })
+            document.querySelector(".cancel").addEventListener('click', () => {
+                window.location.href = 'movies.html'
+            })
+            document.querySelector(".signout-yes").addEventListener('click', signout)
+
+
+        })
     </script>
     <script src="https://kit.fontawesome.com/16b9760f00.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
+
+
 
 </body>
 
