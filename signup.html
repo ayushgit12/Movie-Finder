@@ -179,7 +179,7 @@
 
 
         // console.log(NameInp.value, EmailInp.value, PassInp.value)
-
+        let watchLaterList = ["none"]
         let registerUser = evt => {
             document.querySelector(".success").style.display = "none";
             evt.preventDefault();
@@ -189,7 +189,8 @@
                     set(ref(db, 'UsersAuthList/' + credentials.user.uid), {
                         name: NameInp.value,
                         crtTime: credentials.user.metadata.creationTime,
-                        phnNo: phnNoInp.value
+                        phnNo: phnNoInp.value,
+                        watchLater: watchLaterList
 
                     })
                     document.querySelector(".success").style.display = "block";

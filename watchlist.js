@@ -1,3 +1,5 @@
+/*
+
 const API_KEY = 'api_key=aff98581fbcc8eff4609f1ab795c9a8f'
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
@@ -73,7 +75,7 @@ function showMovies(data) {
 
 
 
-/* Open when someone clicks on the span element */
+// Open when someone clicks on the span element 
 function openNav(movie) {
     let id = movie.id
     // console.log(movie)
@@ -114,7 +116,7 @@ function openNav(movie) {
     })
   }
   
-  /* Close when someone clicks on the "x" symbol inside the overlay */
+  // Close when someone clicks on the "x" symbol inside the overlay 
   function closeNav() {
 
     document.getElementById("myNav").style.width = "0%";
@@ -351,5 +353,72 @@ form.addEventListener('submit', (e) => {
     }
     document.querySelector('.title2').innerHTML = 'Some other related Results:';
 })
+
+
+*/
+
+
+
+
+
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDDk08AeWmX9bD-M2TolwaxsCFXJ8iAz_o",
+    authDomain: "onestop-9cf30.firebaseapp.com",
+    projectId: "onestop-9cf30",
+    storageBucket: "onestop-9cf30.appspot.com",
+    messagingSenderId: "122554524092",
+    appId: "1:122554524092:web:51d369e706c59815510bb9"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+const auth = getAuth(app);
+const dbref = ref(db);
+
+
+let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
+let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
+console.log(UserCreds)
+console.log(UserInfo)
+
+// let watchLat = []
+
+
+// document.getElementById(`2${movie.id}`).addEventListener('click',()=>{
+//     console.log(movie.id)
+// })
+
+
+get(child(dbref, 'UsersAuthList/' + UserCreds.uid)).then((snapshot) => {
+    if (snapshot.exists) {
+        console.log(snapshot.val())
+        sessionStorage.setItem("user-info", JSON.stringify({
+            name: snapshot.val().name,
+            creationTime: snapshot.val().crtTime,
+            phnNo: snapshot.val().phnNo,
+            watchLater: snapshot.val().watchLater
+            
+        }))
+        console.log(snapshot.val().watchLater)
+        
+
+    }
+})
+
+
+        
+        
+
+
+
 
 
