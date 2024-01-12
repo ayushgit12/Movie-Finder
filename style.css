@@ -310,7 +310,7 @@ footer{
  }
  .i1:hover{
   transform: translateY(-20px);
-  box-shadow: 0px 15px gray;
+  box-shadow: 0px 15px rgb(91, 91, 91);
   /* transform: scale(1.02); */
 
  }
