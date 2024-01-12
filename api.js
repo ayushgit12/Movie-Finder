@@ -1,3 +1,9 @@
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+// import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+// import { getAuth} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+
 const API_KEY = 'api_key=aff98581fbcc8eff4609f1ab795c9a8f'
 const BASE_URL = 'https://api.themoviedb.org/3';
 const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
@@ -120,6 +126,7 @@ function getMovies(url) {
         //  console.log(data.results);
         if (data.results.length !== 0) {
             // main[0].style.display='block'
+            console.log(data)
             showMovies(data.results);
 
             if (data.results.length > 5)
@@ -136,6 +143,33 @@ function getMovies(url) {
         }
     })
 }
+
+
+let watchLaterLs = []
+
+
+function getMoviesWL(url) {
+    fetch(url).then(res => res.json()).then(data => {
+        
+        // console.log(data.results[0]);
+        watchLaterLs.push(data.results[0].title)
+        
+        sessionStorage.setItem("WatchLater",watchLaterLs)
+        console.log(watchLaterLs)
+        // console.log(document.querySelector(".watchListNav"))
+
+        
+        
+    }
+        
+    )
+}
+
+document.querySelector(".watchListNav").addEventListener('click',()=>{
+    window.location.href='watchlist.html';
+})
+
+
 
 
 
@@ -165,17 +199,24 @@ function showMovies(data) {
 
         // document.getElementById(`2${id}`).addEventListener('click',()=>{
         //     document.getElementById("watchLaterdesc").style.opacity='1';
-                
+
         //     })
-        document.getElementById(`2${id}`).addEventListener('click',()=>{
-            console.log(id);
-            
+        document.getElementById(`2${id}`).addEventListener('click', () => {
+            console.log(title);
+            getMoviesWL(searchURL + '&query=' + title)
+
+
+            }
+        )
+
+
+
 
         })
-    })
+    }
 
 
-}
+
 
 
 let movieImg = document.querySelectorAll(".movie-list-item-button")
@@ -257,11 +298,13 @@ function openNav(movie) {
                     document.getElementById("overlay-content").innerHTML += ``;
                 }
                 // console.log(videoData)
+            
             }
         })
-            .catch(() => {
-                console.log("")
-            })
+        .catch((error) => {
+            console.log("")
+        })
+            
 
     }
     )
@@ -340,7 +383,6 @@ function openNavTV(movie) {
 
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeNav() {
-
     document.getElementById("myNav").style.width = "0%";
 }
 
@@ -513,6 +555,7 @@ form.addEventListener('submit', (e) => {
     document.querySelector('.top-slide').style.display = 'none'
     document.getElementById('greet').style.display = 'none'
     const searchTerm = search.value
+    console.log(searchTerm)
 
 
     document.querySelector('.titletop').innerHTML = 'Search Results for "' + searchTerm + '"';

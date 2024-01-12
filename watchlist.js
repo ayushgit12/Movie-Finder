@@ -1,4 +1,4 @@
-/*
+
 
 const API_KEY = 'api_key=aff98581fbcc8eff4609f1ab795c9a8f'
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -9,7 +9,7 @@ const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
 // https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=aff98581fbcc8eff4609f1ab795c9a8f
 // https://api.themoviedb.org/3/genre/movie/list?api_key=aff98581fbcc8eff4609f1ab795c9a8f
 
-
+/*
 const genres = [{ "id": 28, "name": "Action" }, { "id": 12, "name": "Adventure" }, { "id": 16, "name": "Animation" }, { "id": 35, "name": "Comedy" }, { "id": 80, "name": "Crime" }, { "id": 99, "name": "Documentary" }, { "id": 18, "name": "Drama" }, { "id": 10751, "name": "Family" }, { "id": 14, "name": "Fantasy" }, { "id": 36, "name": "History" }, { "id": 27, "name": "Horror" }, { "id": 10402, "name": "Music" }, { "id": 9648, "name": "Mystery" }, { "id": 10749, "name": "Romance" }, { "id": 878, "name": "Science Fiction" }, { "id": 10770, "name": "TV Movie" }, { "id": 53, "name": "Thriller" }, { "id": 10752, "name": "War" }, { "id": 37, "name": "Western" }]
 
 
@@ -270,7 +270,7 @@ function showMovies4(data) {
 }
 
 
-
+*/
 
 function getColor(vote) {
     if (vote >= 9) {
@@ -286,7 +286,7 @@ function getColor(vote) {
         return 'red';
     }
 }
-
+/*
 // console.log(main)
 let load=document.querySelector(".load-more")
 let btn_top=document.querySelector(".btn-top")
@@ -362,61 +362,83 @@ form.addEventListener('submit', (e) => {
 
 
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+// import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+// import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
 
 
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDDk08AeWmX9bD-M2TolwaxsCFXJ8iAz_o",
-    authDomain: "onestop-9cf30.firebaseapp.com",
-    projectId: "onestop-9cf30",
-    storageBucket: "onestop-9cf30.appspot.com",
-    messagingSenderId: "122554524092",
-    appId: "1:122554524092:web:51d369e706c59815510bb9"
-};
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDDk08AeWmX9bD-M2TolwaxsCFXJ8iAz_o",
+//     authDomain: "onestop-9cf30.firebaseapp.com",
+//     projectId: "onestop-9cf30",
+//     storageBucket: "onestop-9cf30.appspot.com",
+//     messagingSenderId: "122554524092",
+//     appId: "1:122554524092:web:51d369e706c59815510bb9"
+// };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
-const auth = getAuth(app);
-const dbref = ref(db);
-
-
-let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
-let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
-console.log(UserCreds)
-console.log(UserInfo)
-
-// let watchLat = []
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const db = getDatabase();
+// const auth = getAuth(app);
+// const dbref = ref(db);
 
 
-// document.getElementById(`2${movie.id}`).addEventListener('click',()=>{
-//     console.log(movie.id)
+// let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
+// let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
+// console.log(UserCreds)
+// console.log(UserInfo)
+
+// // let watchLat = []
+
+
+// // document.getElementById(`2${movie.id}`).addEventListener('click',()=>{
+// //     console.log(movie.id)
+// // })
+
+
+// get(child(dbref, 'UsersAuthList/' + UserCreds.uid)).then((snapshot) => {
+//     if (snapshot.exists) {
+//         console.log(snapshot.val())
+//         sessionStorage.setItem("user-info", JSON.stringify({
+//             name: snapshot.val().name,
+//             creationTime: snapshot.val().crtTime,
+//             phnNo: snapshot.val().phnNo,
+//             watchLater: snapshot.val().watchLater
+            
+//         }))
+//         console.log(snapshot.val().watchLater)
+        
+
+//     }
 // })
 
 
-get(child(dbref, 'UsersAuthList/' + UserCreds.uid)).then((snapshot) => {
-    if (snapshot.exists) {
-        console.log(snapshot.val())
-        sessionStorage.setItem("user-info", JSON.stringify({
-            name: snapshot.val().name,
-            creationTime: snapshot.val().crtTime,
-            phnNo: snapshot.val().phnNo,
-            watchLater: snapshot.val().watchLater
-            
-        }))
-        console.log(snapshot.val().watchLater)
         
-
-    }
-})
+// console.log(typeof(sessionStorage.getItem("WatchLater")))
+let g = (sessionStorage.getItem("WatchLater"));
+let watchLaterMoviesNames = g.split(',')
+console.log(watchLaterMoviesNames)
 
 
-        
-        
+const main = document.querySelector(".main-container")
+console.log(main)
+watchLaterMoviesNames.forEach(movie=>{
+        const { title, poster_path, vote_average, id} = movie
+        const movieEl = document.createElement('div')
+        movieEl.classList.add('movie-list-item')
+        movieEl.innerHTML = `
+        <img src="${(poster_path)?IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <button class="movie-list-item-button">WATCH</button>
+                            <button class="know-more" id=${id}>Know More</button>
+                            `
+        main.appendChild(movieEl)
+
+    })
+
+
 
 
 

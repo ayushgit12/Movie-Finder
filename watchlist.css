@@ -35,13 +35,10 @@ body{
     border-radius: 10px;
 }
 
-.container1{
-    min-height: 1500px;
-}
 .main-container{
     background-color: #262626;
-    
-    
+    display: flex;
+    flex-wrap: wrap;
     width: 100%;
     color: white;
     padding: 85px 0 0 0;
@@ -72,9 +69,10 @@ body{
 
 .movie-list-item{
     margin-right: 30px;
-    position: relative;
+    margin-top: 100px;
     cursor: pointer;
     position: relative;
+    
     
 }
 
