@@ -153,14 +153,24 @@ function showMovies(data) {
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             <span class="watchLaterdesc">Add to Watch Later</span>
-                            <button class="watchLater"><i class="fa-solid fa-plus watchL"></i></i></button>
+                            <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></i></button>
                             `
         main[0].appendChild(movieEl)
 
         document.getElementById(id).addEventListener('click', () => {
-            console.log(id)
+            // console.log(id)
             openNav(movie)
             // window.location.href = 'info.html'
+        })
+
+        // document.getElementById(`2${id}`).addEventListener('click',()=>{
+        //     document.getElementById("watchLaterdesc").style.opacity='1';
+                
+        //     })
+        document.getElementById(`2${id}`).addEventListener('click',()=>{
+            console.log(id);
+            
+
         })
     })
 
@@ -219,7 +229,7 @@ function openNav(movie) {
         // WATCH LATER
         let watchLat = document.getElementById(`1${movie.id}`)// BUTTON CAUGHT
         console.log(watchLat)
-        
+
         watchLat.addEventListener('click', () => {
             console.log("1")
             watchLat.style.display = 'none'
