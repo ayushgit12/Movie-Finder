@@ -166,7 +166,7 @@ function getMoviesWL(url) {
         }
 	else{
         document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-        document.getElementById(`2${data.results[0].id}`).style.backgroundColor='cyan'
+        document.getElementById(`2${data.results[0].id}`).style.backgroundColor='pink'
         // document.querySelector(".watchLaterdesc").style.display="block"
       	watchLaterLs.add(data.results[0].title)
         }
