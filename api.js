@@ -165,7 +165,7 @@ function getMoviesWL(url) {
         	watchLaterLs.delete(data.results[0].title)
         }
 	else{
-        document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-circle-check watchL"></i>`
+        document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
       	watchLaterLs.add(data.results[0].title)
         }
     const c = Array.from(watchLaterLs).join(',')
