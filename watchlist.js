@@ -2,12 +2,12 @@
 // import { getDatabase, get, set, ref, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 // import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// const API_KEY = 'api_key=aff98581fbcc8eff4609f1ab795c9a8f'
-// const BASE_URL = 'https://api.themoviedb.org/3';
-// const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
-// const searchURL = BASE_URL + '/search/movie?' + API_KEY;
-// const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
-// // const TV_Series_URL = BASE_URL + '/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&' + API_KEY;
+const API_KEY = 'api_key=aff98581fbcc8eff4609f1ab795c9a8f'
+const BASE_URL = 'https://api.themoviedb.org/3';
+const API_URL = BASE_URL + '/discover/movie?sort_by=popularity.desc&' + API_KEY;
+const searchURL = BASE_URL + '/search/movie?' + API_KEY;
+const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
+const TV_Series_URL = BASE_URL + '/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&' + API_KEY;
 // // https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=aff98581fbcc8eff4609f1ab795c9a8f
 // // https://api.themoviedb.org/3/genre/movie/list?api_key=aff98581fbcc8eff4609f1ab795c9a8f
 
@@ -274,20 +274,20 @@
 
 // */
 
-// function getColor(vote) {
-//     if (vote >= 9) {
-//         return 'green';
-//     }
-//     else if (vote >= 7) {
-//         return 'yellowgreen';
-//     }
-//     else if (vote >= 4) {
-//         return 'orange';
-//     }
-//     else {
-//         return 'red';
-//     }
-// }
+function getColor(vote) {
+    if (vote >= 9) {
+        return 'green';
+    }
+    else if (vote >= 7) {
+        return 'yellowgreen';
+    }
+    else if (vote >= 4) {
+        return 'orange';
+    }
+    else {
+        return 'red';
+    }
+}
 // /*
 // // console.log(main)
 // let load=document.querySelector(".load-more")
@@ -527,8 +527,204 @@
 // }
 
 const g = sessionStorage.getItem("WatchLater")
-console.log(g)
+// console.log(g)
+// console.log(typeof(g))
+const g1 = g.split(',')
+console.log(g1);
 sessionStorage.setItem("watchLater",g)
+
+g1.forEach(movie=>{
+    const searchTerm = movie
+    console.log(searchTerm)
+
+
+    // document.querySelector('.titletop').innerHTML = 'Search Results for "' + searchTerm + '"';
+
+
+    if (searchTerm) {
+        getMovies(searchURL + '&query=' + searchTerm)
+        // console.log(getMovies(searchURL+'&query='+searchTerm))
+    }
+})
+
+function getMovies(url) {
+    fetch(url).then(res => res.json()).then(data => {
+        //  console.log(data.results);
+        if (data.results.length !== 0) {
+            // main[0].style.display='block'
+            // console.log(data.results[0])
+            showMovies(data.results[0]);
+
+        //     if (data.results.length > 5)
+        //         document.querySelector(".arrow").style.display = 'block'
+        //     else
+        //         document.querySelector(".arrow").style.display = 'none'
+
+        // }
+        // else {
+        //     document.querySelector(".titletop").style.display = 'block'
+        //     document.querySelector(".arrow").style.display = 'none'
+        //     document.querySelector(".titletop").innerHTML = `<h1 class="nores">Psssshhh.... No results found! Closest results found : </h1><br><br>`
+
+        // }
+        }
+    })
+}
+
+
+let cont = document.querySelector(".main-container")
+
+function showMovies(movie) {
+    console.log(movie)
+    // data.forEach(movie => {
+        const { title, poster_path, vote_average, id } = movie
+        const movieEl = document.createElement('div')
+        movieEl.classList.add('movie-list-item')
+        movieEl.style.height='230px'
+        movieEl.style.margin='20px'
+        cont.style.display='flex'
+        cont.style.flexWrap='wrap'
+        
+
+        movieEl.innerHTML = `
+        <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <button class="movie-list-item-button">WATCH</button>
+                            <button class="know-more" id=${id}>Know More</button>
+                            <span class="watchLaterdesc">Add to Watch Later</span>
+                            <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
+                            `
+        cont.appendChild(movieEl)
+        // console.log(movie.id)
+
+        document.getElementById(id).addEventListener('click', () => {
+            // console.log(id)
+            openNav(movie)
+            // window.location.href = 'info.html'
+})
+
+        // document.getElementById(`2${id}`).addEventListener('click',()=>{
+        //     document.getElementById("watchLaterdesc").style.opacity='1';
+
+        //     })
+        // document.getElementById(`2${id}`).addEventListener('click', () => {
+        //     console.log(title);
+        //     getMoviesWL(searchURL + '&query=' + title)
+
+
+        // }
+        // )
+
+
+
+
+        }
+        const trans1 = 'https://api.themoviedb.org/3/movie/'
+        const trans2 = '/translations?&' + API_KEY 
+        
+
+        const genresOv = 'https://api.themoviedb.org/3/movie/'
+        const genresOv2 = '?language=en-US&' + API_KEY
+        
+        const cast1 = 'https://api.themoviedb.org/3/movie/'
+        const cast2 = '/credits?&' + API_KEY
+    
+/* Open when someone clicks on the span element */
+function openNav(movie) {
+    let id = movie.id
+
+
+
+    fetch((genresOv + id + genresOv2)).then(res => res.json()).then(data => {
+        fetch((cast1+id+cast2)).then(res=>res.json()).then(cast=>{
+            fetch((trans1+id+trans2)).then(res=>res.json()).then(transl=>{
+            // console.log(cast.cast)
+            let casting = []
+            cast.cast.forEach(c=>{
+                casting.push(c.name)
+            })
+            let transLang = []
+            console.log(transl)
+            transl.translations.forEach(tr=>{
+                transLang.push(tr.english_name)
+            })
+            // console.log(casting)
+            
+        // console.log(data.budget);
+        // showTV(data.results);
+        // console.log(data.genres)
+        let genreOv = []
+        data.genres.forEach(gen => {
+            genreOv.push(gen.name)
+        })
+        console.log(genreOv)
+
+
+        // console.log(movie)
+        if (movie.origin_country && movie.release_date)
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.join(' , ')}</div><button class="watchlater-btn" id=1${id}  style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
+
+        else if (movie.origin_country)
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.join(' , ')}</div><button class="watchlater-btn" style="padding:10px; id=1${id} border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
+
+        else if (movie.release_date)
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;""><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.join(' , ')}</div><button class="watchlater-btn" id=1${id} style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available :<br> ${transLang.join(' , ')}</div>`
+
+
+        else
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;""><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.join(' , ')}</div><button class="watchlater-btn" id=1${id} style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
+
+        // WATCH LATER
+        let watchLat = document.getElementById(`1${movie.id}`)// BUTTON CAUGHT
+        console.log(watchLat)
+
+        watchLat.addEventListener('click', () => {
+            console.log("1")
+            watchLat.style.display = 'none'
+        })
+
+
+        fetch(BASE_URL + "/movie/" + id + '/videos?' + API_KEY).then(res => res.json()).then((videoData) => {
+            if (videoData) {
+                document.getElementById("overlay-content").innerHTML += `<br><br><br>`
+                document.getElementById("myNav").style.width = "100%";
+                if (videoData.results.length > 0) {
+                    var emb = []
+                    videoData.results.forEach(vid => {
+                        let { name, key, site } = vid
+
+                        if (site == 'YouTube')
+                            emb.push(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
+
+
+                    })
+
+                    document.getElementById("overlay-content").innerHTML += emb.join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+                }
+                else {
+                    document.getElementById("overlay-content").innerHTML += ``;
+                }
+                // console.log(videoData)
+            
+            }
+        })
+        .catch((error) => {
+            console.log("")
+        })
+    })
+            
+    })
+    }
+    )
+}
+
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+
+
 
 
 
