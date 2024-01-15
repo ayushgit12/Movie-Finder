@@ -160,12 +160,14 @@ function getMoviesWL(url) {
         // console.log(data.results);
 	  if(watchLaterLs.has(data.results[0].title)){
         // console.log(data.results[0].id)    
-        document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
-
-        	watchLaterLs.delete(data.results[0].title)
+            document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
+            document.getElementById(`2${data.results[0].id}`).style.backgroundColor='yellowgreen'
+            watchLaterLs.delete(data.results[0].title)
         }
 	else{
         document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
+        document.getElementById(`2${data.results[0].id}`).style.backgroundColor='cyan'
+        // document.querySelector(".watchLaterdesc").style.display="block"
       	watchLaterLs.add(data.results[0].title)
         }
     const c = Array.from(watchLaterLs).join(',')
