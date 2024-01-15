@@ -1,7 +1,7 @@
 const arrows = document.querySelectorAll(".arrow");
-console.log(arrows)
+// console.log(arrows)
 const movieLs = document.querySelectorAll(".movie-list")
-console.log(movieLs)
+// console.log(movieLs)
 
 arrows.forEach((arrow, i) => {
     const itemNumber = movieLs[i].querySelectorAll("img").length;
@@ -20,7 +20,7 @@ arrows.forEach((arrow, i) => {
 })
 
 const btn = document.querySelector('.btn-top')
-console.log(btn)
+// console.log(btn)
 btn.addEventListener('click', () => {
     document.documentElement.scrollTop=0;
 })

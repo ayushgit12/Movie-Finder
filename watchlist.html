@@ -130,7 +130,7 @@
     </div>
 
     <!-- Use any element to open/show the overlay navigation menu -->
-    <span onclick="openNav()">open</span>
+    <span onclick="openNav()"></span>
 
 
     <!-- <h2 class="movie-list-title titletop" style="padding-top: 70px;"><b>NEW RELEASES </b></h2> -->
@@ -294,7 +294,7 @@
             <p>Movie Finder &copy Copyright 2023</p>
         </footer>
 
-        <script src="watchlist.js"></script>
+        <script src="watchlist.js" type="module"></script>
 
         <script>
             let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
@@ -322,6 +322,7 @@
             window.addEventListener('load', CheckCred)
             signoutBtn.addEventListener('click', () => {
                 document.querySelector(".signout-out").style.display = "flex"
+                
                 document.querySelector(".main-container").style.opacity = "0.5"
                 document.querySelector(".signout-close").addEventListener('click', () => {
                     window.location.href = 'movies.html'

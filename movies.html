@@ -710,7 +710,7 @@
             let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
             let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
 
-            console.log(UserInfo)
+            // console.log(UserInfo)
             let userN = document.getElementById("usernm")
             let userNtop = document.getElementById("user-nm-top")
             userN.innerText = UserInfo.name
@@ -767,6 +767,18 @@
             //         nvb.style.backgroundColor='yellowgreen'
             //     })
             // })
+
+
+            var lastScrollTop = 0;
+            navbar = document.querySelector(".navbar");
+            window.addEventListener("scroll",()=>{
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if(scrollTop>lastScrollTop)
+                    navbar.style.top = "-90px";
+                else    
+                    navbar.style.top="0 "
+                lastScrollTop = scrollTop
+            })
 
 
         </script>

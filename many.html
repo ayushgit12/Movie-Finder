@@ -130,7 +130,7 @@
     </div>
 
     <!-- Use any element to open/show the overlay navigation menu -->
-    <span onclick="openNav()">open</span>
+    <span onclick="openNav()"></span>
 
 
     <!-- <h2 class="movie-list-title titletop" style="padding-top: 70px;"><b>NEW RELEASES </b></h2> -->
@@ -763,15 +763,7 @@
             })
 
             // let movieImg = document.querySelectorAll(".movie-list-item-img")
-            let movieImg = document.querySelectorAll(".movie-list-item-img")
-
-            movieImg.forEach(mI => {
-                console.log(movieImg)
-                movieImg.addEventListener('click', () => {
-                    window.location = 'info.html'
-                }
-                )
-            })
+            
 
             let navbtns = document.querySelectorAll(".nav-up")
             console.log(navbtns)

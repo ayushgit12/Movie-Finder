@@ -145,17 +145,32 @@ function getMovies(url) {
 }
 
 
-let watchLaterLs = []
+let watchLaterLs = new Set()
+console.log(sessionStorage.getItem("watchLater"))
+let s = sessionStorage.getItem("watchLater").split(',')
+s.forEach(s1=>{
+    watchLaterLs.add(s1)
+})
+
 
 
 function getMoviesWL(url) {
     fetch(url).then(res => res.json()).then(data => {
         
-        // console.log(data.results[0]);
-        watchLaterLs.push(data.results[0].title)
-        
-        sessionStorage.setItem("WatchLater",watchLaterLs)
-        console.log(watchLaterLs)
+        // console.log(data.results);
+	  if(watchLaterLs.has(data.results[0].title)){
+        // console.log(data.results[0].id)    
+        document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
+
+        	watchLaterLs.delete(data.results[0].title)
+        }
+	else{
+        document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-circle-check watchL"></i>`
+      	watchLaterLs.add(data.results[0].title)
+        }
+    const c = Array.from(watchLaterLs).join(',')
+    sessionStorage.setItem("WatchLater",(c))  
+    console.log(c)
         // console.log(document.querySelector(".watchListNav"))
 
         
@@ -164,6 +179,7 @@ function getMoviesWL(url) {
         
     )
 }
+  
 
 document.querySelector(".watchListNav").addEventListener('click',()=>{
     window.location.href='watchlist.html';
@@ -187,9 +203,10 @@ function showMovies(data) {
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             <span class="watchLaterdesc">Add to Watch Later</span>
-                            <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></i></button>
+                            <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                             `
         main[0].appendChild(movieEl)
+        // console.log(movie.id)
 
         document.getElementById(id).addEventListener('click', () => {
             // console.log(id)
@@ -220,9 +237,9 @@ function showMovies(data) {
 
 
 let movieImg = document.querySelectorAll(".movie-list-item-button")
-console.log(movieImg)
+// console.log(movieImg)
 movieImg.forEach(mI => {
-    console.log(mI)
+    // console.log(mI)
     mI.addEventListener('click', () => {
         window.location.href = 'info.html'
     }
@@ -236,6 +253,10 @@ const similar2 = '/similar?&api_key=aff98581fbcc8eff4609f1ab795c9a8f'
 const genresOv = 'https://api.themoviedb.org/3/movie/'
 const genresOv2 = '?language=en-US&' + API_KEY
 
+const cast1 = 'https://api.themoviedb.org/3/movie/'
+const cast2 = '/credits?&' + API_KEY
+
+// https://api.themoviedb.org/3/movie/ /credits&api_key=aff98581fbcc8eff4609f1ab795c9a8f
 /* Open when someone clicks on the span element */
 function openNav(movie) {
     let id = movie.id
@@ -243,6 +264,14 @@ function openNav(movie) {
 
 
     fetch((genresOv + id + genresOv2)).then(res => res.json()).then(data => {
+        fetch((cast1+id+cast2)).then(res=>res.json()).then(cast=>{
+            // console.log(cast.cast)
+            let casting = []
+            cast.cast.forEach(c=>{
+                casting.push(c.name)
+            })
+            // console.log(casting)
+            
         // console.log(data.budget);
         // showTV(data.results);
         // console.log(data.genres)
@@ -255,17 +284,17 @@ function openNav(movie) {
 
         // console.log(movie)
         if (movie.origin_country && movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
 
         else if (movie.origin_country)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
 
         else if (movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id=1${id} style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;""><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" id=1${id} style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
 
 
         else
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br>̀<div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;""><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
 
         // WATCH LATER
         let watchLat = document.getElementById(`1${movie.id}`)// BUTTON CAUGHT
@@ -305,7 +334,7 @@ function openNav(movie) {
             console.log("")
         })
             
-
+    })
     }
     )
 }
@@ -314,12 +343,16 @@ function openNav(movie) {
 const genresOvTV = 'https://api.themoviedb.org/3/tv/'
 const genresOvTV2 = '?language=en-US&' + API_KEY
 
+const cast1TV = 'https://api.themoviedb.org/3/tv/'
+const cast2TV = '/credits?&' + API_KEY
+
 function openNavTV(movie) {
     let id = movie.id
 
 
 
     fetch((genresOvTV + id + genresOvTV2)).then(res => res.json()).then(data => {
+        fetch((cast1TV+id+cast2TV)).then(res=>res.json()).then(cast=>{
         console.log(data);
         // showTV(data.results);
         // console.log(data.genres)
@@ -329,6 +362,11 @@ function openNavTV(movie) {
         })
         console.log(genreOv)
 
+        let casting = []
+            cast.cast.forEach(c=>{
+                casting.push(c.name)
+            })
+
 
 
 
@@ -336,16 +374,16 @@ function openNavTV(movie) {
 
         // console.log(movie)
         if (movie.origin_country && movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button>`
 
         else if (movie.origin_country)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px; margin-top:20px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px; margin-top:20px">ADD TO WATCH LATER</div>`
 
         else if (movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button>`
 
         else
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div><button class="watchlater-btn" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button>`
 
         fetch(BASE_URL + "/tv/" + id + '/videos?' + API_KEY).then(res => res.json()).then((videoData) => {
             if (videoData) {
@@ -371,6 +409,7 @@ function openNavTV(movie) {
             }
         })
     })
+})
 }
 
 
