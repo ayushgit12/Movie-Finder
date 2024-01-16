@@ -529,6 +529,10 @@ function getColor(vote) {
 const g = sessionStorage.getItem("WatchLater")
 // console.log(g)
 // console.log(typeof(g))
+
+if(g.length==0)
+    movieEl.innerText = 'NO MOVIES RIGHT NOW'
+
 const g1 = g.split(',')
 console.log(g1);
 sessionStorage.setItem("watchLater", g)

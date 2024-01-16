@@ -75,75 +75,112 @@ function showMovies(data) {
 
 
 /* Open when someone clicks on the span element */
+   
+    
+const trans1TV = 'https://api.themoviedb.org/3/tv/'
+const trans2TV = '/translations?&' + API_KEY 
+  
 
-const genresOvTV = 'https://api.themoviedb.org/3/tv/'
-const genresOvTV2 = '?language=en-US&' + API_KEY
+  const genresOvTV = 'https://api.themoviedb.org/3/tv/'
+  const genresOvTV2 = '?language=en-US&'+API_KEY
+
 const cast1TV = 'https://api.themoviedb.org/3/tv/'
 const cast2TV = '/credits?&' + API_KEY
-function openNavTV(movie) {
-    let id = movie.id
 
-
-
-    fetch((genresOvTV + id + genresOvTV2)).then(res => res.json()).then(data => {
+  
+  function openNavTV(movie) {
+      let id = movie.id
+  
+  
+  
+      fetch((genresOvTV+id+genresOvTV2)).then(res => res.json()).then(data => {
         fetch((cast1TV+id+cast2TV)).then(res=>res.json()).then(cast=>{
-        console.log(data);
-        // showTV(data.results);
-        // console.log(data.genres)
-        let genreOv = []
-        data.genres.forEach(gen => {
-            genreOv.push(gen.name)
+            fetch((trans1TV+id+trans2TV)).then(res=>res.json()).then(transl=>{
+          console.log(data);
+          // showTV(data.results);
+          // console.log(data.genres)
+          let genreOv = []
+          data.genres.forEach(gen=>{
+              genreOv.push(gen.name)
+          })
+          console.log(genreOv)
+          let castingImg =[]
+          let casting = []
+          cast.cast.forEach(c=>{
+            console.log(c)
+            casting.push(c.name)
+            castingImg.push(c.profile_path)
         })
-        console.log(genreOv)
-        let casting = []
-            cast.cast.forEach(c=>{
-                casting.push(c.name)
-            })
-
-
-
-
-
-
-        // console.log(movie)
-        if (movie.origin_country && movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+        let transLang = []
+        console.log(transl)
+        transl.translations.forEach(tr=>{
+            transLang.push(tr.english_name)
+        })
+          
+  
+      // console.log(movie)
+      if (movie.origin_country && movie.release_date)
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else if (movie.origin_country)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else if (movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
-        fetch(BASE_URL + "/tv/" + id + '/videos?' + API_KEY).then(res => res.json()).then((videoData) => {
-            if (videoData) {
-                document.getElementById("overlay-content").innerHTML += `<br><br><br>`
-                document.getElementById("myNav").style.width = "100%";
-                if (videoData.results.length > 0) {
-                    var emb = []
-                    videoData.results.forEach(vid => {
-                        let { name, key, site } = vid
-
-                        if (site == 'YouTube')
-                            emb.push(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
-
-
-                    })
-
-                    document.getElementById("overlay-content").innerHTML += emb.join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
-                }
-                else {
-                    document.getElementById("overlay-content").innerHTML += ``;
-                }
-                // console.log(videoData)
+            if(castingImg){
+            var div = document.createElement("div");
+            // div.style.width = "100px";
+            div.style.height = "250px";
+            div.style.display = "flex";
+            div.style.overflow = "scroll";
+            div.style.justifyContent='center';
+            document.getElementById("overlay-content").innerHTML+='<p style="color:white; font-size:22px">CAST</p>'
+            document.getElementById("overlay-content").appendChild(div)
+            
+            for(let i=0; i<=casting.length; i++){
+                if(castingImg[i])
+                div.innerHTML+=`<div style="padding:10px; width:110px;color:white"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
+                
             }
-        })
-    })
+        }
+ 
+      fetch(BASE_URL+"/tv/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
+          if(videoData){
+              document.getElementById("overlay-content").innerHTML += `<br><br><br>`
+              document.getElementById("myNav").style.width = "100%";
+              if(videoData.results.length>0){
+                  var emb=[]
+                  videoData.results.forEach(vid=>{
+                      let {name,key,site} = vid
+  
+                      if(site=='YouTube')
+                          emb.push(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${key}" title="${name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`);
+  
+  
+                  })
+  
+                  document.getElementById("overlay-content").innerHTML+=emb.join('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;')
+              }
+              else{
+                  document.getElementById("overlay-content").innerHTML += ``;
+              }
+              // console.log(videoData)
+          }
+      })
+  })
+  })
 })
-}
+  }
+  
+
+
+
+
+
 
 
 

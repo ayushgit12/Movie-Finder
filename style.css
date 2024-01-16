@@ -253,6 +253,12 @@ footer{
   .carousel-imgs{
     width: 80vw;
   }
+  .extra{
+    display: flex;
+    flex-direction: column-reverse;
+    
+
+  }
 }
 
 
@@ -300,6 +306,10 @@ footer{
  
  .extra{
   color: white;
+  display: flex;
+  margin-top: -14px; 
+  justify-content: space-between; 
+  padding: 40px;
  }
 
  .sliding:hover{
@@ -318,3 +328,7 @@ footer{
   transition: all 0.5s ease-in-out;
  }
  
+
+@media only screen and(max-width:500px) {
+  
+}

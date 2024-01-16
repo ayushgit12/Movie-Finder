@@ -225,7 +225,10 @@ let movieImg = document.querySelectorAll(".movie-list-item-button")
 
 
 
-
+    
+const trans1 = 'https://api.themoviedb.org/3/movie/'
+const trans2 = '/translations?&' + API_KEY 
+  
 
 
   const genresOv = 'https://api.themoviedb.org/3/movie/'
@@ -241,6 +244,7 @@ const cast2 = '/credits?&' + API_KEY
   
       fetch((genresOv+id+genresOv2)).then(res => res.json()).then(data => {
         fetch((cast1+id+cast2)).then(res=>res.json()).then(cast=>{
+            fetch((trans1+id+trans2)).then(res=>res.json()).then(transl=>{
           // console.log(data.budget);
           // showTV(data.results);
           // console.log(data.genres)
@@ -249,24 +253,50 @@ const cast2 = '/credits?&' + API_KEY
               genreOv.push(gen.name)
           })
           console.log(genreOv)
+          let castingImg =[]
           let casting = []
-            cast.cast.forEach(c=>{
-                casting.push(c.name)
-            })
+          cast.cast.forEach(c=>{
+            console.log(c)
+            casting.push(c.name)
+            castingImg.push(c.profile_path)
+        })
+        let transLang = []
+        console.log(transl)
+        transl.translations.forEach(tr=>{
+            transLang.push(tr.english_name)
+        })
           
   
       // console.log(movie)
       if (movie.origin_country && movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
 
         else if (movie.origin_country)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
 
         else if (movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
 
         else
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br>̀<div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br>̀<div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div>`
+
+
+
+            var div = document.createElement("div");
+            // div.style.width = "100px";
+            div.style.height = "250px";
+            div.style.display = "flex";
+            div.style.overflow = "scroll";
+            document.getElementById("overlay-content").innerHTML+='<p style="color:white; font-size:22px">CAST</p>'
+            document.getElementById("overlay-content").appendChild(div)
+            
+            for(let i=0; i<=casting.length; i++){
+                if(castingImg[i])
+                div.innerHTML+=`<div style="padding:10px; color:white"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
+            }
+
+
+
 
             fetch(BASE_URL+"/movie/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
           if(videoData){
@@ -294,12 +324,19 @@ const cast2 = '/credits?&' + API_KEY
             
         
         }
-        )
-    })
-}
-    
-    
+    )}
+)})
+    }
   
+    
+
+  
+    
+    
+const trans1TV = 'https://api.themoviedb.org/3/tv/'
+const trans2TV = '/translations?&' + API_KEY 
+  
+
   const genresOvTV = 'https://api.themoviedb.org/3/tv/'
   const genresOvTV2 = '?language=en-US&'+API_KEY
 
@@ -314,6 +351,7 @@ const cast2TV = '/credits?&' + API_KEY
   
       fetch((genresOvTV+id+genresOvTV2)).then(res => res.json()).then(data => {
         fetch((cast1TV+id+cast2TV)).then(res=>res.json()).then(cast=>{
+            fetch((trans1TV+id+trans2TV)).then(res=>res.json()).then(transl=>{
           console.log(data);
           // showTV(data.results);
           // console.log(data.genres)
@@ -322,25 +360,49 @@ const cast2TV = '/credits?&' + API_KEY
               genreOv.push(gen.name)
           })
           console.log(genreOv)
-
+          let castingImg =[]
           let casting = []
-            cast.cast.forEach(c=>{
-                casting.push(c.name)
-            })
+          cast.cast.forEach(c=>{
+            console.log(c)
+            casting.push(c.name)
+            castingImg.push(c.profile_path)
+        })
+        let transLang = []
+        console.log(transl)
+        transl.translations.forEach(tr=>{
+            transLang.push(tr.english_name)
+        })
           
   
       // console.log(movie)
       if (movie.origin_country && movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else if (movie.origin_country)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else if (movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin:40px 70px">CAST : ${casting.toString()}</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
+
+            if(castingImg){
+            var div = document.createElement("div");
+            // div.style.width = "100px";
+            div.style.height = "250px";
+            div.style.display = "flex";
+            div.style.overflow = "scroll";
+            div.style.justifyContent='center';
+            document.getElementById("overlay-content").innerHTML+='<p style="color:white; font-size:22px">CAST</p>'
+            document.getElementById("overlay-content").appendChild(div)
+            
+            for(let i=0; i<=casting.length; i++){
+                if(castingImg[i])
+                div.innerHTML+=`<div style="padding:10px; width:110px;color:white"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
+                
+            }
+        }
  
       fetch(BASE_URL+"/tv/"+id+'/videos?'+API_KEY).then(res=>res.json()).then((videoData)=>{
           if(videoData){
@@ -367,7 +429,8 @@ const cast2TV = '/credits?&' + API_KEY
       })
   })
   })
-}
+})
+  }
   
 
 
