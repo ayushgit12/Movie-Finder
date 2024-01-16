@@ -170,7 +170,7 @@ function getMoviesWL(url) {
         }
 	else{
         document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-        document.getElementById(`2${data.results[0].id}`).style.backgroundColor='pink'
+        document.getElementById(`2${data.results[0].id}`).style.backgroundColor='white'
         // document.querySelector(".watchLaterdesc").style.display="block"
       	watchLaterLs.add(data.results[0].title)
         }
@@ -234,13 +234,13 @@ function showMovies(data) {
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             <span class="watchLaterdesc">Add to Watch Later</span>
-                            <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
+                            <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
                             `    
             
             }
         else{
             // document.getElementById(`2${movie.id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-            // document.getElementById(`2${movie.id}`).style.backgroundColor='pink'
+            // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
             <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                 <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
@@ -346,13 +346,13 @@ function openNav(movie) {
 
         // console.log(movie)
         if (movie.origin_country && movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.join(' , ')}</div><button class="watchlater-btn" id=1${id}  style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id=1${id}  style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else if (movie.origin_country)
-            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><div style="color:white; margin:40px 70px">CAST : ${casting.join(' , ')}</div><button class="watchlater-btn" style="padding:10px; id=1${id} border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
+            document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" style="padding:10px; id=1${id} border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
         else if (movie.release_date)
-            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id=1${id} style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available :<br> ${transLang.join(' , ')}</div>`
+            document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id=1${id} style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available :<br> ${transLang.join(' , ')}</div><div style="color:white">RATE HERE :<br> <span id="aa${id}"><i class="fa-solid fa-star"  id="a${id}" style="color: white; font-size:30px"></i> </span><span  id="bb${id}" ><i class="fa-solid fa-star"  id="b${id}" style="color: white;font-size:30px"></i> </span><span  id="cc${id}"><i class="fa-solid fa-star" id="c${id}" style="color: white;font-size:30px"></i> </span><span  id="dd${id}"><i class="fa-solid fa-star"  id="d${id}"style="color: white;font-size:30px"></i> </span><span  id="ee${id}"><i class="fa-solid fa-star"  id="e${id}" style="color: white;font-size:30px"></i></span><br><br><br>`
 
 
         else
@@ -366,6 +366,58 @@ function openNav(movie) {
             watchLat.style.display = 'none'
         })
         console.log(castingImg)
+        console.log(document.getElementById(`a${id}`))
+
+        document.getElementById(`a${id}`).addEventListener('mouseover',()=>{
+            document.getElementById(`a${id}`).style.color='red'
+        })
+        document.getElementById(`a${id}`).addEventListener('mouseout',()=>{
+            document.getElementById(`a${id}`).style.color='white'
+        })
+        document.getElementById(`b${id}`).addEventListener('mouseover',()=>{
+            document.getElementById(`a${id}`).style.color='orange'
+            document.getElementById(`b${id}`).style.color='orange'
+        })
+        document.getElementById(`b${id}`).addEventListener('mouseout',()=>{
+            document.getElementById(`a${id}`).style.color='white'
+            document.getElementById(`b${id}`).style.color='white'
+        })
+        document.getElementById(`c${id}`).addEventListener('mouseover',()=>{
+            document.getElementById(`a${id}`).style.color='yellow'
+            document.getElementById(`b${id}`).style.color='yellow'
+            document.getElementById(`c${id}`).style.color='yellow'
+        })
+        document.getElementById(`c${id}`).addEventListener('mouseout',()=>{
+            document.getElementById(`a${id}`).style.color='white'
+            document.getElementById(`b${id}`).style.color='white'
+            document.getElementById(`c${id}`).style.color='white'
+        })
+        document.getElementById(`d${id}`).addEventListener('mouseover',()=>{
+            document.getElementById(`a${id}`).style.color='yellowgreen'
+            document.getElementById(`b${id}`).style.color='yellowgreen'
+            document.getElementById(`c${id}`).style.color='yellowgreen'
+            document.getElementById(`d${id}`).style.color='yellowgreen'
+        })
+        document.getElementById(`d${id}`).addEventListener('mouseout',()=>{
+            document.getElementById(`a${id}`).style.color='white'
+            document.getElementById(`b${id}`).style.color='white'
+            document.getElementById(`c${id}`).style.color='white'
+            document.getElementById(`d${id}`).style.color='white'
+        })
+        document.getElementById(`e${id}`).addEventListener('mouseover',()=>{
+            document.getElementById(`a${id}`).style.color='green'
+            document.getElementById(`b${id}`).style.color='green'
+            document.getElementById(`c${id}`).style.color='green'
+            document.getElementById(`d${id}`).style.color='green'
+            document.getElementById(`e${id}`).style.color='green'
+        })
+        document.getElementById(`e${id}`).addEventListener('mouseout',()=>{
+            document.getElementById(`a${id}`).style.color='white'
+            document.getElementById(`b${id}`).style.color='white'
+            document.getElementById(`c${id}`).style.color='white'
+            document.getElementById(`d${id}`).style.color='white'
+            document.getElementById(`e${id}`).style.color='white'
+        })
 
         
         var div = document.createElement("div");
@@ -560,7 +612,7 @@ function getTVwl(url) {
             }
         else{
             document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-            document.getElementById(`2${data.results[0].id}`).style.backgroundColor='pink'
+            document.getElementById(`2${data.results[0].id}`).style.backgroundColor='white'
             // document.querySelector(".watchLaterdesc").style.display="block"
               watchLaterLs.add(data.results[0].name)
             }
@@ -597,13 +649,13 @@ function showTV(data) {
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
                                                 <span class="watchLaterdesc">Add to Watch Later</span>
-                                                <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
+                                                <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
                                                 `    
                                 
                                 }
                             else{
                                 // document.getElementById(`2${movie.id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-                                // document.getElementById(`2${movie.id}`).style.backgroundColor='pink'
+                                // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
                                 movieEl.innerHTML = `
                                 <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                                     <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
@@ -672,13 +724,13 @@ function showMovies3(data) {
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             <span class="watchLaterdesc">Add to Watch Later</span>
-                            <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
+                            <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
                             `    
             
             }
         else{
             // document.getElementById(`2${movie.id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-            // document.getElementById(`2${movie.id}`).style.backgroundColor='pink'
+            // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
             <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                 <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
@@ -791,13 +843,13 @@ function showMovies4(data) {
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
                                                 <span class="watchLaterdesc">Add to Watch Later</span>
-                                                <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
+                                                <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
                                                 `    
                                 
                                 }
                             else{
                                 // document.getElementById(`2${movie.id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-                                // document.getElementById(`2${movie.id}`).style.backgroundColor='pink'
+                                // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
                                 movieEl.innerHTML = `
                                 <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                                     <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
