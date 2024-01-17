@@ -541,7 +541,7 @@ let x ="";
 g1.forEach(movie => {
     const searchTerm = movie
     x = searchTerm
-    console.log(searchTerm)
+    // console.log(searchTerm)
 
 
     // document.querySelector('.titletop').innerHTML = 'Search Results for "' + searchTerm + '"';
@@ -596,7 +596,7 @@ function showTV(movie) {
 
     // for (let i = 9; i < 20; i++) {
     // data.forEach(movie => {
-    const { name, poster_path, vote_average, overview, id } = movie
+    const { name, poster_path,backdrop_path, vote_average, overview, id } = movie
     const movieEl = document.createElement('div')
     movieEl.classList.add('movie-list-item')
     movieEl.style.height = '230px'
@@ -606,7 +606,7 @@ function showTV(movie) {
 
 
     movieEl.innerHTML = `
-        <img src="${IMAGE_URL + poster_path}" alt="images/nopic.jpeg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${IMAGE_URL + backdrop_path}" alt="images/nopic.jpeg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name}</span> <span class="${getColor(vote_average)}" style="overflow:hidden">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -627,7 +627,7 @@ let cont = document.querySelector(".main-container")
 function showMovies(movie) {
     console.log(movie)
     // data.forEach(movie => {
-    const { title, poster_path, vote_average, id } = movie
+    const { title, poster_path,backdrop_path, vote_average, id } = movie
     const movieEl = document.createElement('div')
     movieEl.classList.add('movie-list-item')
     movieEl.style.height = '230px'
@@ -637,7 +637,7 @@ function showMovies(movie) {
     
 
     movieEl.innerHTML = `
-        <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}" style="overflow:hidden">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -780,13 +780,15 @@ function openNav(movie) {
         // div.style.width = "100px";
         div.style.height = "250px";
         div.style.display = "flex";
+        if(casting.length<15)
+            div.style.justifyContent='center';
         div.style.overflow = "scroll";
         document.getElementById("overlay-content").innerHTML+='<p style="color:white; font-size:22px">CAST</p>'
         document.getElementById("overlay-content").appendChild(div)
         
         for(let i=0; i<=casting.length; i++){
             if(castingImg[i])
-                div.innerHTML+=`<div style="padding:10px; color:white"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
+                div.innerHTML+=`<div style="padding:10px; color:white; width:110px"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
             
         }
 

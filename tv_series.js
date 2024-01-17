@@ -52,11 +52,11 @@ function showMovies(data) {
     main[0].innerHTML = ''
 
     data.forEach(movie => {
-        const { name, poster_path, vote_average, id} = movie
+        const { name, poster_path, backdrop_path,vote_average, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${(poster_path)?IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${(backdrop_path)?IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -136,6 +136,8 @@ const cast2TV = '/credits?&' + API_KEY
             // div.style.width = "100px";
             div.style.height = "250px";
             div.style.display = "flex";
+            if(casting.length<15)
+                div.style.justifyContent='center';
             div.style.overflow = "scroll";
             div.style.justifyContent='center';
             document.getElementById("overlay-content").innerHTML+='<p style="color:white; font-size:22px">CAST</p>'
@@ -207,11 +209,11 @@ function showTV(data) {
     main[1].innerHTML = ''
 
     data.forEach(movie => {
-        const { name, poster_path, vote_average, overview, id} = movie
+        const { name, poster_path, backdrop_path,vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);" >
+        <img src="${IMAGE_URL + backdrop_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);" >
                             <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -241,11 +243,11 @@ function showMovies3(data) {
 
     // for (let i = 9; i < 20; i++) {
         data.forEach(movie => {
-        const { name, poster_path, vote_average, overview, id} = movie
+        const { name, poster_path, backdrop_path,vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${IMAGE_URL + backdrop_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name} </span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -278,11 +280,11 @@ function showTV2(data) {
 
     
         data.forEach(movie => {
-        const { name, poster_path, vote_average, overview, id} = movie
+        const { name, poster_path, backdrop_path,vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL + poster_path}" alt="images/nopic.jpeg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${IMAGE_URL + backdrop_path}" alt="images/nopic.jpeg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${name}</span> <span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -316,11 +318,11 @@ function showMovies4(data) {
 
     
     data.forEach(movie => {
-        const { title, poster_path, vote_average, overview, id} = movie
+        const { title, poster_path, backdrop_path,vote_average, overview, id} = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
-        <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${IMAGE_URL + backdrop_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
@@ -378,11 +380,11 @@ load.addEventListener('click',()=>{
 
         
         data.forEach(movie => {
-            const { title, poster_path, vote_average, overview, id} = movie
+            const { title, poster_path, backdrop_path,vote_average, overview, id} = movie
             const movieEl = document.createElement('div')
             movieEl.classList.add('movie-list-item')
             movieEl.innerHTML = `
-            <img src="${IMAGE_URL + poster_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+            <img src="${IMAGE_URL + backdrop_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                 <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
                                 <button class="movie-list-item-button">WATCH</button>
                                 <button class="know-more" id=${id}>Know More</button>

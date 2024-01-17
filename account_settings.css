@@ -215,10 +215,13 @@
     border-radius: 50%;
   }
   
-.sett{
-    animation: rot 1s ease-in-out infinite;
+
+
+.setti{
+  animation: rott 4s ease-in-out infinite;
 }
-@keyframes rot {
+
+@keyframes rott {
     from{
         transform: rotate(0);
     }
@@ -226,6 +229,7 @@
         transform: rotate(1turn);
     }
 }
+
 
 
 @media screen and (max-width:516px) {
@@ -241,6 +245,8 @@
         padding: none;
         margin: none;
     }
-    
+    .pl{
+      display: none;
+    }
     
 }

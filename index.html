@@ -389,7 +389,8 @@
           </div>
           
         </div>
-        <div style="background-color: #262626;"><div class="sliding" style="background-color: yellowgreen;height: 10px; width: 40vw;"></div></div>
+
+        <div style="background-color: #262626;"><div class="sliding" style="background-color: yellowgreen;height: 8px; width: 30vw;"></div></div>
         <p style="color: white; font-size: 30px; background-color: #262626; text-align: center; padding-bottom: 30px;"><b>AND THE SAGA OF MOVIES GOES ONNN....</b></p><div class="extra" style="background-color: #262626;"><p style="font-size: 30px; padding-top: 60px; font-family: 'Syne', sans-serif;" ><i class="fa-solid fa-crown" style="color: white;"></i><span class="s1">BEST</span> <span class="s2">AT</span> <span class="s3">PROVIDING</span> <span class="s4">INFO </span> <span class="s5">ABOUT ANY MOVIE YOU WANT !</span></p><img class="i1" src="images/eatsleep2.jpeg" height="300px" alt="">
             
         </div>
@@ -440,6 +441,25 @@
 
 
 <script src="https://kit.fontawesome.com/16b9760f00.js" crossorigin="anonymous"></script>
+
+<script>
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    var animatedElement = document.querySelector('.sliding');
+
+    window.addEventListener('scroll', function () {
+        var scrollPosition = window.scrollY;
+        var elementPosition = animatedElement.offsetTop;
+
+        if (scrollPosition > elementPosition - window.innerHeight + 400) {
+            animatedElement.classList.add('sliding-off');
+        }
+        else{
+          animatedElement.classList.remove('sliding-off');
+        }
+    });
+});
+</script>
 
 
 </body>
