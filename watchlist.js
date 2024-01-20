@@ -454,13 +454,19 @@ console.log(g);
 // console.log(g)
 // console.log(typeof(g))
 
-if(g.length==0){
+if(!g){
     const movieEl = document.createElement('div')
-    movieEl.innerText = 'NO MOVIES RIGHT NOW'
+    movieEl.innerText = 'NO MOVIES RIGHT NOW! ADD MOVIES TO WATCH LATER LIST TO SEE THEM HERE'
+    movieEl.style.width = '60vw'
+    movieEl.style.fontSize = '40px'
+    movieEl.style.margin = 'auto'
+    movieEl.style.textAlign = 'center'
+    // movieEl.style.width = '60vw'
+
     document.querySelector(".main-container").appendChild(movieEl)
 }
-// else{
-
+else{
+    // document.querySelector(".main-container") = ''
 
 const g1 = g.split(',')
 console.log(g1);
@@ -857,6 +863,7 @@ function openNavTV(movie) {
 })
 })
 })
+}
 }
 
 

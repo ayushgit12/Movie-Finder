@@ -730,8 +730,11 @@
             const db = getDatabase();
             const auth = getAuth(app);
 
+            let signoutBtn1 = document.getElementById("signout-btn")
+            console.log(signoutBtn1)
+            console.log(signoutBtn)
 
-            signoutBtn.addEventListener('click', () => {
+            signoutBtn1.addEventListener('click', () => {
 
                 console.log(sessionStorage.getItem("watchLater"))
                 if (sessionStorage.getItem("watchLater")) {
@@ -752,6 +755,30 @@
                 })
                 document.querySelector(".signout-yes").addEventListener('click', signout)
                 // sessionStorage.clear()
+
+
+})
+            document.querySelector('.signout-yes').addEventListener('click', () =>  {
+
+                console.log(sessionStorage.getItem("watchLater"))
+                if (sessionStorage.getItem("watchLater")) {
+                    // console.log(sessionStorage.getItem("watchLater"))
+                    var g = (sessionStorage.getItem("watchLater")).split(',')
+                    set(ref(db, 'WatchLater/' + UserCreds.uid), {
+                        watchLater: g
+
+                    })
+                }
+                document.querySelector(".signout-out").style.display = "flex"
+                document.querySelector(".main-container").style.opacity = "0.5"
+                document.querySelector(".signout-close").addEventListener('click', () => {
+                    window.location.href = 'movies.html'
+                })
+                document.querySelector(".cancel").addEventListener('click', () => {
+                    window.location.href = 'movies.html'
+                })
+                document.querySelector(".signout-yes").addEventListener('click', signout)
+                sessionStorage.clear()
 
 
 })

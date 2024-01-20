@@ -166,6 +166,11 @@
                                 phnNo: snapshot.val().phnNo
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                            document.body.style.opacity = '0.5'
+                            document.body.style.rotate = '1440deg'
+                            document.body.style.transition ='rotate 2s ease-in-out'
+                            // document.body.style.transition ='opacity 2s ease-in-out'
+
                             setTimeout(()=>{
 
                                 window.location.href = 'movies.html';
