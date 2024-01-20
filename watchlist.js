@@ -444,94 +444,23 @@ function getColor(vote) {
 
 
 
-// let g = (sessionStorage.getItem("WatchLater"));
-// console.log(g)
-// let userid = JSON.parse(sessionStorage.getItem("user-creds")).uid;
-// console.log(userid)
-// // console.log(typeof(userid))
 
-// if (g) {
-//     let watchLaterMoviesNames = g.split(',')
-//     console.log(watchLaterMoviesNames)
-
-
-//     get(child(dbref, 'WatchLater/' + userid)).then((snapshot) => {
-//         if (snapshot.exists) {
-//             console.log(snapshot.val())
-//             sessionStorage.setItem("user-info", JSON.stringify({
-
-//                 wL: snapshot.val().watchLater
-//             }))
-
-
-//         }
-//     })
-
-
-//     set(ref(db, 'WatchLater/' + userid), {
-
-//         watchLater: watchLaterMoviesNames
-
-//     })
-//     // console.log(watchLater)
-
-
-
-//     const main = document.querySelector(".main-container")
-//     console.log(main)
-
-
-//     // -----NEW-------
-
-//     watchLaterMoviesNames.forEach(mov => {
-//         // console.log(mov)
-//         const searchTerm = mov
-//         // console.log(searchTerm)
-
-
-
-//         if (searchTerm) {
-//             getMovies(searchURL + '&query=' + searchTerm)
-//             // console.log(getMovies(searchURL+'&query='+searchTerm))
-//         }
-
-//         function getMovies(url) {
-//             fetch(url).then(res => res.json()).then(data => {
-//                 //  console.log(data.results);
-//                 if (data.results.length !== 0) {
-//                     // main[0].style.display='block'
-//                     console.log(data.value)
-
-
-//                 }
-//             })
-//         }
-
-
-
-//         watchLaterMoviesNames.forEach(movie => {
-//             const { title, poster_path, vote_average, id } = movie
-//             const movieEl = document.createElement('div')
-//             movieEl.classList.add('movie-list-item')
-//             movieEl.innerHTML = `
-//         <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-//                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
-//                             <button class="movie-list-item-button">WATCH</button>
-//                             <button class="know-more" id=${id}>Know More</button>
-//                             `
-//             // main.appendChild(movieEl)
-
-//         })
-//     })
-
-// }
-
-const g = sessionStorage.getItem("WatchLater")
+const g = sessionStorage.getItem("watchLater")
+console.log(g);
+// g2.split(',').forEach(mov=>{
+//     if(!g.split(',').includes(mov))
+//         g.push(mov)
+// })
 // console.log(g)
 // console.log(typeof(g))
 
-if(g.length==0)
+if(g.length==0){
+    const movieEl = document.createElement('div')
     movieEl.innerText = 'NO MOVIES RIGHT NOW'
+    document.querySelector(".main-container").appendChild(movieEl)
+}
+// else{
+
 
 const g1 = g.split(',')
 console.log(g1);

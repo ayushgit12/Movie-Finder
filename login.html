@@ -177,7 +177,9 @@
                     get(child(dbref, 'WatchLater/' + credentials.user.uid)).then((snapshot) => {
                         if (snapshot.exists) {
                             // console.log(JSON.stringify(snapshot.val().watchLater))
-                            sessionStorage.setItem("watchLater",JSON.stringify(snapshot.val().watchLater))
+                            console.log((snapshot.val().watchLater).join(','))
+                            sessionStorage.setItem("watchLater",(snapshot.val().watchLater).join(','))
+                            
                         }
                         else
                             sessionStorage.setItem("watchLater","")

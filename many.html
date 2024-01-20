@@ -725,7 +725,31 @@
 
         <script src="many.js"></script>
 
-        <script>
+        <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+            import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+            import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, getRedirectResult } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+
+
+            const firebaseConfig = {
+                apiKey: "AIzaSyDDk08AeWmX9bD-M2TolwaxsCFXJ8iAz_o",
+                authDomain: "onestop-9cf30.firebaseapp.com",
+                projectId: "onestop-9cf30",
+                storageBucket: "onestop-9cf30.appspot.com",
+                messagingSenderId: "122554524092",
+                appId: "1:122554524092:web:51d369e706c59815510bb9"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase();
+            const auth = getAuth(app);
+
+
+
             let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
             let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
 
@@ -751,6 +775,15 @@
             
             window.addEventListener('load', CheckCred)
             signoutBtn.addEventListener('click', () => {
+                console.log(sessionStorage.getItem("watchLater"))
+                if (sessionStorage.getItem("watchLater")) {
+                    // console.log(sessionStorage.getItem("watchLater"))
+                    var g = (sessionStorage.getItem("watchLater")).split(',')
+                    set(ref(db, 'WatchLater/' + UserCreds.uid), {
+                        watchLater: g
+
+                    })
+                }
                 document.querySelector(".signout-out").style.display = "flex"
                 document.querySelector(".main-container").style.opacity = "0.5"
                 document.querySelector(".signout-close").addEventListener('click', () => {
@@ -760,6 +793,7 @@
                     window.location.href = 'movies.html'
                 })
                 document.querySelector(".signout-yes").addEventListener('click', signout)
+                // sessionStorage.clear()
 
 
             })

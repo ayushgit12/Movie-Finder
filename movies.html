@@ -733,6 +733,7 @@
 
             signoutBtn.addEventListener('click', () => {
 
+                console.log(sessionStorage.getItem("watchLater"))
                 if (sessionStorage.getItem("watchLater")) {
                     // console.log(sessionStorage.getItem("watchLater"))
                     var g = (sessionStorage.getItem("watchLater")).split(',')
@@ -741,12 +742,6 @@
 
                     })
                 }
-                sessionStorage.clear()
-
-
-
-
-
                 document.querySelector(".signout-out").style.display = "flex"
                 document.querySelector(".main-container").style.opacity = "0.5"
                 document.querySelector(".signout-close").addEventListener('click', () => {
@@ -756,9 +751,10 @@
                     window.location.href = 'movies.html'
                 })
                 document.querySelector(".signout-yes").addEventListener('click', signout)
+                // sessionStorage.clear()
 
 
-            })
+})
 
 
 
@@ -802,6 +798,10 @@
                     window.location.href = 'bollywood.html'
                 }, 900)
 
+            })
+
+            document.querySelector(".cancel").addEventListener('click',()=>{
+                window.location.href='movies.html';
             })
 
 
