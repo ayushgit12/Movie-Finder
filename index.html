@@ -142,8 +142,8 @@
                 <p>Join us for a fantastic <span class="movie-night">movie night (or day)</span> filled with popcorn, laughter,
                     and great company! Whether you're a fan of thrilling action, heartwarming dramas, or side-splitting
                     comedies, we've got a film lineup to cater to all tastes. Take the name and we are at your service. Just don't forget to bring your favorite snacks.</p>
-                <button class="bttn"><a href="login.html" style="text-decoration: none; color: white;">Join
-                        Now!</a></button>
+                <button class="bttn" style="text-decoration: none; color: white;">Join
+                        Now!</button>
             </div>
         </div>
 
@@ -459,6 +459,17 @@
         }
     });
 });
+
+
+
+document.querySelector('.bttn').addEventListener('click',()=>{
+  document.body.style.opacity='0.3'
+  document.body.style.backgroundColor='black'
+  document.body.style.transition='all 1s ease-in-out'
+  setTimeout(() => {
+    window.location = 'login.html'
+  }, 1200);
+})
 </script>
 
 

@@ -46,28 +46,146 @@ function getMovies(url) {
 
 
 
+
+
+
+let s = []
+let watchLaterLs = new Set()
+if (sessionStorage.getItem("watchLater")) {
+    console.log(sessionStorage.getItem("watchLater"))
+    s = sessionStorage.getItem("watchLater").split(',')
+    s.forEach(s1 => {
+        watchLaterLs.add(s1)
+    })
+}
+
+
+
+
+function getMoviesWL(url) {
+    fetch(url).then(res => res.json()).then(data => {
+
+        // console.log(data.results);
+        if (watchLaterLs.has(data.results[0].title)) {
+            // console.log(data.results[0].id)    
+            document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
+            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'yellowgreen'
+            watchLaterLs.delete(data.results[0].title)
+
+        }
+        else {
+            document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
+            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'white'
+            // document.querySelector(".watchLaterdesc").style.display="block"
+            watchLaterLs.add(data.results[0].title)
+        }
+        const c = Array.from(watchLaterLs).join(',')
+        sessionStorage.setItem("watchLater", (c))
+        console.log(c)
+        // console.log(document.querySelector(".watchListNav"))
+
+
+
+    }
+
+    )
+}
+
+
+
+
+
+console.log(watchLaterLs)
+
+
 function showMovies(data) {
 
     main[0].innerHTML = ''
 
     data.forEach(movie => {
-        const { title, poster_path, vote_average, id} = movie
+        const { title, poster_path, backdrop_path, vote_average, id } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
-        movieEl.innerHTML = `
-        <img src="${(poster_path)?IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);"><span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span><button class="movie-list-item-button">WATCH</button>
+
+
+
+
+
+
+
+        // movieEl.innerHTML = `
+        // <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        //                     <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+        //                     <button class="movie-list-item-button">WATCH</button>
+        //                     <button class="know-more" id=${id}>Know More</button>
+        //                     <span class="watchLaterdesc">Add to Watch Later</span>
+        //                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
+        // `
+        // watchLaterLs.forEach(w=>{
+        //     console.log(w)
+        // })
+        // console.log((watchLaterLs))
+
+        // console.log(document.getElementById(`2${movie.id}`))
+        // console.log(title)
+        if (watchLaterLs.has(title)) {
+            // console.log(title)
+            // console.log(data.results[0].id)
+            movieEl.innerHTML = `
+        <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
+                            <span class="watchLaterdesc">Add to Watch Later</span>
+                            <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
                             `
+
+        }
+        else {
+            // document.getElementById(`2${movie.id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
+            // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
+            movieEl.innerHTML = `
+        <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <button class="movie-list-item-button">WATCH</button>
+                            <button class="know-more" id=${id}>Know More</button>
+                            <span class="watchLaterdesc">Add to Watch Later</span>
+                            <button class="watchLater" id=2${movie.id} style="background-color:yellowgreen"><i class="fa-solid fa-plus watchL"></i></button>
+                            `
+            // document.querySelector(".watchLaterdesc").style.display="block"
+            // watchLaterLs.add(data.results[0].title)
+        }
         main[0].appendChild(movieEl)
+        // console.log(movie.id)
 
-        document.getElementById(id).addEventListener('click',()=>{
-            console.log(id)
+        document.getElementById(id).addEventListener('click', () => {
+            // console.log(id)
             openNav(movie)
+            // window.location.href = 'info.html'
         })
+
+        // document.querySelector(".descWL").addEventListener('click',()=>{
+        //     
+
+        //     })
+        document.getElementById(`2${id}`).addEventListener('click', () => {
+            console.log(title);
+
+            // watchLaterLs.add(title)
+            // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+            getMoviesWL(searchURL + '&query=' + title)
+
+
+        }
+        )
+
+
+
+
     })
-
-
 }
+
+
 
 
 

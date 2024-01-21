@@ -286,15 +286,7 @@ function showMovies(data) {
 
 
 
-let movieImg = document.querySelectorAll(".movie-list-item-button")
-// console.log(movieImg)
-movieImg.forEach(mI => {
-    // console.log(mI)
-    mI.addEventListener('click', () => {
-        window.location.href = 'info.html'
-    }
-    )
-})
+
 
 
 // https://api.themoviedb.org/3/movie/{movie_id}/translations
@@ -316,6 +308,8 @@ const ss2 = '/images?&api_key=aff98581fbcc8eff4609f1ab795c9a8f'
 // https://api.themoviedb.org/3/movie/ /credits&api_key=aff98581fbcc8eff4609f1ab795c9a8f
 /* Open when someone clicks on the span element */
 function openNav(movie) {
+
+    
     let id = movie.id
 
 
@@ -370,9 +364,10 @@ function openNav(movie) {
                         document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;""><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id=1${id} style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
                     // WATCH LATER
-
+                    // console.log(document.getElementById(`wLtr`))
                     document.getElementById(`wLtr`).addEventListener('click', () => {
-                        document.getElementById(`wLtr`).style.display = 'none'
+                        console.log("hi")
+                        document.getElementById(`wLtr`).style.backgroundColor = 'red'
                     })
 
                     console.log(castingImg)
