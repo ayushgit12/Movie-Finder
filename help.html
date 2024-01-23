@@ -17,6 +17,11 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <link rel="stylesheet" href="movies.css">
+    <style>
+        .dropdown-prof{
+            margin-right: 50px;
+        }
+    </style>
 
 
 
@@ -85,13 +90,12 @@
                 <span style="display: flex;"><img id="prof-img" src="images/user.png" alt="" height="38px" width="38px"
                         style="border-radius: 50%; margin-top: 5px;">
                     <p style="padding: 6px 0 0 6px;">
-                    <div class="dropdown" style="margin-right: 20px;">
+                    <div class="dropdown dropdown-prof">
                         <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
                                 style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
                         <div class="dropdown-content">
                             <a id="accsett">Account Settings</a>
                             <a href="watchlist.html">Your WatchLater</a>
-                            <a href="#">Help</a>
                             <button type="button"
                                 style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
                                 id="signout-btn">Signout</button>
@@ -303,7 +307,7 @@ var lastScrollTop = 0;
 
         document.querySelector(".btn-chat").addEventListener('click', () => {
             // const div1 = document.createElement('div')
-            // let p = prompt("HEY I AM SHEERO, HOW MAY I HELP YOU? (if you don't need my help, press 0)")
+            let p = prompt("HEY I AM SHEERO, HOW MAY I HELP YOU?")
             // while(p!==0)
             //     p = prompt("HEY I AM SHEERO, HOW MAY I HELP YOU? (if you don't need my help, press 0)")
             // div1.style.position='absolute'

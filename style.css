@@ -233,25 +233,37 @@ footer{
   transform: rotate(360deg);
 }
 
-@media screen and (max-width:1054px) {
+.carousel-imgs{
+  width: 400px; 
+}
+.content{
+  width: 500px; 
+}
+#out{
+  max-width: 400px;
+  overflow: hidden;
+  margin: auto;
+}
+.carousel-item{
+  width: 400px;
+}
+
+@media only screen and (max-width:644px) {
   section{
     display: flex;
     flex-direction: column;
   }
   .type{
     padding-top: 20px;
-  }
-
-  
-  
-}
-
-@media screen and (max-width:635px){
-  .content{
-    width: 80vw;
+    font-size: 20px;
   }
   .carousel-imgs{
-    width: 80vw;
+    width: 80%;
+    margin: auto;
+  }
+  .content{
+    width: 80%;
+    margin: auto;
   }
   .extra{
     display: flex;
@@ -259,7 +271,11 @@ footer{
     
 
   }
+
+  
+  
 }
+
 
 
 /* .woods p{

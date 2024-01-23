@@ -76,7 +76,7 @@
             </div>
                 <div class="create" style="padding-top: 10px;">
                     Don't have an account?
-                    <div><a href="signup.html" style="height: none; color: black;"><button type="button"
+                    <div><a class="direct_signup" style="height: none; color: black;"><button type="button"
                                 style="border: none; padding: 7px; margin-left: 30px;" class="signup">Sign up
                                 Now!</button></a></div>
                 </div>
@@ -207,6 +207,20 @@
         
     </script>
     <!-- //BOOTSTRAP DATA -->
+
+    <script>
+        document.querySelector(".direct_signup").addEventListener('click',()=>{
+            document.body.style.opacity='0.8'
+            document.body.style.backgroundColor='black'
+
+            document.body.style.transition='all 1s ease'
+            setTimeout(() => {
+                window.location = 'signup.html'
+                
+            }, 1000);
+
+        })
+    </script>
         
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

@@ -103,6 +103,7 @@ function clearBtn() {
         return
     let clear = document.createElement('div');
     clear.classList.add('tag')
+    clear.style.borderRadius = '0'
     clear.id = 'clear'
     clear.innerText = 'Clear All Filters X'
     tagsEl.append(clear)
@@ -858,12 +859,7 @@ function showTV(data) {
         const { name, poster_path, backdrop_path, vote_average, id } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
-        movieEl.innerHTML = `
-        <img src="${IMAGE_URL + backdrop_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);" >
-                            <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
-                            <button class="movie-list-item-button">WATCH</button>
-                            <button class="know-more" id=${id}>Know More</button>
-                            `
+        
 
 
 
@@ -1014,24 +1010,58 @@ function showTV2(data) {
         const { name, poster_path, backdrop_path, vote_average, overview, id } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
-        movieEl.innerHTML = `
-        <img src="${IMAGE_URL + backdrop_path}" alt="images/nopic.jpeg" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${name}</span> <span class="${getColor(vote_average)}">${vote_average}</span>
-                            <button class="movie-list-item-button">WATCH</button>
-                            <button class="know-more" id=${id}>Know More</button>
-                            `
+        
+
+
+
+        if (watchLaterLs.has(name)) {
+            // console.log(title)
+            // console.log(data.results[0].id)
+            movieEl.innerHTML = `
+                            <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                                                <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                <button class="movie-list-item-button">WATCH</button>
+                                                <button class="know-more" id=${id}>Know More</button>
+                                                <span class="watchLaterdesc">Add to Watch Later</span>
+                                                <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
+                                                `
+
+        }
+        else {
+            // document.getElementById(`2${movie.id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
+            // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
+            movieEl.innerHTML = `
+                                <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                                                    <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                    <button class="movie-list-item-button">WATCH</button>
+                                                    <button class="know-more" id=${id}>Know More</button>
+                                                    <span class="watchLaterdesc">Add to Watch Later</span>
+                                                    <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
+                                                    `
+            // document.querySelector(".watchLaterdesc").style.display="block"
+            // watchLaterLs.add(data.results[0].title)
+        }
+
         main[3].appendChild(movieEl)
 
         document.getElementById(id).addEventListener('click', () => {
             console.log(id)
             openNavTV(movie)
         })
+
+        document.getElementById(`2${id}`).addEventListener('click', () => {
+            console.log(name);
+            // watchLaterLs.add(title)
+            // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+            getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
+
+
+        }
+        )
     })
+
+
 }
-
-
-
-
 
 
 

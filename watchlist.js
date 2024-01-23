@@ -603,7 +603,7 @@ console.log(watchLaterLs)
 
 
         movieEl.innerHTML = `
-        <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+        <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}" style="overflow:hidden">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
