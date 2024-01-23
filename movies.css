@@ -545,6 +545,20 @@ footer{
       top: 15px;
       right: 35px;
     }
+    
+  }
+  @media only screen  and (max-width: 450px) {
+    .d-block{
+        height: 230px;
+        width: 320px;
+    }
+    
+  }
+  @media only screen  and (max-width: 520px) {
+    .greet{
+        margin-top: 50px;
+    }
+    
   }
 
 

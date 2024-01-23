@@ -26,6 +26,9 @@
 <body>
 
 
+    
+
+
     <div class="signout-out">
         <div class="signout-win">
             <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;">
@@ -57,7 +60,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link active nav-up" aria-current="page" href="movies.html"
-                            style="background-color: yellowgreen; border-radius: 10px;">Home </a>
+                            style="border-radius: 10px;">Home </a>
                     </li>
 
                     <li class="nav-item">
@@ -69,6 +72,11 @@
                     <li class="nav-item">
                         <a class="nav-link nav-up watchListNav" href="watchlist.html" style="width: 90px;">WatchList</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-up watchListNav" href="help.html"
+                            style="background-color: yellowgreen; border-radius: 10px; text-align: center;width: 90px;">Help</a>
+                    </li>
+
                 </ul>
 
 
@@ -111,7 +119,7 @@
 
 
         <div class="accordion accordion-flush" id="accordionFlushExample" style="padding: 30px; margin-top: 30px;">
-            <p style="padding: 10px 0; font-size: 20px;"><b>FREQUENTLY ASKED QUESTIONS</b></p>
+            <p style="padding: 10px 0; font-size: 30px;"><b>FREQUENTLY ASKED QUESTIONS</b></p>
             <div class="accordion-item">
                 <h2 class="accordion-header">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -184,8 +192,8 @@
                 <br>
                 <ul>
                     <li>Ayush Raj Baranwal</li>
-                    <li><a href=""><i class="fa-brands fa-github"></i></a> <a
-                            href="https://www.linkedin.com/in/ayush-raj-baranwal-03b187282/" target="_blank"><i
+                    <li><a href="https://github.com/ayushgit12" target="_blank"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/ayush-raj-baranwal-03b187282/" target="_blank"><i
                                 class="fa-brands fa-linkedin"></i></a></li>
                     <li>Pursuing Bachelor of Technology in Electronics and Communications Engineering.</li>
                     <li>Loves to Code & Animate.</li>
@@ -197,14 +205,15 @@
 
         </div>
         <p style="font-size: 30px; padding-left: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p>
-        <div class="destination" style="padding-left: 30px; padding-bottom: 50px; display: flex; gap: 100px; flex-wrap: wrap;">
+        <div class="destination"
+            style="padding-left: 30px; padding-bottom: 50px; display: flex;justify-content: center; gap: 100px; flex-wrap: wrap;">
             <div class="card" style="width: 300px">
                 <img src="images/movies.jpeg" class="card-img-top" alt="..." height="100px" width="100px">
 
                 <div class="card-body">
                     <h5 class="card-title">Go to Movies Section</h5>
                     <p class="card-text">Travel to the World of Movies!</p>
-                    <a href="movies.html" class="btn btn-primary">Travel</a>
+                    <a href="movies.html" class="btn btn-success">Travel</a>
                 </div>
             </div>
             <!-- <p style="font-size: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p> -->
@@ -214,7 +223,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Go to TV Series Section</h5>
                     <p class="card-text">Who says TV series is only about Saas Bahu? ;D</p>
-                    <a href="tv_series.html" class="btn btn-primary">Travel</a>
+                    <a href="tv_series.html" class="btn btn-success">Travel</a>
                 </div>
             </div>
             <!-- <p style="font-size: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p> -->
@@ -224,7 +233,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Go to Bollywood Section</h5>
                     <p class="card-text">Bahubali ne Kattappa ko kyu Maara... Jaanne ke Liye Idhar Aaaye :D</p>
-                    <a href="bollywood.html" class="btn btn-primary">Travel</a>
+                    <a href="bollywood.html" class="btn btn-success">Travel</a>
                 </div>
             </div>
             <!-- <p style="font-size: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p> -->
@@ -234,12 +243,29 @@
                 <div class="card-body">
                     <h5 class="card-title">Go to WatchLater List</h5>
                     <p class="card-text">Travel back to the Movies you Loved and Liked</p>
-                    <a href="watchlist.html" class="btn btn-primary">Travel</a>
+                    <a href="watchlist.html" class="btn btn-success">Travel</a>
                 </div>
             </div>
 
 
         </div>
+
+        <hr>
+
+        <div class="chat" style="display: flex; align-items: flex-end; flex-direction: column;">
+            <p style="padding-right: 30px; font-size: 25px;">STILL PROBLEM NOT RESOLVED?</p>
+            <p style="padding-right: 30px; font-size: 20px;">Chat With Us</p>
+            <div class="card" style="width: 300px; margin-right: 30px;">
+                <img src="images/bot2.jpeg" class="card-img-top" alt="..." height="100px" width="100px">
+
+                <div class="card-body">
+                    <h5 class="card-title">ASK YOUR DOUBTS HERE</h5>
+                    <p class="card-text">OUR OWN AI BOT, SHERO, ready to help you!</p>
+                    <a class="btn btn-chat btn-success">Chat Now</a>
+                </div>
+            </div>
+        </div>
+        <br><br>
 
 
 
@@ -261,7 +287,29 @@
         crossorigin="anonymous"></script>
 
 
+    <script>
 
+
+var lastScrollTop = 0;
+            navbar = document.querySelector(".navbar");
+            window.addEventListener("scroll", () => {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop)
+                    navbar.style.top = "-90px";
+                else
+                    navbar.style.top = "0 "
+                lastScrollTop = scrollTop
+            })
+
+        document.querySelector(".btn-chat").addEventListener('click', () => {
+            // const div1 = document.createElement('div')
+            // let p = prompt("HEY I AM SHEERO, HOW MAY I HELP YOU? (if you don't need my help, press 0)")
+            // while(p!==0)
+            //     p = prompt("HEY I AM SHEERO, HOW MAY I HELP YOU? (if you don't need my help, press 0)")
+            // div1.style.position='absolute'
+            // document.body.append('div1');
+        })
+    </script>
 
     <script type="module">
 
