@@ -85,7 +85,7 @@
                         <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
                                 style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
                         <div class="dropdown-content">
-                            <a href="#">Help</a>
+                            <a href="help.html">Help</a>
                             <button type="button"
                                 style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
                                 id="signout-btn">Signout</button>
@@ -99,7 +99,7 @@
     </nav>
 
     <div class="main-container" style="font-family: sans-serif; padding: 10vh 18vw; position: relative;">
-        
+
         <h2 class="setthd" style="margin: 28px 0 10px 19px; "><b><i class="fa-solid fa-gear sett"
                     style="padding-right: 8px;"></i>Account & Settings</b> </h2>
         <br>
@@ -169,6 +169,12 @@
                             <input type="checkbox">
                             <span class="slider round"></span>
                         </label></span>
+
+                    <span>Clear WatchLater List?</span>
+                    <span>
+                        <button id="clearWL" style="padding: 1px 8px; border-radius: 8px;">Clear</button><div class="alert alert-success success clearSuccess" role="alert" style="display: none;">
+                            Cleared Successfully
+                        </div></span>
 
 
 
@@ -270,12 +276,24 @@
 
 
         })
+
+
+        document.getElementById("clearWL").addEventListener('click',()=>{
+            sessionStorage.removeItem('watchLater')
+            document.querySelector(".clearSuccess").style.display = 'block'
+            document.querySelector("#clearWL").style.backgroundColor = 'gray'
+            setTimeout(() => {
+                document.querySelector(".clearSuccess").style.display = 'none'
+                document.querySelector("#clearWL").style.backgroundColor = 'white'
+
+            }, 4000);
+        })
     </script>
     <script src="https://kit.fontawesome.com/16b9760f00.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
 
 
 

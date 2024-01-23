@@ -116,9 +116,9 @@
                         <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
                                 style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
                         <div class="dropdown-content">
-                            <a href="account_settings.html">Account Settings</a>
+                            <a id="accsett" >Account Settings</a>
                             <a href="watchlist.html">Your WatchLater</a>
-                            <a href="#">Help</a>
+                            <a href="help.html">Help</a>
                             <button type="button"
                                 style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
                                 id="signout-btn">Signout</button>
@@ -854,6 +854,22 @@
                 else
                     navbar.style.top = "0 "
                 lastScrollTop = scrollTop
+            })
+            document.getElementById('accsett').style.cursor='pointer'
+
+            document.getElementById('accsett').addEventListener('click',()=>{
+
+                document.body.style.backgroundColor = 'black'
+                document.body.style.position= 'relative'
+                const load = document.createElement('div');
+                load.innerHTML = '<i class="fa-solid fa-gear" style="font-size:80px; margin:auto; color:white;opacity:1; position:absolute; top:50vh; left:50vw"></i>'
+                document.body.style.opacity = '0.5'
+                
+                
+                document.body.appendChild(load)
+                setTimeout(() => {
+                    window.location.href = 'account_settings.html'
+                }, 500); 
             })
 
 

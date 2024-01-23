@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Having Any Issues? - MOVIE FINDER</title>
+    <link rel="shortcut icon" href="images/logo.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Sen:wght@400;500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="help.css">
+    <script src="https://kit.fontawesome.com/16b9760f00.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="movies.css">
+
+
+
+
+</head>
+
+<body>
+
+
+    <div class="signout-out">
+        <div class="signout-win">
+            <div style="background-color: yellowgreen; margin: 0; padding: 0; height: 5vh; text-align: center;">
+                <p style="padding-top: 1vh; color: black;">Signout Window</p><button type="button"
+                    class="btn-close signout-close" aria-label="Close"></button>
+            </div>
+            <p style="padding: 20px;">Are you sure you want to signout?</p>
+            <button type="button" class="signout-yes signout-btns">Sign Out</button><button type="button"
+                class="cancel signout-btns">Cancel</button>
+        </div>
+    </div>
+    <!-- <div>BollywoodHollywoodTollywood</div> -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="position: fixed; z-index: 999; width: 100%;" ;>
+
+        <div class="container-fluid">
+            <a class="navbar-brand" href="movies.html">
+                <span><img src="images/logo.png" alt="Logo" width="50" height="50"
+                        class="d-inline-block align-text-top mflogo"></span>
+                <span>
+                    <p><b>Movie Finder</b></p>
+                </span>
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active nav-up" aria-current="page" href="movies.html"
+                            style="background-color: yellowgreen; border-radius: 10px;">Home </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link nav-up" href="many.html">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-up" href="tv_series.html" style="width: 90px;">TV Series</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-up watchListNav" href="watchlist.html" style="width: 90px;">WatchList</a>
+                    </li>
+                </ul>
+
+
+            </div>
+            <div class="profile">
+                <span style="display: flex;"><img id="prof-img" src="images/user.png" alt="" height="38px" width="38px"
+                        style="border-radius: 50%; margin-top: 5px;">
+                    <p style="padding: 6px 0 0 6px;">
+                    <div class="dropdown" style="margin-right: 20px;">
+                        <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
+                                style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
+                        <div class="dropdown-content">
+                            <a id="accsett">Account Settings</a>
+                            <a href="watchlist.html">Your WatchLater</a>
+                            <a href="#">Help</a>
+                            <button type="button"
+                                style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
+                                id="signout-btn">Signout</button>
+
+                        </div>
+                    </div>
+                    </p>
+                </span>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+    <div class="main-container" style="font-family: sans-serif;">
+
+
+
+
+
+
+
+
+
+        <div class="accordion accordion-flush" id="accordionFlushExample" style="padding: 30px; margin-top: 30px;">
+            <p style="padding: 10px 0; font-size: 20px;"><b>FREQUENTLY ASKED QUESTIONS</b></p>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <i class="fa-solid fa-circle-question" style="padding-right: 10px;"></i>I have forgotten my
+                        password. What should I do?
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">If you have forgotten your password, kindly click on forgot password at
+                        login page. We will send an email to reset your password.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        <i class="fa-solid fa-circle-question" style="padding-right: 10px;"></i>I am being shown X rated
+                        movies, which I don't want on my feed. How to prevent these?
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Our algorithm shows all types of movies by default. But if you want
+                        X-rated movies not to be shown, then move to <a href="account_settings.html">Account
+                            Settings</a> page, and select the option of age to be less than 18 years old. After that, we
+                        won't show such content on the feed.</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        <i class="fa-solid fa-circle-question" style="padding-right: 10px;"></i>Autoplay feature is not
+                        working. What to do?
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">We have provided the option to turn on autoplay. Do check it out on
+                        account settings page. If you still have any issues, feel free to contact us!</div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <button class="btn btn-success" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions"
+            style="margin: 30px;">Know More About Us</button>
+
+        <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">ABOUT US !</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <img src="images/logo.png" alt="" height="200px" style="text-align: center;">
+                <p><b>MOVIE FINDER</b></p>
+                <ul>
+                    <li>A website to know information about movies and tv series, whether it is newly launched, or
+                        vintage generation.</li>
+                    <li>Gives full access to users to control how their website shall work.</li>
+                </ul>
+
+                <h6>ABOUT THE CODER BEHIND THIS WEBSITE:</h6>
+                <img src="images/ayush.jpeg" alt="" height="100px" style="padding-left: 30px;">
+                <br>
+                <ul>
+                    <li>Ayush Raj Baranwal</li>
+                    <li><a href=""><i class="fa-brands fa-github"></i></a> <a
+                            href="https://www.linkedin.com/in/ayush-raj-baranwal-03b187282/"><i
+                                class="fa-brands fa-linkedin"></i></a></li>
+                    <li>Pursuing Bachelor of Technology in Electronics and Communications Engineering.</li>
+                    <li>Loves to Code & Animate.</li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+        <p style="font-size: 30px; padding-left: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p>
+        <div class="destination" style="padding-left: 30px; padding-bottom: 50px; display: flex; gap: 100px; flex-wrap: wrap;">
+            <div class="card" style="width: 300px">
+                <img src="images/movies.jpeg" class="card-img-top" alt="..." height="100px" width="100px">
+
+                <div class="card-body">
+                    <h5 class="card-title">Go to Movies Section</h5>
+                    <p class="card-text">Travel to the World of Movies!</p>
+                    <a href="movies.html" class="btn btn-primary">Travel</a>
+                </div>
+            </div>
+            <!-- <p style="font-size: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p> -->
+            <div class="card" style="width: 300px">
+                <img src="images/movies.jpeg" class="card-img-top" alt="..." height="100px" width="100px">
+
+                <div class="card-body">
+                    <h5 class="card-title">Go to TV Series Section</h5>
+                    <p class="card-text">Who says TV series is only about Saas Bahu? ;D</p>
+                    <a href="tv_series.html" class="btn btn-primary">Travel</a>
+                </div>
+            </div>
+            <!-- <p style="font-size: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p> -->
+            <div class="card" style="width: 300px">
+                <img src="images/movies.jpeg" class="card-img-top" alt="..." height="100px" width="100px">
+
+                <div class="card-body">
+                    <h5 class="card-title">Go to Bollywood Section</h5>
+                    <p class="card-text">Bahubali ne Kattappa ko kyu Maara... Jaanne ke Liye Idhar Aaaye :D</p>
+                    <a href="bollywood.html" class="btn btn-primary">Travel</a>
+                </div>
+            </div>
+            <!-- <p style="font-size: 30px;"><b>TRAVEL TO DIFFERENT PAGES !</b></p> -->
+            <div class="card" style="width: 300px">
+                <img src="images/movies.jpeg" class="card-img-top" alt="..." height="100px" width="100px">
+
+                <div class="card-body">
+                    <h5 class="card-title">Go to WatchLater List</h5>
+                    <p class="card-text">Travel back to the Movies you Loved and Liked</p>
+                    <a href="watchlist.html" class="btn btn-primary">Travel</a>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+    <!-- //BOOTSTRAP DATA -->
+
+
+
+    <footer style="height: 80px;">
+        <p>Movie Finder &copy Copyright 2023</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+
+
+    <script type="module">
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+        import { getAuth, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup, getRedirectResult } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDDk08AeWmX9bD-M2TolwaxsCFXJ8iAz_o",
+            authDomain: "onestop-9cf30.firebaseapp.com",
+            projectId: "onestop-9cf30",
+            storageBucket: "onestop-9cf30.appspot.com",
+            messagingSenderId: "122554524092",
+            appId: "1:122554524092:web:51d369e706c59815510bb9"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+
+        let signoutBtn1 = document.getElementById("signout-btn")
+        console.log(signoutBtn1)
+        console.log(signoutBtn)
+
+        signoutBtn1.addEventListener('click', () => {
+
+            console.log(sessionStorage.getItem("watchLater"))
+            if (sessionStorage.getItem("watchLater")) {
+                // console.log(sessionStorage.getItem("watchLater"))
+                var g = (sessionStorage.getItem("watchLater")).split(',')
+                set(ref(db, 'WatchLater/' + UserCreds.uid), {
+                    watchLater: g
+
+                })
+            }
+            document.querySelector(".signout-out").style.display = "flex"
+            document.querySelector(".main-container").style.opacity = "0.5"
+            document.querySelector(".signout-close").addEventListener('click', () => {
+                window.location.href = 'movies.html'
+            })
+            document.querySelector(".cancel").addEventListener('click', () => {
+                window.location.href = 'movies.html'
+            })
+            document.querySelector(".signout-yes").addEventListener('click', signout)
+            // sessionStorage.clear()
+
+
+        })
+        document.querySelector('.signout-yes').addEventListener('click', () => {
+
+            console.log(sessionStorage.getItem("watchLater"))
+            if (sessionStorage.getItem("watchLater")) {
+                // console.log(sessionStorage.getItem("watchLater"))
+                var g = (sessionStorage.getItem("watchLater")).split(',')
+                set(ref(db, 'WatchLater/' + UserCreds.uid), {
+                    watchLater: g
+
+                })
+            }
+            document.querySelector(".signout-out").style.display = "flex"
+            document.querySelector(".main-container").style.opacity = "0.5"
+            document.querySelector(".signout-close").addEventListener('click', () => {
+                window.location.href = 'movies.html'
+            })
+            document.querySelector(".cancel").addEventListener('click', () => {
+                window.location.href = 'movies.html'
+            })
+            document.querySelector(".signout-yes").addEventListener('click', signout)
+            sessionStorage.clear()
+
+
+        })
+
+
+
+    </script>
+
+    <script>
+
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"))
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"))
+
+
+        let userN = document.getElementById("usernm")
+        // let userNtop = document.getElementById("user-nm-top")
+        userN.innerText = UserInfo.name
+        // userNtop.innerText = UserInfo.name
+        let signoutBtn = document.getElementById("signout-btn")
+
+
+
+        let signout = () => {
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = "login.html"
+        }
+
+        let CheckCred = () => {
+            if (!sessionStorage.getItem("user-creds"))
+                window.location.href = 'login.html'
+            else
+                userN.innerText = UserInfo.name;
+        }
+        window.addEventListener('load', CheckCred)
+
+
+        document.querySelector(".cancel").addEventListener('click', () => {
+            window.location.href = 'help.html';
+        })
+
+
+
+        document.getElementById('accsett').style.cursor = 'pointer'
+
+        document.getElementById('accsett').addEventListener('click', () => {
+            console.log("hi")
+
+            document.body.style.backgroundColor = 'black'
+            document.body.style.position = 'relative'
+            const load = document.createElement('div');
+            load.innerHTML = '<i class="fa-solid fa-gear" style="font-size:80px; margin:auto; color:yellowgreen;opacity:1; position:absolute; top:50vh; left:50vw"></i>'
+            document.body.style.opacity = '0.5'
+
+
+            document.body.appendChild(load)
+            setTimeout(() => {
+                window.location.href = 'account_settings.html'
+            }, 500);
+        })
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>
