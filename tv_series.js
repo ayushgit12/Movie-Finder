@@ -54,21 +54,21 @@ function getTVwl(url) {
 
 
 
-        if (watchLaterLs.has(data.results[0].name)) {
+        if (watchLaterLsTV.has(data.results[0].name)) {
             // console.log(data.results[0].id)    
             document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
             document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'yellowgreen'
-            watchLaterLs.delete(data.results[0].name)
+            watchLaterLsTV.delete(data.results[0].name)
 
         }
         else {
             document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
             document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'white'
             // document.querySelector(".watchLaterdesc").style.display="block"
-            watchLaterLs.add(data.results[0].name)
+            watchLaterLsTV.add(data.results[0].name)
         }
-        const c = Array.from(watchLaterLs).join(',')
-        sessionStorage.setItem("watchLater", (c))
+        const c = Array.from(watchLaterLsTV).join(',')
+        sessionStorage.setItem("watchLaterTV", (c))
         console.log(c)
     })
 }
@@ -77,12 +77,12 @@ function getTVwl(url) {
 
 
 let s = []
-let watchLaterLs = new Set()
-if (sessionStorage.getItem("watchLater")) {
-    console.log(sessionStorage.getItem("watchLater"))
-    s = sessionStorage.getItem("watchLater").split(',')
+let watchLaterLsTV = new Set()
+if (sessionStorage.getItem("watchLaterTV")) {
+    console.log(sessionStorage.getItem("watchLaterTV"))
+    s = sessionStorage.getItem("watchLaterTV").split(',')
     s.forEach(s1 => {
-        watchLaterLs.add(s1)
+        watchLaterLsTV.add(s1)
     })
 }
 
@@ -99,7 +99,7 @@ function showMovies(data) {
         movieEl.classList.add('movie-list-item')
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
@@ -124,7 +124,7 @@ function showMovies(data) {
                                                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                                                     `
             // document.querySelector(".watchLaterdesc").style.display="block"
-            // watchLaterLs.add(data.results[0].title)
+            // watchLaterLsTV.add(data.results[0].title)
         }
 
         main[0].appendChild(movieEl)
@@ -136,8 +136,8 @@ function showMovies(data) {
 
         document.getElementById(`2${id}`).addEventListener('click', () => {
             console.log(name);
-            // watchLaterLs.add(title)
-            // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+            // watchLaterLsTV.add(title)
+            // sessionStorage.setItem("WatchLater",(watchLaterLsTV))  
             getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
 
 
@@ -291,7 +291,7 @@ function showTV(data) {
         movieEl.classList.add('movie-list-item')
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
@@ -316,7 +316,7 @@ function showTV(data) {
                                                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                                                     `
             // document.querySelector(".watchLaterdesc").style.display="block"
-            // watchLaterLs.add(data.results[0].title)
+            // watchLaterLsTV.add(data.results[0].title)
         }
 
         main[1].appendChild(movieEl)
@@ -328,8 +328,8 @@ function showTV(data) {
 
         document.getElementById(`2${id}`).addEventListener('click', () => {
             console.log(name);
-            // watchLaterLs.add(title)
-            // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+            // watchLaterLsTV.add(title)
+            // sessionStorage.setItem("WatchLater",(watchLaterLsTV))  
             getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
 
 
@@ -360,7 +360,7 @@ function showMovies3(data) {
         movieEl.classList.add('movie-list-item')
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
@@ -385,7 +385,7 @@ function showMovies3(data) {
                                                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                                                     `
             // document.querySelector(".watchLaterdesc").style.display="block"
-            // watchLaterLs.add(data.results[0].title)
+            // watchLaterLsTV.add(data.results[0].title)
         }
 
         main[2].appendChild(movieEl)
@@ -397,8 +397,8 @@ function showMovies3(data) {
 
         document.getElementById(`2${id}`).addEventListener('click', () => {
             console.log(name);
-            // watchLaterLs.add(title)
-            // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+            // watchLaterLsTV.add(title)
+            // sessionStorage.setItem("WatchLater",(watchLaterLsTV))  
             getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
 
 
@@ -430,7 +430,7 @@ function showTV2(data) {
         movieEl.classList.add('movie-list-item')
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
@@ -455,7 +455,7 @@ function showTV2(data) {
                                                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                                                     `
             // document.querySelector(".watchLaterdesc").style.display="block"
-            // watchLaterLs.add(data.results[0].title)
+            // watchLaterLsTV.add(data.results[0].title)
         }
 
         main[3].appendChild(movieEl)
@@ -467,8 +467,8 @@ function showTV2(data) {
 
         document.getElementById(`2${id}`).addEventListener('click', () => {
             console.log(name);
-            // watchLaterLs.add(title)
-            // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+            // watchLaterLsTV.add(title)
+            // sessionStorage.setItem("WatchLater",(watchLaterLsTV))  
             getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
 
 
@@ -496,12 +496,12 @@ function showMovies4(data) {
 
 
     data.forEach(movie => {
-        const { title, poster_path, backdrop_path, vote_average, overview, id } = movie
+        const { name, poster_path, backdrop_path, vote_average, overview, id } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
@@ -526,7 +526,7 @@ function showMovies4(data) {
                                                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                                                     `
             // document.querySelector(".watchLaterdesc").style.display="block"
-            // watchLaterLs.add(data.results[0].title)
+            // watchLaterLsTV.add(data.results[0].title)
         }
 
         main[4].appendChild(movieEl)
@@ -538,8 +538,8 @@ function showMovies4(data) {
 
         document.getElementById(`2${id}`).addEventListener('click', () => {
             console.log(name);
-            // watchLaterLs.add(title)
-            // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+            // watchLaterLsTV.add(title)
+            // sessionStorage.setItem("WatchLater",(watchLaterLsTV))  
             getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
 
 
@@ -592,12 +592,12 @@ load.addEventListener('click', () => {
 
 
         data.forEach(movie => {
-            const { title, poster_path, backdrop_path, vote_average, overview, id } = movie
+            const { name, poster_path, backdrop_path, vote_average, overview, id } = movie
             const movieEl = document.createElement('div')
             movieEl.classList.add('movie-list-item')
 
 
-            if (watchLaterLs.has(name)) {
+            if (watchLaterLsTV.has(name)) {
                 // console.log(title)
                 // console.log(data.results[0].id)
                 movieEl.innerHTML = `
@@ -622,7 +622,7 @@ load.addEventListener('click', () => {
                                                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                                                     `
                 // document.querySelector(".watchLaterdesc").style.display="block"
-                // watchLaterLs.add(data.results[0].title)
+                // watchLaterLsTV.add(data.results[0].title)
             }
 
             main[5].appendChild(movieEl)
@@ -634,8 +634,8 @@ load.addEventListener('click', () => {
 
             document.getElementById(`2${id}`).addEventListener('click', () => {
                 // console.log(name);
-                // watchLaterLs.add(title)
-                // sessionStorage.setItem("WatchLater",(watchLaterLs))  
+                // watchLaterLsTV.add(title)
+                // sessionStorage.setItem("WatchLater",(watchLaterLsTV))  
                 getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
 
 

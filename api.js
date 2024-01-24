@@ -154,6 +154,15 @@ if (sessionStorage.getItem("watchLater")) {
         watchLaterLs.add(s1)
     })
 }
+let sTV = []
+let watchLaterLsTV = new Set()
+if (sessionStorage.getItem("watchLaterTV")) {
+    console.log(sessionStorage.getItem("watchLaterTV"))
+    sTV = sessionStorage.getItem("watchLaterTV").split(',')
+    sTV.forEach(s1 => {
+        watchLaterLsTV.add(s1)
+    })
+}
 
 
 
@@ -193,7 +202,6 @@ document.querySelector(".watchListNav").addEventListener('click', () => {
 })
 
 
-console.log(watchLaterLs)
 
 
 function showMovies(data) {
@@ -261,6 +269,12 @@ function showMovies(data) {
             openNav(movie)
             // window.location.href = 'info.html'
         })
+
+        document.querySelector('.movie-list-item-button').addEventListener('click', () => {
+            
+            window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ.com'
+        })
+        
 
         // document.querySelector(".descWL").addEventListener('click',()=>{
         //     
@@ -1036,21 +1050,21 @@ function getTVwl(url) {
 
 
 
-        if (watchLaterLs.has(data.results[0].name)) {
+        if (watchLaterLsTV.has(data.results[0].name)) {
             // console.log(data.results[0].id)    
             document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
             document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'yellowgreen'
-            watchLaterLs.delete(data.results[0].name)
+            watchLaterLsTV.delete(data.results[0].name)
 
         }
         else {
             document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
             document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'white'
             // document.querySelector(".watchLaterdesc").style.display="block"
-            watchLaterLs.add(data.results[0].name)
+            watchLaterLsTV.add(data.results[0].name)
         }
-        const c = Array.from(watchLaterLs).join(',')
-        sessionStorage.setItem("watchLater", (c))
+        const c = Array.from(watchLaterLsTV).join(',')
+        sessionStorage.setItem("watchLaterTV", (c))
         console.log(c)
     })
 }
@@ -1068,7 +1082,7 @@ function showTV(data) {
 
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
@@ -1218,7 +1232,7 @@ function showTV2(data) {
 
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `

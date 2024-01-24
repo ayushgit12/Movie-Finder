@@ -25,7 +25,9 @@ function getColor(vote) {
 
 
 let s = []
+let sTV = []
 let watchLaterLs = new Set()
+let watchLaterLsTV = new Set()
 if (sessionStorage.getItem("watchLater")) {
     console.log(sessionStorage.getItem("watchLater"))
     s = sessionStorage.getItem("watchLater").split(',')
@@ -33,31 +35,71 @@ if (sessionStorage.getItem("watchLater")) {
         watchLaterLs.add(s1)
     })
 }
+if (sessionStorage.getItem("watchLaterTV")) {
+    console.log(sessionStorage.getItem("watchLaterTV"))
+    sTV = sessionStorage.getItem("watchLaterTV").split(',')
+    sTV.forEach(s1 => {
+        watchLaterLsTV.add(s1)
+    })
+}
+
 
 
 
 const g = sessionStorage.getItem("watchLater")
+const gTV = sessionStorage.getItem("watchLaterTV")
+
+console.log(g)
+console.log(gTV)
 
 
-if (!g) {
+if (!g && !gTV) {
     const movieEl = document.createElement('div')
-    movieEl.innerText = 'NO MOVIES RIGHT NOW! ADD MOVIES TO WATCH LATER LIST TO SEE THEM HERE'
+    movieEl.style.fontFamily = 'Roboto'
+    movieEl.style.backgroundColor='yellowgreen'
+    movieEl.style.border='2px solid black'
+    movieEl.style.padding='40px 20px'
+    movieEl.style.borderRadius='8px'
+    movieEl.innerHTML+='<i class="fa-solid fa-circle-exclamation" style="font-size:150px"></i><br><br>'
+    movieEl.innerHTML += 'NO MOVIES RIGHT NOW! ADD MOVIES TO WATCH LATER LIST TO SEE THEM HERE'
     movieEl.style.width = '60vw'
-    movieEl.style.fontSize = '40px'
+    movieEl.style.fontSize = '30px'
     movieEl.style.margin = 'auto'
     movieEl.style.textAlign = 'center'
     // movieEl.style.width = '60vw'
 
     document.querySelector(".main-container").appendChild(movieEl)
 }
-else {
-    // document.querySelector(".main-container") = ''
 
+if (gTV) {
+    const g1TV = gTV.split(',')
+    sessionStorage.setItem("watchLaterTV", gTV)
+    let x = "";
+
+    
+    g1TV.forEach(movie => {
+        const searchTerm = movie
+        x = searchTerm
+        // console.log(searchTerm)
+
+
+        // document.querySelector('.titletop').innerHTML = 'Search Results for "' + searchTerm + '"';
+
+
+        if (searchTerm) {
+            getTV('https://api.themoviedb.org/3/search/tv?' + '&query=' + searchTerm + '&' + API_KEY)
+            // console.log(getMovies(searchURL+'&query='+searchTerm))
+        }
+    })
+
+
+}
+if (g) {
     const g1 = g.split(',')
-    console.log(g1);
     sessionStorage.setItem("watchLater", g)
     let x = "";
 
+    
     g1.forEach(movie => {
         const searchTerm = movie
         x = searchTerm
@@ -72,6 +114,13 @@ else {
             // console.log(getMovies(searchURL+'&query='+searchTerm))
         }
     })
+
+
+}
+
+
+
+
 
     function getMovies(url) {
         fetch(url).then(res => res.json()).then(data => {
@@ -94,21 +143,18 @@ else {
 
                 // }
             }
-            else {
-                getTV('https://api.themoviedb.org/3/search/tv?' + '&query=' + x + '&' + API_KEY)
 
-                function getTV(url) {
-                    fetch(url).then(res => res.json()).then(data => {
-                        // console.log(data.results);
-                        showTV(data.results[0]);
-                    })
-                }
-            }
+        })
+    }
+    function getTV(url) {
+        fetch(url).then(res => res.json()).then(data => {
+            // console.log(data.results);
+            showTV(data.results[0]);
         })
     }
 
 
-console.log(watchLaterLs)
+    // console.log(watchLaterLs)
 
     function showTV(movie) {
 
@@ -125,12 +171,12 @@ console.log(watchLaterLs)
         cont.style.flexWrap = 'wrap'
 
 
-        if (watchLaterLs.has(name)) {
+        if (watchLaterLsTV.has(name)) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
     <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                        <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
+                        <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average * 10)) / 10}</span>
                         <button class="movie-list-item-button">WATCH</button>
                         <button class="know-more" id=${id}>Know More</button>
                         <span class="watchLaterdesc">Add to Watch Later</span>
@@ -143,7 +189,7 @@ console.log(watchLaterLs)
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
     <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                        <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
+                        <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average * 10)) / 10}</span>
                         <button class="movie-list-item-button">WATCH</button>
                         <button class="know-more" id=${id}>Know More</button>
                         <span class="watchLaterdesc">Add to Watch Later</span>
@@ -162,7 +208,7 @@ console.log(watchLaterLs)
 
         document.getElementById(`2${id}`).addEventListener('click', () => {
             console.log(name);
-            getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' +API_KEY)
+            getTVwl('https://api.themoviedb.org/3/search/tv?' + '&query=' + name + '&' + API_KEY)
 
 
         }
@@ -196,7 +242,7 @@ console.log(watchLaterLs)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
     <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                        <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
+                        <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average * 10)) / 10}</span>
                         <button class="movie-list-item-button">WATCH</button>
                         <button class="know-more" id=${id}>Know More</button>
                         <span class="watchLaterdesc">Add to Watch Later</span>
@@ -209,7 +255,7 @@ console.log(watchLaterLs)
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
     <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                        <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
+                        <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average * 10)) / 10}</span>
                         <button class="movie-list-item-button">WATCH</button>
                         <button class="know-more" id=${id}>Know More</button>
                         <span class="watchLaterdesc">Add to Watch Later</span>
@@ -248,31 +294,31 @@ console.log(watchLaterLs)
 
 
 
-function getTVwl(url) {
-    fetch(url).then(res => res.json()).then(data => {
-        console.log(data);
+    function getTVwl(url) {
+        fetch(url).then(res => res.json()).then(data => {
+            console.log(data);
 
 
 
-        if (watchLaterLs.has(data.results[0].name)) {
-            // console.log(data.results[0].id)    
-            document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
-            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'yellowgreen'
-            watchLaterLs.delete(data.results[0].name)
+            if (watchLaterLsTV.has(data.results[0].name)) {
+                // console.log(data.results[0].id)    
+                document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-plus watchL"></i>`
+                document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'yellowgreen'
+                watchLaterLsTV.delete(data.results[0].name)
 
-        }
-        else {
-            document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'white'
-            // document.querySelector(".watchLaterdesc").style.display="block"
-            watchLaterLs.add(data.results[0].name)
-        }
-        const c = Array.from(watchLaterLs).join(',')
-        sessionStorage.setItem("watchLater", (c))
-        console.log(c)
-    })
-    window.location = 'watchlist.html'
-}
+            }
+            else {
+                document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
+                document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'white'
+                // document.querySelector(".watchLaterdesc").style.display="block"
+                watchLaterLsTV.add(data.results[0].name)
+            }
+            const c = Array.from(watchLaterLsTV).join(',')
+            sessionStorage.setItem("watchLaterTV", (c))
+            console.log(c)
+        })
+        window.location = 'watchlist.html'
+    }
 
 
 
@@ -448,7 +494,7 @@ function getTVwl(url) {
     const cast1TV = 'https://api.themoviedb.org/3/tv/'
     const cast2TV = '/credits?&' + API_KEY
     function openNavTV(movie) {
-    let id = movie.id
+        let id = movie.id
 
 
 
@@ -535,7 +581,7 @@ function getTVwl(url) {
             })
         })
     }
-}
+
 
 
 

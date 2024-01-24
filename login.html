@@ -192,6 +192,16 @@
                         else
                             sessionStorage.setItem("watchLater","")
                     })
+                    get(child(dbref, 'WatchLaterTV/' + credentials.user.uid)).then((snapshot) => {
+                        if (snapshot.exists) {
+                            // console.log(JSON.stringify(snapshot.val().watchLater))
+                            console.log((snapshot.val().watchLaterTV).join(','))
+                            sessionStorage.setItem("watchLaterTV",(snapshot.val().watchLaterTV).join(','))
+                            
+                        }
+                        else
+                            sessionStorage.setItem("watchLaterTV","")
+                    })
 
 
 

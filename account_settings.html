@@ -290,6 +290,7 @@
 
         document.getElementById("clearWL").addEventListener('click',()=>{
             sessionStorage.removeItem('watchLater')
+            sessionStorage.removeItem('watchLaterTV')
             document.querySelector(".clearSuccess").style.display = 'block'
             document.querySelector("#clearWL").style.backgroundColor = 'gray'
             setTimeout(() => {

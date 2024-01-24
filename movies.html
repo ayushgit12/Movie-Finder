@@ -753,6 +753,14 @@
 
                     })
                 }
+                if (sessionStorage.getItem("watchLaterTV")) {
+                    // console.log(sessionStorage.getItem("watchLater"))
+                    var g = (sessionStorage.getItem("watchLaterTV")).split(',')
+                    set(ref(db, 'WatchLaterTV/' + UserCreds.uid), {
+                        watchLaterTV: g
+
+                    })
+                }
                 document.querySelector(".signout-out").style.display = "flex"
                 document.querySelector(".main-container").style.opacity = "0.5"
                 document.querySelector(".signout-close").addEventListener('click', () => {
@@ -774,6 +782,15 @@
                     var g = (sessionStorage.getItem("watchLater")).split(',')
                     set(ref(db, 'WatchLater/' + UserCreds.uid), {
                         watchLater: g
+
+                    })
+                }
+                console.log(sessionStorage.getItem("watchLaterTV"))
+                if (sessionStorage.getItem("watchLaterTV")) {
+                    // console.log(sessionStorage.getItem("watchLater"))
+                    var g = (sessionStorage.getItem("watchLaterTV")).split(',')
+                    set(ref(db, 'WatchLaterTV/' + UserCreds.uid), {
+                        watchLaterTV: g
 
                     })
                 }
