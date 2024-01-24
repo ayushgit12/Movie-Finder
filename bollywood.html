@@ -20,18 +20,6 @@
     .dropdown-prof{
         margin-right: 50px;
     }
-    @media only screen and (max-width:650px){
-            .gate{
-                height: 250px;
-            }
-            
-        }
-        @media only screen and (max-width:400px){
-            .gate{
-                height: 150px;
-            }
-            
-        }
 </style>
 
 <body>
@@ -60,7 +48,7 @@
 
         <div class="container-fluid">
             <a class="navbar-brand" href="movies.html">
-                <span id="logoMF"><img src="images/logo.png" alt="Logo" width="50" height="50"
+                <span><img src="images/logo.png" alt="Logo" width="50" height="50"
                         class="d-inline-block align-text-top mflogo"></span>
                 <span>
                     <p><b>Movie Finder</b></p>
@@ -74,7 +62,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active activenav nav-up" aria-current="page" href="movies.html"
+                        <a class="nav-link active nav-up" aria-current="page" href="movies.html"
                             style="background-color: yellowgreen; border-radius: 10px;">Home </a>
                     </li>
                     <li class="nav-item">
@@ -113,7 +101,7 @@
                 </form>
             </div>
             <div class="profile">
-                <span style="display: flex;" id="prof-img-span"><img id="prof-img" src="images/user.png" alt="" height="38px" width="38px"
+                <span style="display: flex;"><img id="prof-img" src="images/user.png" alt="" height="38px" width="38px"
                         style="border-radius: 50%; margin-top: 5px;">
                     <p style="padding: 6px 0 0 6px;">
                     <div class="dropdown dropdown-prof">
@@ -155,41 +143,13 @@
 
 
     <div class="main-container" style="font-family: sans-serif;">
-        <div style="display: flex; justify-content: space-between;">
-            <h2 id="greet" class="greet" style="padding:20px; text-shadow: 12px 7px 7px rgb(7, 7, 7);"><b>Welcome, <span
-                        id="user-nm-top" style="font-size: 40px ;color: white;">Username </span>!</b></h2>
-            <button class="btn" id="changeTheme" type="button" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"
-                style="height: 60px; margin-top: 60px; z-index: 999">Change Themes</button>
-
-            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
-                id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="background-color: bisque;">
-                <div class="offcanvas-header" style="background-color: brown;">
-                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel" style="color: white;">Change Color Of Theme
-                        According to Your Vibe</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <button type="button" class="btn btn-success" id="themeG"
-                        style="background-color: yellowgreen; color: black;">Green</button>
-                    <button type="button" class="btn btn-success" id="themeP"
-                        style="background-color: purple; color: white;">Purple</button>
-                    <button id="confirm">Apply Changes</button>
-
-                </div>
-            </div>
-        </div>
+        <h2 id="greet" class="greet" style="padding:20px; text-shadow: 12px 7px 7px rgb(7, 7, 7);"><b>Welcome, <span
+                    id="user-nm-top" style="font-size: 40px ;color: white;">Username </span>!</b></h2>
 
         <h2 class='toph' style="padding: 25px; "><b style="text-shadow: 12px 7px 7px rgb(7, 7, 7);">IN
             </b><span class="mf"><b>NEWS RIGHT NOW</b></span>... </h2>
         <div class="container1">
             <div id="carouselExampleAutoplaying" class="carousel slide top-slide" data-bs-ride="carousel">
-                <div id="strip1"
-                    style="background-color: yellowgreen; height: 30px; transform: rotate(-10deg); opacity: 0.6;">
-                </div>
-                <div id="strip2"
-                    style="background-color: green; height: 40px; transform: rotate(-10deg); opacity: 0.6;">
-                </div>
                 <div class="carousel-inner">
                     <div class=" carousel-item active promo-top">
                         <img src="images/promo15.jpeg" height="100%" class="d-block" width="80%" alt="..."
@@ -226,7 +186,7 @@
             </div>
 
             <div class="movie-list-container" style="padding-top: 20px;">
-                <div class="sep"></div><br>
+                <div style="background-color: yellowgreen; height: 5px; width: 10vw;"></div><br>
                 <h2 class="movie-list-title titletop"><b>NEW RELEASES </b></h2>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
@@ -315,12 +275,12 @@
                     <i class="fa-solid fa-chevron-right arrow"></i>
                 </div>
             </div>
-            <div class="sep"></div><br>
+            <div style="background-color: yellowgreen; height: 5px; width: 10vw;"></div><br>
             <h2 class="movie-list-title titletop"><b>GATE TO ENTER THE HOLLYWOOD WORLD <i class="fa-solid fa-circle-down"></i></b></h2>
-            <img src="images/hollywood.jpeg" class="gate" style="border-radius: 10px ;width: 100vw;height: 400px; padding: 0 20px; cursor: pointer;" alt="">
+            <img src="images/hollywood.jpeg" class="gate" style="border-radius: 10px ;width: 100vw; padding: 0 20px; cursor: pointer;" alt="">
 
             <div class="movie-list-container" style="padding-top: 20px;">
-                <div class="sep"></div><br>
+                <div style="background-color: yellowgreen; height: 5px; width: 10vw;"></div><br>
                 <h2 class="movie-list-title title2"><b style="text-shadow: 12px 7px 7px rgb(7, 7, 7);">POPULAR TV SERIES
                     </b></h2>
                 <div class="movie-list-wrapper">
@@ -412,7 +372,7 @@
             </div>
 
             <div class="promo-out">
-                <div class="sep"></div><br>
+                <div style="background-color: yellowgreen; height: 5px; width: 10vw;"></div><br>
                 <h2 style="margin-left: 20px; margin-bottom: 30px; text-shadow: 12px 7px 7px rgb(7, 7, 7);"><b>HOT RIGHT
                         NOW!</b></h2>
                 <div class="promo" style="display: flex; justify-content: center; cursor: pointer; position: relative;">
@@ -423,7 +383,7 @@
                 </div>
             </div>
             <div class="movie-list-container" style="padding-top: 20px;">
-                <div class="sep"></div><br>
+                <div style="background-color: yellowgreen; height: 5px; width: 10vw;"></div><br>
                 <h2 class="movie-list-title"><b style=" text-shadow: 12px 7px 7px rgb(7, 7, 7);">DON'T MISS OUT THESE!
                     </b></h2>
                 <div class="movie-list-wrapper">
@@ -515,7 +475,7 @@
             </div>
 
             <div class="movie-list-container" style="padding-top: 20px;">
-                <div class="sep"></div><br>
+                <div style="background-color: yellowgreen; height: 5px; width: 10vw;"></div><br>
                 <h2 class="movie-list-title"><b style=" text-shadow: 12px 7px 7px rgb(7, 7, 7);">TV SERIES TO LIGHTEN
                         YOUR MOOD! </b></h2>
                 <div class="movie-list-wrapper">
@@ -606,7 +566,7 @@
                 </div>
             </div>
             <div class="movie-list-container" style="padding-top: 20px;">
-                <div class="sep"></div><br>
+                <div style="background-color: yellowgreen; height: 5px; width: 10vw;"></div><br>
                 <h2 class="movie-list-title titletop"><b>DARAAVNI RAAT, BHOOTO KE SAATH ! </b></h2>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
@@ -696,7 +656,7 @@
                 </div>
             </div>
             <div style="display: flex; justify-content: center;">
-                <button class="btn" id="loadmore" type="button" disabled
+                <button class="btn btn-success" type="button" disabled
                     style="margin-top: 18.50px; margin-bottom: 50px;">
                     <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                     <span role="status">Loading More Content...</span>
@@ -832,181 +792,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
         <script>
-
-
-let themeGreen = document.getElementById('themeG')
-            let themePurple = document.getElementById('themeP')
-            // console.log(themeGreen)
-            // console.log(themePurple)
-            console.log(document.querySelector('.mf'))
-
-            themeGreen.addEventListener('click', () => {
-                themeGreen.style.backgroundColor = 'green'
-                themePurple.style.backgroundColor = 'purple'
-                sessionStorage.setItem('theme', 'green')
-                console.log('green')
-                document.getElementById('logoMF').innerHTML = `<img src="images/logo.png" alt="Logo" width="50" height="50"
-                        class="d-inline-block align-text-top mflogo">`
-                document.querySelector('.activenav').style.backgroundColor = 'yellowgreen'
-
-                document.getElementById('prof-img-span').innerHTML = `<img id="prof-img" src="images/user.png" alt="" height="38px" width="38px"
-                        style="border-radius: 50%; margin-top: 5px;">
-                    <p style="padding: 6px 0 0 6px;">
-                    <div class="dropdown-prof dropdown">
-                        <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
-                                style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
-                        <div class="dropdown-content">
-                            <a id="accsett" >Account Settings</a>
-                            <a href="watchlist.html">Your WatchLater</a>
-                            <a href="help.html">Help</a>
-                            <button type="button"
-                                style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
-                                id="signout-btn">Signout</button>
-
-                        </div>
-                    </div>
-                    </p>`
-
-                document.querySelector('.mf').style.background = 'linear-gradient(225deg, #016603 0%, #73e329 50%, #133000 100%);'
-                document.getElementById('strip1').style.backgroundColor = 'yellowgreen'
-                document.getElementById('strip2').style.backgroundColor = 'green'
-
-                document.querySelectorAll('.sep').forEach(sp => {
-                    sp.style.backgroundColor = 'yellowgreen'
-                })
-                document.getElementById('loadmore').style.backgroundColor='green'
-                document.querySelector('.know-more').style.backgroundColor = 'yellowgreen'
-            })
-
-
-
-
-            themePurple.addEventListener('click', () => {
-                themePurple.style.backgroundColor = 'rgb(90, 0, 90)'
-                themeGreen.style.backgroundColor = 'yellowgreen'
-                sessionStorage.setItem('theme', 'purple')
-                console.log('purple')
-                document.getElementById('logoMF').innerHTML = `<img src="images/logoP.png" alt="Logo" width="50" height="50"
-                            class="d-inline-block align-text-top mflogo">`
-                document.querySelector('.activenav').style.backgroundColor = 'purple'
-                document.querySelector('.activenav').style.color = 'white'
-
-                document.getElementById('prof-img-span').innerHTML = `<img id="prof-img" src="images/userP.webp" alt="" height="38px" width="38px"
-                        style="border-radius: 50%; margin-top: 5px;">
-                    <p style="padding: 6px 0 0 6px;">
-                    <div class="dropdown-prof dropdown">
-                        <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
-                                style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
-                        <div class="dropdown-content">
-                            <a id="accsett" >Account Settings</a>
-                            <a href="watchlist.html">Your WatchLater</a>
-                            <a href="help.html">Help</a>
-                            <button type="button"
-                                style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
-                                id="signout-btn">Signout</button>
-
-                        </div>
-                    </div>
-                    </p>`
-                document.querySelector('.mf').style.background = 'linear-gradient(225deg, #CBC3E3 0%, pink 50%, purple 100%);'
-                document.getElementById('strip1').style.backgroundColor = '#CBC3E3'
-                document.getElementById('strip2').style.backgroundColor = 'purple'
-                document.querySelectorAll('.sep').forEach(sp => {
-                    sp.style.backgroundColor = 'purple'
-                })
-                document.getElementById('loadmore').style.backgroundColor='purple'
-                document.querySelectorAll('.know-more').forEach(km=>{
-                    km.style.backgroundColor = 'purple'
-                    km.style.color='white'
-                })
-                
-
-            })
-
-
-            if (sessionStorage.getItem('theme')) {
-                if (sessionStorage.getItem('theme') == 'green') {
-                    document.getElementById('logoMF').innerHTML = `<img src="images/logo.png" alt="Logo" width="50" height="50"
-                        class="d-inline-block align-text-top mflogo">`
-                    document.querySelector('.activenav').style.backgroundColor = 'yellowgreen'
-                    document.querySelector('.activenav').style.color = 'black'
-                    document.getElementById('prof-img-span').innerHTML = `<img id="prof-img" src="images/user.png" alt="" height="38px" width="38px"
-                        style="border-radius: 50%; margin-top: 5px;">
-                    <p style="padding: 6px 0 0 6px;">
-                    <div class="dropdown-prof dropdown">
-                        <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
-                                style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
-                        <div class="dropdown-content">
-                            <a id="accsett" >Account Settings</a>
-                            <a href="watchlist.html">Your WatchLater</a>
-                            <a href="help.html">Help</a>
-                            <button type="button"
-                                style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
-                                id="signout-btn">Signout</button>
-
-                        </div>
-                    </div>
-                    </p>`
-                    document.querySelector('.mf').style.background = 'linear-gradient(225deg, #016603 0%, #73e329 50%, #133000 100%);'
-                    document.getElementById('strip1').style.backgroundColor = 'yellowgreen'
-                    document.getElementById('strip2').style.backgroundColor = 'green'
-                    document.querySelectorAll('.sep').forEach(sp => {
-                        sp.style.backgroundColor = 'yellowgreen'
-                    })
-                    // window.location = 'movies.html'
-                    document.getElementById('loadmore').style.backgroundColor='green'
-                //     document.querySelector('.know-more').style.backgroundColor = 'yellowgreen'
-                // document.querySelector('.know-more').style.color = 'black'
-
-                }
-
-
-                if (sessionStorage.getItem('theme') == 'purple') {
-                    document.getElementById('logoMF').innerHTML = `<img src="images/logoP.png" alt="Logo" width="50" height="50"
-                            class="d-inline-block align-text-top mflogo">`
-                    document.querySelector('.activenav').style.backgroundColor = 'purple'
-                    document.querySelector('.activenav').style.color = 'white'
-                    document.getElementById('prof-img-span').innerHTML = `<img id="prof-img" src="images/userP.webp" alt="" height="38px" width="38px"
-                        style="border-radius: 50%; margin-top: 5px;">
-                    <p style="padding: 6px 0 0 6px;">
-                    <div class="dropdown-prof dropdown">
-                        <button class="dropbtn"><span id="usernm">Username</span><i class="fa-solid fa-caret-down arr"
-                                style="margin: 10px 0 0 5px; cursor: pointer;"></i></button>
-                        <div class="dropdown-content">
-                            <a id="accsett" >Account Settings</a>
-                            <a href="watchlist.html">Your WatchLater</a>
-                            <a href="help.html">Help</a>
-                            <button type="button"
-                                style="border: none; outline: none; padding-left: 15px; padding-bottom: 8px;padding-top: 3px; width: 10vw; text-align: start;"
-                                id="signout-btn">Signout</button>
-
-                        </div>
-                    </div>
-                    </p>`
-                    document.querySelector('.mf').style.background = 'linear-gradient(225deg, #016603 0%, #73e329 50%, #133000 100%);'
-                    document.getElementById('strip1').style.backgroundColor = '#CBC3E3'
-                    document.getElementById('strip2').style.backgroundColor = 'purple'
-                    console.log(document.querySelectorAll('.sep'))
-                    document.querySelectorAll('.sep').forEach(sp => {
-                        sp.style.backgroundColor = 'purple'
-                    })
-                    document.getElementById('loadmore').style.backgroundColor='purple'
-                //     document.querySelector('.know-more').style.backgroundColor = 'purple'
-                // document.querySelector('.know-more').style.color = 'white'
-
-
-                }
-
-
-
-            }
-            document.getElementById('confirm').addEventListener('click', () => {
-                window.location = 'bollywood.html'
-            })
-
-
-
-
             var lastScrollTop = 0;
             navbar = document.querySelector(".navbar");
             window.addEventListener("scroll", () => {
