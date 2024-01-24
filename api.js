@@ -310,7 +310,7 @@ const ss2 = '/images?&api_key=aff98581fbcc8eff4609f1ab795c9a8f'
 /* Open when someone clicks on the span element */
 function openNav(movie) {
 
-    
+
     let id = movie.id
 
 
@@ -371,13 +371,13 @@ function openNav(movie) {
                         document.getElementById(`wLtr`).style.backgroundColor = 'red'
                     })
 
-                    console.log(castingImg)
+                    // console.log(castingImg)
 
                     let rat;
-                    if(sessionStorage.getItem("rating")){
+                    if (sessionStorage.getItem("rating")) {
 
                         rat = sessionStorage.getItem("rating")
-                        if(rat=="1"){
+                        if (rat == "1") {
                             document.getElementById(`a`).style.color = 'red'
                             document.getElementById(`b`).style.color = 'white'
                             document.getElementById(`c`).style.color = 'white'
@@ -387,7 +387,7 @@ function openNav(movie) {
                             document.getElementById('review').innerText = 'I hate it'
 
                         }
-                        if(rat=="2"){
+                        if (rat == "2") {
                             document.getElementById(`a`).style.color = 'orange'
                             document.getElementById(`b`).style.color = 'orange'
                             document.getElementById(`c`).style.color = 'white'
@@ -397,7 +397,7 @@ function openNav(movie) {
                             document.getElementById('review').innerText = "It's Okayish !"
 
                         }
-                        if(rat=="3"){
+                        if (rat == "3") {
                             document.getElementById(`a`).style.color = 'yellow'
                             document.getElementById(`b`).style.color = 'yellow'
                             document.getElementById(`c`).style.color = 'yellow'
@@ -407,7 +407,7 @@ function openNav(movie) {
                             document.getElementById('review').innerText = 'I like it !'
 
                         }
-                        if(rat=="4"){
+                        if (rat == "4") {
                             document.getElementById(`a`).style.color = 'yellowgreen'
                             document.getElementById(`b`).style.color = 'yellowgreen'
                             document.getElementById(`c`).style.color = 'yellowgreen'
@@ -417,7 +417,7 @@ function openNav(movie) {
                             document.getElementById('review').innerText = 'I love it !'
 
                         }
-                        if(rat=="5"){
+                        if (rat == "5") {
                             document.getElementById(`a`).style.color = 'green'
                             document.getElementById(`b`).style.color = 'green'
                             document.getElementById(`c`).style.color = 'green'
@@ -428,54 +428,54 @@ function openNav(movie) {
 
                         }
                     }
-                    
 
 
-console.log(screenshots)
-if(screenshots.length!==0){
-                    var div = document.createElement("div");
-                    // div.style.width = "100px";
-                    div.style.height = "150px";
-                    div.style.display = "flex";
-                    if (screenshots.length < 15)
-                        div.style.justifyContent = 'center';
-                    div.style.overflow = "scroll";
-                    document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">SOME SCREENSHOTS : </p>'
-                    document.getElementById("overlay-content").appendChild(div)
 
-                    for (let i = 0; i <= screenshots.length; i++) {
-                        if (castingImg[i])
-                            div.innerHTML += `<div style="padding:10px; color:white; width:180px"><img style="width:150px" height="120px" src="${IMAGE_URL + screenshots[i]}"></div>`;
+                    // console.log(screenshots)
+                    if (screenshots.length !== 0) {
+                        var div = document.createElement("div");
+                        // div.style.width = "100px";
+                        div.style.height = "150px";
+                        div.style.display = "flex";
+                        if (screenshots.length < 15)
+                            div.style.justifyContent = 'center';
+                        div.style.overflow = "scroll";
+                        document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">SOME SCREENSHOTS : </p>'
+                        document.getElementById("overlay-content").appendChild(div)
+
+                        for (let i = 0; i <= screenshots.length; i++) {
+                            if (castingImg[i])
+                                div.innerHTML += `<div style="padding:10px; color:white; width:180px"><img style="width:150px" height="120px" src="${IMAGE_URL + screenshots[i]}"></div>`;
 
 
+                        }
                     }
-                }
                     document.getElementById("overlay-content").innerHTML += `<br><br>`
 
-if(casting.length!==0){
-                    var div = document.createElement("div");
-                    // div.style.width = "100px";
-                    div.style.height = "250px";
-                    div.style.display = "flex";
-                    if (casting.length < 15)
-                        div.style.justifyContent = 'center';
-                    div.style.overflow = "scroll";
-                    document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">CAST</p>'
-                    document.getElementById("overlay-content").appendChild(div)
+                    if (casting.length !== 0) {
+                        var div = document.createElement("div");
+                        // div.style.width = "100px";
+                        div.style.height = "250px";
+                        div.style.display = "flex";
+                        if (casting.length < 15)
+                            div.style.justifyContent = 'center';
+                        div.style.overflow = "scroll";
+                        document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">CAST</p>'
+                        document.getElementById("overlay-content").appendChild(div)
 
-                    for (let i = 0; i <= casting.length; i++) {
-                        if (castingImg[i])
-                            div.innerHTML += `<div style="padding:10px; color:white; width:110px"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
+                        for (let i = 0; i <= casting.length; i++) {
+                            if (castingImg[i])
+                                div.innerHTML += `<div style="padding:10px; color:white; width:110px"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
 
+                        }
                     }
-                }
 
 
                     fetch(BASE_URL + "/movie/" + id + '/videos?' + API_KEY).then(res => res.json()).then((videoData) => {
                         if (videoData) {
                             document.getElementById("overlay-content").innerHTML += `<br><br><br>`
                             document.getElementById("myNav").style.width = "100%";
-                        
+
 
 
 
@@ -486,10 +486,10 @@ if(casting.length!==0){
                                     document.getElementById(`c`).style.color = 'white'
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
-                                    sessionStorage.setItem("rating" , "0");
+                                    sessionStorage.setItem("rating", "0");
                                     document.getElementById(`a`).style.cursor = 'pointer'
                                     document.getElementById('review').innerText = ''
-                                    
+
 
                                 }
                                 else {
@@ -499,9 +499,9 @@ if(casting.length!==0){
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
-                                    sessionStorage.setItem("rating" , "1");
+                                    sessionStorage.setItem("rating", "1");
                                     document.getElementById('review').innerText = 'I hate it'
-                                    
+
                                 }
                             })
                             // document.getElementById(`a`).addEventListener('mouseout', () => {
@@ -516,9 +516,9 @@ if(casting.length!==0){
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
-                                    sessionStorage.setItem("rating" , "0");
+                                    sessionStorage.setItem("rating", "0");
                                     document.getElementById('review').innerText = ''
-                                    
+
 
                                 }
                                 else {
@@ -529,7 +529,7 @@ if(casting.length!==0){
                                     document.getElementById(`c`).style.color = 'white'
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
-                                    sessionStorage.setItem("rating" , "2");
+                                    sessionStorage.setItem("rating", "2");
                                     document.getElementById('review').innerText = "It's Okayish"
                                 }
                             })
@@ -547,7 +547,7 @@ if(casting.length!==0){
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
-                                    sessionStorage.setItem("rating" , "0");
+                                    sessionStorage.setItem("rating", "0");
                                     document.getElementById('review').innerText = ''
 
                                 }
@@ -560,7 +560,7 @@ if(casting.length!==0){
                                     document.getElementById(`c`).style.cursor = 'pointer'
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
-                                    sessionStorage.setItem("rating" , "3");
+                                    sessionStorage.setItem("rating", "3");
                                     document.getElementById('review').innerText = 'I like it !'
                                 }
                             })
@@ -578,7 +578,7 @@ if(casting.length!==0){
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
-                                    sessionStorage.setItem("rating" , "0");
+                                    sessionStorage.setItem("rating", "0");
                                     document.getElementById('review').innerText = ''
 
                                 }
@@ -592,7 +592,7 @@ if(casting.length!==0){
                                     document.getElementById(`c`).style.cursor = 'pointer'
                                     document.getElementById(`d`).style.cursor = 'pointer'
                                     document.getElementById(`e`).style.color = 'white'
-                                    sessionStorage.setItem("rating" , "4");
+                                    sessionStorage.setItem("rating", "4");
                                     document.getElementById('review').innerText = 'I love It !'
                                 }
                             })
@@ -612,7 +612,7 @@ if(casting.length!==0){
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
-                                    sessionStorage.setItem("rating" , "0");
+                                    sessionStorage.setItem("rating", "0");
                                     document.getElementById('review').innerText = ''
 
                                 }
@@ -627,7 +627,7 @@ if(casting.length!==0){
                                     document.getElementById(`c`).style.cursor = 'pointer'
                                     document.getElementById(`d`).style.cursor = 'pointer'
                                     document.getElementById(`e`).style.cursor = 'pointer'
-                                    sessionStorage.setItem("rating" , "5");
+                                    sessionStorage.setItem("rating", "5");
                                     document.getElementById('review').innerText = 'Absolutely Loved It !'
                                 }
                             })
@@ -640,7 +640,7 @@ if(casting.length!==0){
                             //     document.getElementById(`e`).style.color = 'white'
                             // })
 
-                            
+
 
                             document.getElementById(`e1`).addEventListener('mouseout', () => {
                                 document.getElementById(`a`).style.color = 'white'
@@ -743,7 +743,7 @@ function openNavTV(movie) {
                         document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px; border-radius:6px  ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
                     else if (movie.origin_country)
-                        document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
+                        document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div><div style="color:white">RATE HERE :<br> <span><i class="fa-solid fa-star"  id="a" style="color: white; font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="b" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star" id="c" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="d"style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="e" style="color: white;font-size:30px"></i></span><br><div id="review" style="color:white"></div><br>`
 
                     else if (movie.release_date)
                         document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.name}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw"><h4 style="color: rgb(178, 212, 109); ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: gray; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen; margin:0 60px; border-radius:6px ">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
@@ -762,41 +762,221 @@ function openNavTV(movie) {
                         document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">CAST</p>'
                         document.getElementById("overlay-content").appendChild(div)
 
-console.log(castingImg)
-if(screenshots.length!==0){
-                        var div = document.createElement("div");
-                        // div.style.width = "100px";
-                        div.style.height = "150px";
-                        div.style.display = "flex";
-                        if (screenshots.length < 15)
-                            div.style.justifyContent = 'center';
-                        div.style.overflow = "scroll";
-                        document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">SOME SCREENSHOTS : </p>'
-                        document.getElementById("overlay-content").appendChild(div)
+                        console.log(castingImg)
+                        if (screenshots.length !== 0) {
+                            var div = document.createElement("div");
+                            // div.style.width = "100px";
+                            div.style.height = "150px";
+                            div.style.display = "flex";
+                            if (screenshots.length < 15)
+                                div.style.justifyContent = 'center';
+                            div.style.overflow = "scroll";
+                            document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">SOME SCREENSHOTS : </p>'
+                            document.getElementById("overlay-content").appendChild(div)
 
-                        for (let i = 0; i <= screenshots.length; i++) {
-                            if (castingImg[i])
-                                div.innerHTML += `<div style="padding:10px; color:white; width:180px"><img style="width:150px" height="120px" src="${IMAGE_URL + screenshots[i]}"></div>`;
+                            for (let i = 0; i <= screenshots.length; i++) {
+                                if (castingImg[i])
+                                    div.innerHTML += `<div style="padding:10px; color:white; width:180px"><img style="width:150px" height="120px" src="${IMAGE_URL + screenshots[i]}"></div>`;
 
+                            }
                         }
-                    }
                         document.getElementById("overlay-content").innerHTML += `<br><br>`
 
-if(casting.length!==0){
+                        if (casting.length !== 0) {
 
-                        for (let i = 0; i <= casting.length; i++) {
-                            if (castingImg[i])
-                                div.innerHTML += `<div style="padding:10px;width:110px; color:white"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
+                            for (let i = 0; i <= casting.length; i++) {
+                                if (castingImg[i])
+                                    div.innerHTML += `<div style="padding:10px;width:110px; color:white"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
 
+                            }
                         }
+
                     }
 
-                }
+
+                    document.getElementById(`a`).addEventListener('click', () => {
+                        if (document.getElementById(`a`).style.color == 'red') {
+                            document.getElementById(`a`).style.color = 'white'
+                            document.getElementById(`b`).style.color = 'white'
+                            document.getElementById(`c`).style.color = 'white'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            sessionStorage.setItem("rating", "0");
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById('review').innerText = ''
+
+
+                        }
+                        else {
+                            document.getElementById(`a`).style.color = 'red'
+                            document.getElementById(`b`).style.color = 'white'
+                            document.getElementById(`c`).style.color = 'white'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            sessionStorage.setItem("rating", "1");
+                            document.getElementById('review').innerText = 'I hate it'
+
+                        }
+                    })
+                    // document.getElementById(`a`).addEventListener('mouseout', () => {
+                    //     document.getElementById(`a`).style.color = 'white'
+                    // })
+                    document.getElementById(`b`).addEventListener('click', () => {
+
+                        if (document.getElementById(`b`).style.color == 'orange') {
+                            document.getElementById(`a`).style.color = 'white'
+                            document.getElementById(`b`).style.color = 'white'
+                            document.getElementById(`c`).style.color = 'white'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            sessionStorage.setItem("rating", "0");
+                            document.getElementById('review').innerText = ''
+
+
+                        }
+                        else {
+                            document.getElementById(`a`).style.color = 'orange'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById(`b`).style.color = 'orange'
+                            document.getElementById(`b`).style.cursor = 'pointer'
+                            document.getElementById(`c`).style.color = 'white'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            sessionStorage.setItem("rating", "2");
+                            document.getElementById('review').innerText = "It's Okayish"
+                        }
+                    })
+                    // document.getElementById(`b`).addEventListener('mouseout', () => {
+                    //     document.getElementById(`a`).style.color = 'white'
+                    //     document.getElementById(`b`).style.color = 'white'
+                    // })
+                    document.getElementById(`c`).addEventListener('click', () => {
+
+
+                        if (document.getElementById(`c`).style.color == 'yellow') {
+                            document.getElementById(`a`).style.color = 'white'
+                            document.getElementById(`b`).style.color = 'white'
+                            document.getElementById(`c`).style.color = 'white'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            sessionStorage.setItem("rating", "0");
+                            document.getElementById('review').innerText = ''
+
+                        }
+                        else {
+                            document.getElementById(`a`).style.color = 'yellow'
+                            document.getElementById(`b`).style.color = 'yellow'
+                            document.getElementById(`c`).style.color = 'yellow'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById(`b`).style.cursor = 'pointer'
+                            document.getElementById(`c`).style.cursor = 'pointer'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            sessionStorage.setItem("rating", "3");
+                            document.getElementById('review').innerText = 'I like it !'
+                        }
+                    })
+                    // document.getElementById(`c`).addEventListener('mouseout', () => {
+                    //     document.getElementById(`a`).style.color = 'white'
+                    //     document.getElementById(`b`).style.color = 'white'
+                    //     document.getElementById(`c`).style.color = 'white'
+                    // })
+                    document.getElementById(`d`).addEventListener('click', () => {
+
+                        if (document.getElementById(`d`).style.color == 'yellowgreen') {
+                            document.getElementById(`a`).style.color = 'white'
+                            document.getElementById(`b`).style.color = 'white'
+                            document.getElementById(`c`).style.color = 'white'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            sessionStorage.setItem("rating", "0");
+                            document.getElementById('review').innerText = ''
+
+                        }
+                        else {
+                            document.getElementById(`a`).style.color = 'yellowgreen'
+                            document.getElementById(`b`).style.color = 'yellowgreen'
+                            document.getElementById(`c`).style.color = 'yellowgreen'
+                            document.getElementById(`d`).style.color = 'yellowgreen'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById(`b`).style.cursor = 'pointer'
+                            document.getElementById(`c`).style.cursor = 'pointer'
+                            document.getElementById(`d`).style.cursor = 'pointer'
+                            document.getElementById(`e`).style.color = 'white'
+                            sessionStorage.setItem("rating", "4");
+                            document.getElementById('review').innerText = 'I love It !'
+                        }
+                    })
+                    // document.getElementById(`d`).addEventListener('mouseout', () => {
+                    //     document.getElementById(`a`).style.color = 'white'
+                    //     document.getElementById(`b`).style.color = 'white'
+                    //     document.getElementById(`c`).style.color = 'white'
+                    //     document.getElementById(`d`).style.color = 'white'
+                    // })
+                    document.getElementById(`e`).addEventListener('click', () => {
+
+
+                        if (document.getElementById(`e`).style.color = 'green') {
+                            document.getElementById(`a`).style.color = 'white'
+                            document.getElementById(`b`).style.color = 'white'
+                            document.getElementById(`c`).style.color = 'white'
+                            document.getElementById(`d`).style.color = 'white'
+                            document.getElementById(`e`).style.color = 'white'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            sessionStorage.setItem("rating", "0");
+                            document.getElementById('review').innerText = ''
+
+                        }
+                        else {
+                            document.getElementById(`a`).style.color = 'green'
+                            document.getElementById(`b`).style.color = 'green'
+                            document.getElementById(`c`).style.color = 'green'
+                            document.getElementById(`d`).style.color = 'green'
+                            document.getElementById(`e`).style.color = 'green'
+                            document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById(`b`).style.cursor = 'pointer'
+                            document.getElementById(`c`).style.cursor = 'pointer'
+                            document.getElementById(`d`).style.cursor = 'pointer'
+                            document.getElementById(`e`).style.cursor = 'pointer'
+                            sessionStorage.setItem("rating", "5");
+                            document.getElementById('review').innerText = 'Absolutely Loved It !'
+                        }
+                    })
+
+                    // document.getElementById(`e`).addEventListener('mouseout', () => {
+                    //     document.getElementById(`a`).style.color = 'white'
+                    //     document.getElementById(`b`).style.color = 'white'
+                    //     document.getElementById(`c`).style.color = 'white'
+                    //     document.getElementById(`d`).style.color = 'white'
+                    //     document.getElementById(`e`).style.color = 'white'
+                    // })
+
+
+
+                    // document.getElementById(`greet`).addEventListener('mouseout', () => {
+                    //     document.getElementById(`a`).style.color = 'white'
+                    //     document.getElementById(`b`).style.color = 'white'
+                    //     document.getElementById(`c`).style.color = 'white'
+                    //     document.getElementById(`d`).style.color = 'white'
+                    //     document.getElementById(`e`).style.color = 'white'
+                    // })
 
 
 
                     fetch(BASE_URL + "/tv/" + id + '/videos?' + API_KEY).then(res => res.json()).then((videoData) => {
                         if (videoData) {
+
+
+
+                            
+
+
+
+
                             document.getElementById("overlay-content").innerHTML += `<br><br><br>`
                             document.getElementById("myNav").style.width = "100%";
                             if (videoData.results.length > 0) {
@@ -870,7 +1050,7 @@ function getTVwl(url) {
             watchLaterLs.add(data.results[0].name)
         }
         const c = Array.from(watchLaterLs).join(',')
-        sessionStorage.setItem("WatchLater", (c))
+        sessionStorage.setItem("watchLater", (c))
         console.log(c)
     })
 }
@@ -883,7 +1063,7 @@ function showTV(data) {
         const { name, poster_path, backdrop_path, vote_average, id } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
-        
+
 
 
 
@@ -892,7 +1072,7 @@ function showTV(data) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
-                            <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path? IMAGE_URL+poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                            <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                                 <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
@@ -1034,7 +1214,7 @@ function showTV2(data) {
         const { name, poster_path, backdrop_path, vote_average, overview, id } = movie
         const movieEl = document.createElement('div')
         movieEl.classList.add('movie-list-item')
-        
+
 
 
 
