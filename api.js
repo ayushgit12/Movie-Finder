@@ -28,6 +28,11 @@ const tagsEl = document.querySelector('.tags')
 var selectedGenre = [];
 var selectedGenreName = [];
 
+
+
+let theme = sessionStorage.getItem('theme')
+console.log(theme)
+
 setGenre()
 function setGenre() {
     tagsEl.innerHTML = ''
@@ -195,6 +200,11 @@ document.querySelector(".watchListNav").addEventListener('click', () => {
 
 console.log(watchLaterLs)
 
+let colT;
+if(theme === 'purple')
+    colT = 'know-more-P'
+else
+    colT = 'know-more'
 
 function showMovies(data) {
 
@@ -213,7 +223,7 @@ function showMovies(data) {
 
         // movieEl.innerHTML = `
         // <img src="${(poster_path) ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-        //                     <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+        //                     <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
         //                     <button class="movie-list-item-button">WATCH</button>
         //                     <button class="know-more" id=${id}>Know More</button>
         //                     <span class="watchLaterdesc">Add to Watch Later</span>
@@ -231,9 +241,9 @@ function showMovies(data) {
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
         <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                             <button class="movie-list-item-button">WATCH</button>
-                            <button class="know-more" id=${id}>Know More</button>
+                            <button class="${colT}" id=${id}>Know More</button>
                             <span class="watchLaterdesc">Add to Watch Later</span>
                             <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
                             `
@@ -244,7 +254,7 @@ function showMovies(data) {
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
         <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             <span class="watchLaterdesc">Add to Watch Later</span>
@@ -358,7 +368,7 @@ function openNav(movie) {
                         document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" style="padding:10px; id=1${id} border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
                     else if (movie.release_date)
-                        document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw ;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id="wLtr" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available :<br> ${transLang.join(' , ')}</div><div style="color:white">RATE HERE :<br> <span><i class="fa-solid fa-star"  id="a" style="color: white; font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="b" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star" id="c" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="d"style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="e" style="color: white;font-size:30px"></i></span><br><br>`
+                        document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw ;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id="wLtr" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available :<br> ${transLang.join(' , ')}</div><div style="color:white">RATE HERE :<br> <span><i class="fa-solid fa-star"  id="a" style="color: white; font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="b" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star" id="c" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="d"style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="e" style="color: white;font-size:30px"></i></span><br><div id="review" style="color:white"></div><br>`
 
 
                     else
@@ -384,6 +394,7 @@ function openNav(movie) {
                             document.getElementById(`d`).style.color = 'white'
                             document.getElementById(`e`).style.color = 'white'
                             document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById('review').innerText = 'I hate it'
 
                         }
                         if(rat=="2"){
@@ -393,6 +404,7 @@ function openNav(movie) {
                             document.getElementById(`d`).style.color = 'white'
                             document.getElementById(`e`).style.color = 'white'
                             document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById('review').innerText = "It's Okayish !"
 
                         }
                         if(rat=="3"){
@@ -402,6 +414,7 @@ function openNav(movie) {
                             document.getElementById(`d`).style.color = 'white'
                             document.getElementById(`e`).style.color = 'white'
                             document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById('review').innerText = 'I like it !'
 
                         }
                         if(rat=="4"){
@@ -411,6 +424,7 @@ function openNav(movie) {
                             document.getElementById(`d`).style.color = 'yellowgreen'
                             document.getElementById(`e`).style.color = 'white'
                             document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById('review').innerText = 'I love it !'
 
                         }
                         if(rat=="5"){
@@ -420,6 +434,7 @@ function openNav(movie) {
                             document.getElementById(`d`).style.color = 'green'
                             document.getElementById(`e`).style.color = 'green'
                             document.getElementById(`a`).style.cursor = 'pointer'
+                            document.getElementById('review').innerText = 'Absolutely Loved It !'
 
                         }
                     }
@@ -480,6 +495,8 @@ function openNav(movie) {
                                     document.getElementById(`e`).style.color = 'white'
                                     sessionStorage.setItem("rating" , "0");
                                     document.getElementById(`a`).style.cursor = 'pointer'
+                                    document.getElementById('review').innerText = ''
+                                    
 
                                 }
                                 else {
@@ -490,6 +507,8 @@ function openNav(movie) {
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
                                     sessionStorage.setItem("rating" , "1");
+                                    document.getElementById('review').innerText = 'I hate it'
+                                    
                                 }
                             })
                             // document.getElementById(`a`).addEventListener('mouseout', () => {
@@ -505,6 +524,8 @@ function openNav(movie) {
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
                                     sessionStorage.setItem("rating" , "0");
+                                    document.getElementById('review').innerText = ''
+                                    
 
                                 }
                                 else {
@@ -516,6 +537,7 @@ function openNav(movie) {
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
                                     sessionStorage.setItem("rating" , "2");
+                                    document.getElementById('review').innerText = "It's Okayish"
                                 }
                             })
                             // document.getElementById(`b`).addEventListener('mouseout', () => {
@@ -533,6 +555,7 @@ function openNav(movie) {
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
                                     sessionStorage.setItem("rating" , "0");
+                                    document.getElementById('review').innerText = ''
 
                                 }
                                 else {
@@ -545,6 +568,7 @@ function openNav(movie) {
                                     document.getElementById(`d`).style.color = 'white'
                                     document.getElementById(`e`).style.color = 'white'
                                     sessionStorage.setItem("rating" , "3");
+                                    document.getElementById('review').innerText = 'I like it !'
                                 }
                             })
                             // document.getElementById(`c`).addEventListener('mouseout', () => {
@@ -562,6 +586,7 @@ function openNav(movie) {
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
                                     sessionStorage.setItem("rating" , "0");
+                                    document.getElementById('review').innerText = ''
 
                                 }
                                 else {
@@ -575,6 +600,7 @@ function openNav(movie) {
                                     document.getElementById(`d`).style.cursor = 'pointer'
                                     document.getElementById(`e`).style.color = 'white'
                                     sessionStorage.setItem("rating" , "4");
+                                    document.getElementById('review').innerText = 'I love It !'
                                 }
                             })
                             // document.getElementById(`d`).addEventListener('mouseout', () => {
@@ -594,6 +620,7 @@ function openNav(movie) {
                                     document.getElementById(`e`).style.color = 'white'
                                     document.getElementById(`a`).style.cursor = 'pointer'
                                     sessionStorage.setItem("rating" , "0");
+                                    document.getElementById('review').innerText = ''
 
                                 }
                                 else {
@@ -608,6 +635,7 @@ function openNav(movie) {
                                     document.getElementById(`d`).style.cursor = 'pointer'
                                     document.getElementById(`e`).style.cursor = 'pointer'
                                     sessionStorage.setItem("rating" , "5");
+                                    document.getElementById('review').innerText = 'Absolutely Loved It !'
                                 }
                             })
 
@@ -869,7 +897,7 @@ function showTV(data) {
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
                             <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                                                <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
                                                 <span class="watchLaterdesc">Add to Watch Later</span>
@@ -882,7 +910,7 @@ function showTV(data) {
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
                                 <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                                                    <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                    <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                                                     <button class="movie-list-item-button">WATCH</button>
                                                     <button class="know-more" id=${id}>Know More</button>
                                                     <span class="watchLaterdesc">Add to Watch Later</span>
@@ -933,7 +961,7 @@ function showMovies3(data) {
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
         <img src="${IMAGE_URL + backdrop_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
@@ -944,7 +972,7 @@ function showMovies3(data) {
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
         <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             <span class="watchLaterdesc">Add to Watch Later</span>
@@ -957,7 +985,7 @@ function showMovies3(data) {
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
             <img src="${(poster_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                                <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                                 <button class="movie-list-item-button">WATCH</button>
                                 <button class="know-more" id=${id}>Know More</button>
                                 <span class="watchLaterdesc">Add to Watch Later</span>
@@ -1019,7 +1047,7 @@ function showTV2(data) {
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
                             <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                                                <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
                                                 <span class="watchLaterdesc">Add to Watch Later</span>
@@ -1032,7 +1060,7 @@ function showTV2(data) {
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
                                 <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                                                    <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                    <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                                                     <button class="movie-list-item-button">WATCH</button>
                                                     <button class="know-more" id=${id}>Know More</button>
                                                     <span class="watchLaterdesc">Add to Watch Later</span>
@@ -1084,7 +1112,7 @@ function showMovies4(data) {
         movieEl.classList.add('movie-list-item')
         movieEl.innerHTML = `
         <img src="${IMAGE_URL + backdrop_path}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                            <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${vote_average}</span>
+                            <span class="movie-list-item-title">${title} </span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
                             `
@@ -1097,7 +1125,7 @@ function showMovies4(data) {
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
                             <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                                                <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
                                                 <span class="watchLaterdesc">Add to Watch Later</span>
@@ -1110,7 +1138,7 @@ function showMovies4(data) {
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
                                 <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
-                                                    <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
+                                                    <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${(Math.floor(vote_average*10))/10}</span>
                                                     <button class="movie-list-item-button">WATCH</button>
                                                     <button class="know-more" id=${id}>Know More</button>
                                                     <span class="watchLaterdesc">Add to Watch Later</span>

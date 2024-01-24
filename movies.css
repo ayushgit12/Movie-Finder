@@ -310,7 +310,7 @@ footer{
   .dropdown:hover .dropdown-content {display: block;}
   
   /* Change the background color of the dropdown button when the dropdown content is shown */
-  .dropdown:hover .dropbtn {background-color: yellowgreen;}
+  .dropdown:hover .dropbtn {background-color: yellowgreen}
 
 
   /* @media only screen and (max-width:1190px) {
@@ -319,6 +319,14 @@ footer{
         display: none;
     }
   } */
+
+
+  #confirm{
+    padding: 8px;
+    font-size: 14px;
+    height: 30px;
+    border-radius: 8px;
+  }
 
 .green{
     width: 40px;
@@ -393,6 +401,45 @@ footer{
     cursor: default;
 }
 
+
+#changeTheme{
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+background-size: 1800% 1800%;
+
+-webkit-animation: rainbow 18s ease infinite;
+-z-animation: rainbow 18s ease infinite;
+-o-animation: rainbow 18s ease infinite;
+  animation: rainbow 18s ease infinite;}
+
+@-webkit-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-moz-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@-o-keyframes rainbow {
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+@keyframes rainbow { 
+    0%{background-position:0% 82%}
+    50%{background-position:100% 19%}
+    100%{background-position:0% 82%}
+}
+
+.sep{
+    background-color: yellowgreen; height: 5px; width: 10vw;
+    
+
+}
 
 .mflogo{
     transition: all 0.5s ease-in-out;
@@ -477,6 +524,19 @@ footer{
 .know-more{
     padding: 6px 10px;
     background-color: yellowgreen;
+    border: none; 
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0px;
+    left: 26px;
+    opacity: 0;
+}
+.know-more-P{
+    padding: 6px 10px;
+    background-color: purple;
+    color: white;
     border: none; 
     border-radius: 10px;
     outline: none;

@@ -235,6 +235,7 @@ footer{
 
 .carousel-imgs{
   width: 400px; 
+  z-index: 100; border-radius: 10px; margin: 2px solid black; box-shadow: 12px 7px 7px rgb(23, 23, 23);
 }
 .content{
   width: 500px; 
@@ -242,7 +243,7 @@ footer{
 #out{
   max-width: 400px;
   overflow: hidden;
-  margin: auto;
+  /* margin: auto; */
 }
 .carousel-item{
   width: 400px;
@@ -259,7 +260,8 @@ footer{
   }
   .carousel-imgs{
     width: 80%;
-    margin: auto;
+    padding: 10px 40px;
+    border: none;
   }
   .content{
     width: 80%;
