@@ -431,8 +431,8 @@ function openNav(movie) {
                     
 
 
-
-
+console.log(screenshots)
+if(screenshots.length!==0){
                     var div = document.createElement("div");
                     // div.style.width = "100px";
                     div.style.height = "150px";
@@ -447,10 +447,12 @@ function openNav(movie) {
                         if (castingImg[i])
                             div.innerHTML += `<div style="padding:10px; color:white; width:180px"><img style="width:150px" height="120px" src="${IMAGE_URL + screenshots[i]}"></div>`;
 
+
                     }
+                }
                     document.getElementById("overlay-content").innerHTML += `<br><br>`
 
-
+if(casting.length!==0){
                     var div = document.createElement("div");
                     // div.style.width = "100px";
                     div.style.height = "250px";
@@ -466,6 +468,7 @@ function openNav(movie) {
                             div.innerHTML += `<div style="padding:10px; color:white; width:110px"><img style="width:100px" src="${IMAGE_URL + castingImg[i]}">${casting[i]}</div>`;
 
                     }
+                }
 
 
                     fetch(BASE_URL + "/movie/" + id + '/videos?' + API_KEY).then(res => res.json()).then((videoData) => {
@@ -759,8 +762,8 @@ function openNavTV(movie) {
                         document.getElementById("overlay-content").innerHTML += '<p style="color:white; font-size:22px">CAST</p>'
                         document.getElementById("overlay-content").appendChild(div)
 
-
-
+console.log(castingImg)
+if(screenshots.length!==0){
                         var div = document.createElement("div");
                         // div.style.width = "100px";
                         div.style.height = "150px";
@@ -776,9 +779,10 @@ function openNavTV(movie) {
                                 div.innerHTML += `<div style="padding:10px; color:white; width:180px"><img style="width:150px" height="120px" src="${IMAGE_URL + screenshots[i]}"></div>`;
 
                         }
+                    }
                         document.getElementById("overlay-content").innerHTML += `<br><br>`
 
-
+if(casting.length!==0){
 
                         for (let i = 0; i <= casting.length; i++) {
                             if (castingImg[i])
@@ -787,6 +791,7 @@ function openNavTV(movie) {
                         }
                     }
 
+                }
 
 
 
@@ -887,7 +892,7 @@ function showTV(data) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
-                            <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                            <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path? IMAGE_URL+poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                                 <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
@@ -1037,7 +1042,7 @@ function showTV2(data) {
             // console.log(title)
             // console.log(data.results[0].id)
             movieEl.innerHTML = `
-                            <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                            <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                                 <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
@@ -1050,7 +1055,7 @@ function showTV2(data) {
             // document.getElementById(`2${movie.id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
             // document.getElementById(`2${movie.id}`).style.backgroundColor='white'
             movieEl.innerHTML = `
-                                <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
+                                <img src="${(backdrop_path) ? IMAGE_URL + backdrop_path : poster_path ? IMAGE_URL + poster_path : "images/noimg.webp"}" alt="" class="movie-list-item-img" style=" box-shadow: 12px 7px 7px rgb(16, 16, 16);">
                                                     <span class="movie-list-item-title">${name}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                                                     <button class="movie-list-item-button">WATCH</button>
                                                     <button class="know-more" id=${id}>Know More</button>

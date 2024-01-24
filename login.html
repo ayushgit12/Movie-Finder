@@ -58,6 +58,9 @@
                         <span class="visually-hidden">Loading...</span>
                     </div>
                 </div>
+                <div class="alert alert-danger fail" role="alert" style="display: none;">
+                    Either account doesn't exists, or password incorrect. Try again!
+                </div>
                 <h3 class="signupheading">Welcome Back User!</h3>
                 <h2 class="signuptop">Sign In</h2>
 
@@ -197,7 +200,24 @@
                 })
                 .catch((error) => {
                     // FINALLY IF NO SOLUTION FOUND, Change innerHTML of querySelector to error.message
-                    alert(error.message);
+                    document.querySelector('.fail').style.display = 'block'
+                    let width=screen.width
+                    if(width<475){
+                        
+                        document.getElementById("addbox").style.paddingTop="108px"
+                        document.querySelector(".create").style.display="none"
+                        document.querySelector(".chck").style.paddingTop="108px"
+                        document.querySelector(".btn").style.marginTop="17px"
+                        document.querySelector(".fail").style.display = "block";
+                        document.querySelector(".fail").style.width = "68vw";
+
+
+                    }
+                   
+                })
+                document.getElementById('emailid').addEventListener('click',()=>{
+                    document.querySelector(".fail").style.display = "none";
+
                 })
         }
 

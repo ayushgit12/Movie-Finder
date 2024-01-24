@@ -67,7 +67,9 @@
 
 
     
-    <div class="writer">Your <span
+    <div class="writer">
+        
+        Your <span
             style="background: linear-gradient(225deg, #ff3cac 0%, #784ba0 50%, #2b86c5 100%);">"FINAL
             DESTINATION"</span> for All <span class="auto-text"></span></div>
             <div style="color: white; background-color: #262626; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; transform: rotate(-0deg);font-size: 30px;padding-top: 30px;flex-wrap: wrap; text-align: center;"><b>BOLLYWOOD HOLLYWOOD TOLLYWOOD </b></div>
@@ -138,7 +140,7 @@
 
         <div class="content" style="background-color: rgb(0, 101, 2); height: 400px;margin: 60px; box-shadow:  12px 7px 7px rgb(23, 23, 23);">
             <div class="info">
-                <p>Join us for a fantastic <span class="movie-night">movie night (or day)</span> filled with popcorn, laughter,
+                <p>Join us for a <span class="movie-night">fantastic time</span> filled with popcorn, laughter,
                     and great company! Whether you're a fan of thrilling action, heartwarming dramas, or side-splitting
                     comedies, we've got a film lineup to cater to all tastes. Take the name and we are at your service. Just don't forget to bring your favorite snacks.</p>
                 <button class="bttn" style="text-decoration: none; color: white;">Join
@@ -172,6 +174,7 @@
         <p style="color: white; font-size: 30px; background-color: #262626; text-align: center; padding-bottom: 30px; z-index: 999;"><b>AND THE SAGA OF MOVIES GOES ONNN....</b></p><div class="extra" style="background-color: #262626;"><p style="font-size: 30px; padding-top: 60px; font-family: 'Syne', sans-serif;" ><i class="fa-solid fa-crown" style="color: white;"></i><span class="s1">BEST</span> <span class="s2">AT</span> <span class="s3">PROVIDING</span> <span class="s4">INFO </span> <span class="s5">ABOUT ANY MOVIE YOU WANT !</span></p><img class="i1" src="images/eatsleep2.jpeg" height="300px" alt="">
             
         </div>
+        
         <ul class="circles">
             <li></li>
             <li></li>
@@ -249,7 +252,18 @@ document.querySelector('.bttn').addEventListener('click',()=>{
   }, 1200);
 })
 </script>
-
+<script>
+    var lastScrollTop = 0;
+            navbar = document.querySelector(".navbar");
+            window.addEventListener("scroll", () => {
+                var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop)
+                    navbar.style.top = "-90px";
+                else
+                    navbar.style.top = "0 "
+                lastScrollTop = scrollTop
+            })
+</script>
 
 </body>
 
