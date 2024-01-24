@@ -180,7 +180,7 @@ function getMoviesWL(url) {
         }
         else {
             document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'white'
+            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'pink'
             // document.querySelector(".watchLaterdesc").style.display="block"
             watchLaterLs.add(data.results[0].title)
         }
@@ -242,7 +242,7 @@ function showMovies(data) {
                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
-                            <span class="watchLaterdesc">Add to Watch Later</span>
+                            
                             <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
                             `
 
@@ -255,7 +255,7 @@ function showMovies(data) {
                             <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                             <button class="movie-list-item-button">WATCH</button>
                             <button class="know-more" id=${id}>Know More</button>
-                            <span class="watchLaterdesc">Add to Watch Later</span>
+                            
                             <button class="watchLater" id=2${movie.id} style="background-color:yellowgreen"><i class="fa-solid fa-plus watchL"></i></button>
                             `
             // document.querySelector(".watchLaterdesc").style.display="block"
@@ -372,7 +372,7 @@ function openNav(movie) {
                         document.getElementById("overlay-content").innerHTML = `<div class="origin-country" style="color:orange">Country of Origin: ${movie.origin_country}</div><h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw;box-shadow: 12px 7px 7px black;"><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:black;background-color:yellowgreen;margin:0 60px;">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" style="padding:10px; id=1${id} border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available : <br> ${transLang.join(' , ')}</div>`
 
                     else if (movie.release_date)
-                        document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw ;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id="wLtr" style="padding:10px; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available :<br> ${transLang.join(' , ')}</div><div style="color:white">RATE HERE :<br> <span><i class="fa-solid fa-star"  id="a" style="color: white; font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="b" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star" id="c" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="d"style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="e" style="color: white;font-size:30px"></i></span><br><div id="review" style="color:white"></div><br>`
+                        document.getElementById("overlay-content").innerHTML = `<h2 style="color:white; padding-bottom:10px">${movie.title}</h2><img src="${IMAGE_URL + movie.poster_path}" style="width:20vw ;box-shadow: 12px 7px 7px black;"><h4 style="color: rgb(178, 212, 109); padding-top:20px ">Released on : ${movie.release_date}</h4><div style="font-size:17px;z-index:999; color: white; padding:35px 80px">${movie.overview}</div><div style="font-size:20px; color:gray;background-color:yellowgreen; color:black; margin:0 60px; border-radius:6px">${genreOv.join("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")}</div><br><br><div style="color: gray; text-align:start; padding-left:80px ">Budget for the Film : &#36;${data.budget}</div><button class="watchlater-btn" id="wLtr" style="padding:10px;display:none; border-radius:8px">ADD TO WATCH LATER</button><div style="color:white; margin: 40px 70px; background-color: rgb(30, 30, 30); padding:16px 10px; border-radius:8px">Languages available :<br> ${transLang.join(' , ')}</div><div style="color:white">RATE HERE :<br> <span><i class="fa-solid fa-star"  id="a" style="color: white; font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="b" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star" id="c" style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="d"style="color: white;font-size:30px"></i> </span><span><i class="fa-solid fa-star"  id="e" style="color: white;font-size:30px"></i></span><br><div id="review" style="color:white"></div><br>`
 
 
                     else
@@ -1059,7 +1059,7 @@ function getTVwl(url) {
         }
         else {
             document.getElementById(`2${data.results[0].id}`).innerHTML = `<i class="fa-solid fa-check watchL"></i>`
-            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'white'
+            document.getElementById(`2${data.results[0].id}`).style.backgroundColor = 'pink'
             // document.querySelector(".watchLaterdesc").style.display="block"
             watchLaterLsTV.add(data.results[0].name)
         }
@@ -1091,7 +1091,7 @@ function showTV(data) {
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
                                                 <span class="watchLaterdesc">Add to Watch Later</span>
-                                                <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
+                                                <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
                                                 `
 
         }
@@ -1241,7 +1241,7 @@ function showTV2(data) {
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
                                                 <span class="watchLaterdesc">Add to Watch Later</span>
-                                                <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
+                                                <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
                                                 `
 
         }
@@ -1318,8 +1318,8 @@ function showMovies4(data) {
                                                 <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                                                 <button class="movie-list-item-button">WATCH</button>
                                                 <button class="know-more" id=${id}>Know More</button>
-                                                <span class="watchLaterdesc">Add to Watch Later</span>
-                                                <button class="watchLater" id=2${movie.id} style="background-color:white"><i class="fa-solid fa-check watchL"></i></button>
+                                                
+                                                <button class="watchLater" id=2${movie.id} style="background-color:pink"><i class="fa-solid fa-check watchL"></i></button>
                                                 `
 
         }
@@ -1331,7 +1331,7 @@ function showMovies4(data) {
                                                     <span class="movie-list-item-title">${title}</span><span class="${getColor(vote_average)}">${vote_average}</span>
                                                     <button class="movie-list-item-button">WATCH</button>
                                                     <button class="know-more" id=${id}>Know More</button>
-                                                    <span class="watchLaterdesc">Add to Watch Later</span>
+                                                    
                                                     <button class="watchLater" id=2${movie.id}><i class="fa-solid fa-plus watchL"></i></button>
                                                     `
             // document.querySelector(".watchLaterdesc").style.display="block"
