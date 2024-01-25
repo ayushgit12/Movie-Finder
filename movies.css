@@ -618,9 +618,36 @@ background-size: 1800% 1800%;
     .greet{
         margin-top: 50px;
     }
+    .grow{
+        margin-top: 50px;
+    }
     
   }
 
+
+  .grow {
+    /* padding: 5px 5px 5px 5px; */
+    border-radius: 10px;
+    height: 49px;
+    width: 15%;
+    margin: 5px 1% 5px 1%;
+    float: right;
+    position: relative;
+    transition: height 0.5s;
+    -webkit-transition: height 0.5s;
+    text-align: center;
+    overflow: hidden;
+    transition: 1.5s;
+    z-index: 999;
+    opacity: 0.5;
+    
+    width: 100px;
+  }
+  .grow:hover {
+    height: 120px;
+    width: 20vw;
+    opacity: 1;
+  }
 
 .origin-country{
     text-align: center;
