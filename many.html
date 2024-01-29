@@ -771,14 +771,23 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
             signoutBtn1.addEventListener('click', () => {
 
                 console.log(sessionStorage.getItem("watchLater"))
-                if (sessionStorage.getItem("watchLater")) {
+                // if (sessionStorage.getItem("watchLater")) {
                     // console.log(sessionStorage.getItem("watchLater"))
                     var g = (sessionStorage.getItem("watchLater")).split(',')
+                    console.log(g)
                     set(ref(db, 'WatchLater/' + UserCreds.uid), {
                         watchLater: g
 
                     })
-                }
+                // }
+                // if (sessionStorage.getItem("watchLaterTV")) {
+                    // console.log(sessionStorage.getItem("watchLater"))
+                    var g = (sessionStorage.getItem("watchLaterTV")).split(',')
+                    set(ref(db, 'WatchLaterTV/' + UserCreds.uid), {
+                        watchLaterTV: g
+
+                    })
+                // }
                 document.querySelector(".signout-out").style.display = "flex"
                 document.querySelector(".main-container").style.opacity = "0.5"
                 document.querySelector(".signout-close").addEventListener('click', () => {
@@ -796,14 +805,23 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebas
             document.querySelector('.signout-yes').addEventListener('click', () => {
 
                 console.log(sessionStorage.getItem("watchLater"))
-                if (sessionStorage.getItem("watchLater")) {
+                // if (sessionStorage.getItem("watchLater")) {
                     // console.log(sessionStorage.getItem("watchLater"))
                     var g = (sessionStorage.getItem("watchLater")).split(',')
+                    console.log(g)
                     set(ref(db, 'WatchLater/' + UserCreds.uid), {
                         watchLater: g
 
                     })
-                }
+                // }
+                // if (sessionStorage.getItem("watchLaterTV")) {
+                    // console.log(sessionStorage.getItem("watchLater"))
+                    var g = (sessionStorage.getItem("watchLaterTV")).split(',')
+                    set(ref(db, 'WatchLaterTV/' + UserCreds.uid), {
+                        watchLaterTV: g
+
+                    })
+                // }
                 document.querySelector(".signout-out").style.display = "flex"
                 document.querySelector(".main-container").style.opacity = "0.5"
                 document.querySelector(".signout-close").addEventListener('click', () => {
