@@ -161,8 +161,9 @@
                     }
                    
                     get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot) => {
+                        console.log(snapshot.exists)
                         if (snapshot.exists) {
-                            // console.log(snapshot.val())
+                            console.log(snapshot.val())
                             sessionStorage.setItem("user-info", JSON.stringify({
                                 name: snapshot.val().name,
                                 creationTime: snapshot.val().crtTime,
@@ -176,7 +177,7 @@
 
                             setTimeout(()=>{
 
-                                window.location.href = 'movies.html';
+                                // window.location.href = 'movies.html';
                                 
                             },2000)
 
