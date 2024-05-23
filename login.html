@@ -177,7 +177,7 @@
 
                             setTimeout(()=>{
 
-                                // window.location.href = 'movies.html';
+                                window.location.href = 'movies.html';
                                 
                             },2000)
 
@@ -186,21 +186,16 @@
                     get(child(dbref, 'WatchLater/' + credentials.user.uid)).then((snapshot) => {
                         if (snapshot.exists) {
                             // console.log(JSON.stringify(snapshot.val().watchLater))
-                            console.log((snapshot.val().watchLater).join(','))
-                            sessionStorage.setItem("watchLater",(snapshot.val().watchLater).join(','))
+                            // console.log(snapshot)
+                            // console.log((snapshot.val().watchLater).join(','))
+                            sessionStorage.setItem("watchLater","")
                             
                         }
                         else
                             sessionStorage.setItem("watchLater","")
                     })
                     get(child(dbref, 'WatchLaterTV/' + credentials.user.uid)).then((snapshot) => {
-                        if (snapshot.exists) {
-                            // console.log(JSON.stringify(snapshot.val().watchLater))
-                            console.log((snapshot.val().watchLaterTV).join(','))
-                            sessionStorage.setItem("watchLaterTV",(snapshot.val().watchLaterTV).join(','))
-                            
-                        }
-                        else
+                        
                             sessionStorage.setItem("watchLaterTV","")
                     })
 
@@ -230,6 +225,7 @@
                     document.querySelector(".fail").style.display = "none";
 
                 })
+                // window.location.href = 'movies.html';
         }
 
         mainForm.addEventListener('submit', SignInUser);
